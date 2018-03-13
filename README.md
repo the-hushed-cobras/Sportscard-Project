@@ -1,13 +1,18 @@
+# Project name: Sportscard
 
-NAME: The Hushed Cobras
+## Team name: The Hushed Cobras
 
-TEAM LEADER: Alek Hristov
+## Team leader: Alek Hristov
 
-TEAM MEMBERS: Alek Hristov, Viacheslav Moshkin, Aleks Peneva
+## Team Members
 
-TARGET: Creating a console application that manages a database for the use of Sportcards and provides statistics for that
+* Alek Hristov
+* Aleks Peneva  
+* Viacheslav Moshkin
 
-FEATURES: 
+## TARGET: Creating a console application that manages a database for the use of Sportcards and provides statistics for that
+
+## FEATURES: 
 
 | Name of Feature               | Feature Owner | Estimated time | Actual time | Estimated unit test time | Actual unit test time |
 | ----------------------------- | ------------- | :------------: | :---------: | :----------------------: | :-------------------: |
