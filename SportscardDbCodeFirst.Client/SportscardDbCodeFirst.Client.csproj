@@ -56,5 +56,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportscardDbCodeFirst.Data\SportscardDbCodeFirst.Data.csproj">
+      <Project>{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}</Project>
+      <Name>SportscardDbCodeFirst.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardDbCodeFirst.Models\SportscardDbCodeFirst.Models.csproj">
+      <Project>{4175b715-446a-4432-aaab-9721a37c7c08}</Project>
+      <Name>SportscardDbCodeFirst.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
