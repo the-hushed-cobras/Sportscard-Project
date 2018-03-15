@@ -6,11 +6,6 @@ namespace SportscardDbCodeFirst.Models
 {
     public class Visit
     {
-        public Visit()
-        {
-            this.Id = Guid.NewGuid();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }

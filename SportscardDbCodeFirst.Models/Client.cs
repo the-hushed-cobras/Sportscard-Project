@@ -9,8 +9,6 @@ namespace SportscardDbCodeFirst.Models
     {
         public Client()
         {
-            this.Id = Guid.NewGuid();
-
             this.Sportscards = new HashSet<Sportscard>();
             this.Visits = new HashSet<Visit>();
         }
