@@ -1,10 +1,7 @@
-﻿using SportscardSystem.Data;
-using SportscardSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac;
+using SportscardSystem.ConsoleClient.Modules;
+using SportscardSystem.Data;
+using SportscardSystem.Logic.Services.Contracts;
 
 namespace SportscardSystem.Client
 {
@@ -12,10 +9,13 @@ namespace SportscardSystem.Client
     {
         static void Main(string[] args)
         {
-            using (var ctx = new SportscardSystemDbContext())
-            {
+            var builder = new ContainerBuilder();
+            builder.RegisterModule<AutofacConfigModule>();
 
-            }
+            var container = builder.Build();
+            var clientService = container.Resolve<IClientService>();
+
+            clientService.GetAllClients();
         }
     }
 }

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CF05C7DA-5E37-460D-85E3-12289FCEC234}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>SportscardSystem.ConsoleClient</RootNamespace>
-    <AssemblyName>SportscardSystem.ConsoleClient</AssemblyName>
+    <ProjectGuid>{FF00ABBF-A00A-4FCF-A95C-F1DE45F36C05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SportscardSystem.Architecture.Autofac</RootNamespace>
+    <AssemblyName>SportscardSystem.Architecture.Autofac</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,14 +36,7 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -60,37 +50,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Modules\AutofacConfigModule.cs" />
-    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
-      <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
-      <Name>SportscardSystem.Architecture.Automapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sportscard.Logic\SportscardSystem.Logic.csproj">
       <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
       <Name>SportscardSystem.Logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportscardSystem.Data\SportscardSystem.Data.csproj">
-      <Project>{a6b15612-e89e-4d5f-a2c2-e4fdf9a0b887}</Project>
+      <Project>{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}</Project>
       <Name>SportscardSystem.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportscardSystem.DTO\SportscardSystem.DTO.csproj">
-      <Project>{24F14C4B-3F31-416D-B4FD-A037D435EA37}</Project>
-      <Name>SportscardSystem.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">
-      <Project>{4175b715-446a-4432-aaab-9721a37c7c08}</Project>
-      <Name>SportscardSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
