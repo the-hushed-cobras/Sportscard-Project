@@ -12,16 +12,25 @@ namespace SportscardSystem.Models
 
         public Guid ClientId { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         [Required]
         public virtual Client Client { get; set; }
 
         public Guid SportshallId { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         [Required]
         public virtual Sportshall Sportshall { get; set; }
 
         public Guid SportId { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         [Required]
         public virtual Sport Sport { get; set; }
 

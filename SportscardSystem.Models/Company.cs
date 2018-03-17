@@ -20,8 +20,14 @@ namespace SportscardSystem.Models
         [Required]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Sportscard> Sportscards { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Client> Clients { get; set; }
     }
 }

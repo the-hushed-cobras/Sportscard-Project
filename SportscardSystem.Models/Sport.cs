@@ -21,8 +21,14 @@ namespace SportscardSystem.Models
         [StringLength(30, MinimumLength = 2, ErrorMessage = "Invalid sport name format!")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Sportshall> SportsHalls { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Visit> Visits { get; set; }
     }
 }

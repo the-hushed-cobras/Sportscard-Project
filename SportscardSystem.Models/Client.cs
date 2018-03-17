@@ -30,11 +30,20 @@ namespace SportscardSystem.Models
 
         public Guid CompanyId { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         [Required]
         public virtual Company Company { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Sportscard> Sportscards { get; set; }
 
+        /// <summary>
+        /// Navigation property - represents related entity
+        /// </summary>
         public virtual ICollection<Visit> Visits { get; set; }
     }
 }
