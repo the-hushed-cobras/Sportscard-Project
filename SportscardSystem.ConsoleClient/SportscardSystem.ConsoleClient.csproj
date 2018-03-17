@@ -39,6 +39,9 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -60,6 +63,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Core\Contracts\IEngine.cs" />
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Factories\CommandFactory.cs" />
+    <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
+    <Compile Include="Core\Providers\CommandParser.cs" />
+    <Compile Include="Core\Providers\CommandProcessor.cs" />
+    <Compile Include="Core\Providers\ConsoleReader.cs" />
+    <Compile Include="Core\Providers\ConsoleWriter.cs" />
+    <Compile Include="Core\Providers\Contracts\ICommandParser.cs" />
+    <Compile Include="Core\Providers\Contracts\ICommandProcessor.cs" />
+    <Compile Include="Core\Providers\Contracts\IReader.cs" />
+    <Compile Include="Core\Providers\Contracts\IWriter.cs" />
     <Compile Include="Modules\AutofacConfigModule.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,5 +109,6 @@
       <Name>SportscardSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
