@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CF05C7DA-5E37-460D-85E3-12289FCEC234}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SportscardDbCodeFirst.Client</RootNamespace>
-    <AssemblyName>SportscardDbCodeFirst.Client</AssemblyName>
+    <RootNamespace>SportscardSystem.ConsoleClient</RootNamespace>
+    <AssemblyName>SportscardSystem.ConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,13 +57,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SportscardDbCodeFirst.Data\SportscardDbCodeFirst.Data.csproj">
-      <Project>{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}</Project>
-      <Name>SportscardDbCodeFirst.Data</Name>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportscardSystem.Data\SportscardSystem.Data.csproj">
+      <Project>{a6b15612-e89e-4d5f-a2c2-e4fdf9a0b887}</Project>
+      <Name>SportscardSystem.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SportscardDbCodeFirst.Models\SportscardDbCodeFirst.Models.csproj">
+    <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">
       <Project>{4175b715-446a-4432-aaab-9721a37c7c08}</Project>
-      <Name>SportscardDbCodeFirst.Models</Name>
+      <Name>SportscardSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

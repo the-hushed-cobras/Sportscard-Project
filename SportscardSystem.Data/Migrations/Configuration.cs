@@ -1,18 +1,18 @@
-namespace SportscardDbCodeFirst.Data.Migrations
+namespace SportscardSystem.Data.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SportscardDbCodeFirst.Data.SportscardDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SportscardSystem.Data.SportscardSystemDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SportscardDbCodeFirst.Data.SportscardDbContext context)
+        protected override void Seed(SportscardSystem.Data.SportscardSystemDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,17 +1,17 @@
-﻿using System;
+﻿using SportscardSystem.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SportscardDbCodeFirst.Data;
 
-namespace SportscardDbCodeFirst.Client
+namespace SportscardSystem.Client
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            using (var ctx = new SportscardDbContext())
+            using (var ctx = new SportscardSystemDbContext())
             {
                 ctx.SaveChanges();
             }

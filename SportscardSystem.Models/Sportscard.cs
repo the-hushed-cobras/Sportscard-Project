@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SportscardDbCodeFirst.Models
+namespace SportscardSystem.Models
 {
-    public class Visit
+    public class Sportscard
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,16 +15,9 @@ namespace SportscardDbCodeFirst.Models
         [Required]
         public virtual Client Client { get; set; }
 
-        public Guid SportshallId { get; set; }
+        public Guid CompanyId { get; set; }
 
         [Required]
-        public virtual Sportshall Sportshall { get; set; }
-
-        public Guid SportId { get; set; }
-
-        [Required]
-        public virtual Sport Sport { get; set; }
-
-        public DateTime Date { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

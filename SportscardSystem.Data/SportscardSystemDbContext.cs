@@ -1,17 +1,13 @@
-﻿using SportscardDbCodeFirst.Models;
-using System;
-using System.Collections.Generic;
+﻿using SportscardSystem.Data.Contracts;
+using SportscardSystem.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SportscardDbCodeFirst.Data
+namespace SportscardSystem.Data
 {
-    public class SportscardDbContext : DbContext
+    public class SportscardSystemDbContext : DbContext, ISportscardSystemDbContext
     {
-        public SportscardDbContext()
+        public SportscardSystemDbContext()
             : base("name=SportscardSystem")
         {
 

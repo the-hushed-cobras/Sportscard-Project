@@ -1,4 +1,4 @@
-namespace SportscardDbCodeFirst.Data.Migrations
+namespace SportscardSystem.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

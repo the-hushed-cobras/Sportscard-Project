@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardDbCodeFirst.Client", "SportscardDbCodeFirst.Client\SportscardDbCodeFirst.Client.csproj", "{CF05C7DA-5E37-460D-85E3-12289FCEC234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.ConsoleClient", "SportscardSystem.ConsoleClient\SportscardSystem.ConsoleClient.csproj", "{CF05C7DA-5E37-460D-85E3-12289FCEC234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardDbCodeFirst.Data", "SportscardDbCodeFirst.Data\SportscardDbCodeFirst.Data.csproj", "{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Data", "SportscardSystem.Data\SportscardSystem.Data.csproj", "{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardDbCodeFirst.Models", "SportscardDbCodeFirst.Models\SportscardDbCodeFirst.Models.csproj", "{4175B715-446A-4432-AAAB-9721A37C7C08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Models", "SportscardSystem.Models\SportscardSystem.Models.csproj", "{4175B715-446A-4432-AAAB-9721A37C7C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.DTO", "SportscardSystem.DTO\SportscardSystem.DTO.csproj", "{24F14C4B-3F31-416D-B4FD-A037D435EA37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{4175B715-446A-4432-AAAB-9721A37C7C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4175B715-446A-4432-AAAB-9721A37C7C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4175B715-446A-4432-AAAB-9721A37C7C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F14C4B-3F31-416D-B4FD-A037D435EA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F14C4B-3F31-416D-B4FD-A037D435EA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F14C4B-3F31-416D-B4FD-A037D435EA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F14C4B-3F31-416D-B4FD-A037D435EA37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
