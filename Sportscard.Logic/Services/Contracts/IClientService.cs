@@ -1,9 +1,11 @@
-﻿using SportscardSystem.DTO.Contracts;
+﻿using SportscardSystem.Architecture.Automapper.Contracts;
+using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Models;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
-    public interface IClientService
+    public interface IClientService : IMapFrom<Client>
     {
         /// <summary>
         /// Gets all clients registered in the database

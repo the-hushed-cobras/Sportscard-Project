@@ -34,5 +34,11 @@ namespace SportscardSystem.Data.Contracts
         /// A collection of all Visits in the database
         /// </summary>
         DbSet<Visit> Visits { get; set; }
+
+        /// <summary>
+        /// Save the data in our database
+        /// </summary>
+        /// <returns></returns>
+        int SaveChanges();
     }
 }
