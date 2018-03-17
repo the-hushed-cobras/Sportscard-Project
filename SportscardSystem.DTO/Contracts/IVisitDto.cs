@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SportscardSystem.Architecture.Automapper.Contracts;
+using SportscardSystem.Models;
+using System;
 
 namespace SportscardSystem.DTO.Contracts
 {
-    public interface IVisitDto
+    public interface IVisitDto : IMapFrom<Visit>
     {
         /// <summary>
         /// Visit's unique id

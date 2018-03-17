@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SportscardSystem.Architecture.Automapper.Contracts;
+using SportscardSystem.Models;
+using System;
 
 namespace SportscardSystem.DTO.Contracts
 {
-    public interface ICompanyDto
+    public interface ICompanyDto : IMapFrom<Company>
     {
         /// <summary>
         /// Company's unique ud

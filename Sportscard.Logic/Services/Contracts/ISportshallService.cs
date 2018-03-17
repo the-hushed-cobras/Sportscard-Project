@@ -1,11 +1,9 @@
-﻿using SportscardSystem.Architecture.Automapper.Contracts;
-using SportscardSystem.DTO.Contracts;
-using SportscardSystem.Models;
+﻿using SportscardSystem.DTO.Contracts;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
-    public interface ISportshallService : IMapFrom<Sportshall>
+    public interface ISportshallService
     {
         /// <summary>
         /// Gets all sportshall registered in the database

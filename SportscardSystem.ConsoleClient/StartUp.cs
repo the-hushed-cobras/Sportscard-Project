@@ -1,7 +1,10 @@
 ﻿using Autofac;
+using SportscardSystem.Architecture.Automapper;
 using SportscardSystem.ConsoleClient.Modules;
 using SportscardSystem.Data;
+using SportscardSystem.Data.Migrations;
 using SportscardSystem.Logic.Services.Contracts;
+using System.Data.Entity;
 
 namespace SportscardSystem.Client
 {
@@ -9,6 +12,8 @@ namespace SportscardSystem.Client
     {
         static void Main(string[] args)
         {
+            Init();
+
             var builder = new ContainerBuilder();
             builder.RegisterModule<AutofacConfigModule>();
 
@@ -16,6 +21,15 @@ namespace SportscardSystem.Client
             var clientService = container.Resolve<IClientService>();
 
             clientService.GetAllClients();
+
         }
+
+        private static void Init()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SportscardSystemDbContext, Configuration>());
+
+            AutomapperConfiguration.Initialize();
+        }
+
     }
 }

@@ -54,5 +54,15 @@
     <Compile Include="SportshallDto.cs" />
     <Compile Include="VisitDto.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+      <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
+      <Name>SportscardSystem.Architecture.Automapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">
+      <Project>{4175B715-446A-4432-AAAB-9721A37C7C08}</Project>
+      <Name>SportscardSystem.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

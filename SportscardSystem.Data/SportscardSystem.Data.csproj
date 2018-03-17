@@ -48,10 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ISportscardSystemDbContext.cs" />
-    <Compile Include="Migrations\201803151508281_initial.cs" />
-    <Compile Include="Migrations\201803151508281_initial.Designer.cs">
-      <DependentUpon>201803151508281_initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201803151446543_GuidTest.cs" />
     <Compile Include="Migrations\201803151446543_GuidTest.Designer.cs">
       <DependentUpon>201803151446543_GuidTest.cs</DependentUpon>
@@ -67,9 +63,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803151508281_initial.resx">
-      <DependentUpon>201803151508281_initial.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803151446543_GuidTest.resx">
       <DependentUpon>201803151446543_GuidTest.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,10 +1,17 @@
-﻿using SportscardSystem.DTO.Contracts;
+﻿using SportscardSystem.Architecture.Automapper.Contracts;
+using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Models;
 using System;
 
 namespace SportscardSystem.DTO
 {
-    public class ClientDto : IClientDto
+    public class ClientDto : IClientDto, IMapFrom<Client>
     {
+        public ClientDto()
+        {
+
+        }
+
         public Guid Id { get; set; }
 
         public string FirstName { get; set; }

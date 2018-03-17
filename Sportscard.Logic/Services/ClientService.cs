@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
 using SportscardSystem.Data.Contracts;
+using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
@@ -40,11 +41,12 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
         }
 
-        public IQueryable<IClientDto> GetAllClients()
+        public IQueryable<ClientDto> GetAllClients()
         {
-            var allClients = dbContext.Clients.ProjectTo<IClientDto>();
+            var allClients = this.dbContext.Clients.ProjectTo<ClientDto>();
             Guard.WhenArgument(allClients, "AllClients can not be null").IsNull().Throw();
 
+            Console.WriteLine("test");
             return allClients;
         }
 

@@ -5,7 +5,7 @@ namespace SportscardSystem.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SportscardSystem.Data.SportscardSystemDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<SportscardSystem.Data.SportscardSystemDbContext>
     {
         public Configuration()
         {

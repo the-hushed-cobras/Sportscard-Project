@@ -22,7 +22,6 @@ namespace SportscardSystem.Architecture.Automapper
             Mapper.Initialize(cfg => Load(types, cfg));
         }
 
-
         private static void Load(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             LoadStandardMappings(types, cfg);
@@ -38,7 +37,7 @@ namespace SportscardSystem.Architecture.Automapper
                                i.GetGenericTypeDefinition().Equals(typeof(IMapFrom<>)))).ToList().Select(x => new
                                {
                                    source = x,
-                                   dest = x.GetInterfaces().FirstOrDefault(y => y.GetGenericTypeDefinition() == typeof(IMapFrom<>)).GetGenericArguments()[0]
+                                   dest = x.GetInterfaces().FirstOrDefault(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IMapFrom<>)).GetGenericArguments()[0]
                                });
 
             foreach (var type in typesFoundForMapping)
