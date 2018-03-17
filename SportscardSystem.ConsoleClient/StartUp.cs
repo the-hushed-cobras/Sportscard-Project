@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.Data;
+using SportscardSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace SportscardSystem.Client
         {
             using (var ctx = new SportscardSystemDbContext())
             {
-                ctx.SaveChanges();
+
             }
         }
     }

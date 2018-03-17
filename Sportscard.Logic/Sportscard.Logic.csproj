@@ -54,6 +54,11 @@
     <Compile Include="Services\SportshallService.cs" />
     <Compile Include="Services\VisitService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SportscardSystem.DTO\SportscardSystem.DTO.csproj">
+      <Project>{24F14C4B-3F31-416D-B4FD-A037D435EA37}</Project>
+      <Name>SportscardSystem.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

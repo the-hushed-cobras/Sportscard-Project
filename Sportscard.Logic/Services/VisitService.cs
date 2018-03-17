@@ -1,13 +1,25 @@
-﻿using Sportscard.Logic.Services.Contracts;
+﻿using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Logic.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sportscard.Logic.Services
+namespace SportscardSystem.Logic.Services
 {
     public class VisitService : IVisitService
     {
+        public void AddVisit(IVisitDto visit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteVisit(IVisitDto visit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<IVisitDto> GetAllVisits()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

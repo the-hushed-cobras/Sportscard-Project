@@ -1,13 +1,25 @@
-﻿using Sportscard.Logic.Services.Contracts;
+﻿using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Logic.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sportscard.Logic.Services
+namespace SportscardSystem.Logic.Services
 {
     public class SportscardService : ISportscardService
     {
+        public void AddSportscard(ISportscardDto sportscard)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteSportscard(ISportscardDto sportscard)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<ISportscardDto> GetAllSportscards()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

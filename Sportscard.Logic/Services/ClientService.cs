@@ -1,13 +1,30 @@
-﻿using Sportscard.Logic.Services.Contracts;
+﻿using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Logic.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sportscard.Logic.Services
+namespace SportscardSystem.Logic.Services
 {
     public class ClientService : IClientService
     {
+        public void AddClient(IClientDto clientDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteClient(IClientDto clientDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<IClientDto> GetAllClients()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<IClientDto> GetMostActiveClient()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
