@@ -1,14 +1,18 @@
-﻿using SportscardSystem.ConsoleClient.Commands.Contracts;
-using System;
-using System.Collections.Generic;
+﻿using Bytes2you.Validation;
+using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 
 namespace SportscardSystem.ConsoleClient.Commands.Abstract
 {
-    public abstract class Command : ICommand
+    public abstract class Command
     {
-        public string Execute(IList<string> parameters)
+        private readonly ISportscardFactory sportscardFactory;
+
+        public Command(ISportscardFactory sportscardFactory)
         {
-            throw new NotImplementedException();
+            Guard.WhenArgument(sportscardFactory, "Sportscard factory can not be null!").IsNull().Throw();
+            this.sportscardFactory = sportscardFactory;
         }
+
+        protected ISportscardFactory SportscardFactory => this.sportscardFactory;
     }
 }

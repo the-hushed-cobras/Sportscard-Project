@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using SportscardSystem.Architecture.Automapper;
+using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Modules;
 using SportscardSystem.Data;
 using SportscardSystem.Data.Migrations;
-using SportscardSystem.Logic.Services.Contracts;
 using System.Data.Entity;
 
 namespace SportscardSystem.Client
@@ -19,10 +19,10 @@ namespace SportscardSystem.Client
             builder.RegisterModule<EngineConfigModule>();
 
             var container = builder.Build();
-            var clientService = container.Resolve<IClientService>();
 
-            clientService.GetAllClients();
+            var engine = container.Resolve<IEngine>();
 
+            engine.Start();
         }
 
         private static void Init()

@@ -1,5 +1,4 @@
-﻿using SportscardSystem.DTO;
-using SportscardSystem.DTO.Contracts;
+﻿using SportscardSystem.DTO.Contracts;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
@@ -10,7 +9,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all clients registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<ClientDto> GetAllClients();
+        IQueryable<IClientDto> GetAllClients();
 
         /// <summary>
         /// Adds a new client to the database

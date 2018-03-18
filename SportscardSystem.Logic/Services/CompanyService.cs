@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
 using SportscardSystem.Data.Contracts;
+using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
@@ -30,8 +31,11 @@ namespace SportscardSystem.Logic.Services
 
             var companyToAdd = this.mapper.Map<Company>(companyDto);
 
-            this.dbContext.Companies.Add(companyToAdd);
-            this.dbContext.SaveChanges();
+            if (!this.dbContext.Companies.Any(c => c.Name == companyDto.Name))
+            {
+                this.dbContext.Companies.Add(companyToAdd);
+                this.dbContext.SaveChanges();
+            }
         }
 
         //To be implemented
@@ -42,7 +46,7 @@ namespace SportscardSystem.Logic.Services
 
         public IQueryable<ICompanyDto> GetAllCompanies()
         {
-            var allCompanies = dbContext.Companies.ProjectTo<ICompanyDto>();
+            var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>();
             Guard.WhenArgument(allCompanies, "AllCompanies can not be null").IsNull().Throw();
 
             return allCompanies;

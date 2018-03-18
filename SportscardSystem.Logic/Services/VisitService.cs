@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
 using SportscardSystem.Data.Contracts;
+using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
@@ -42,7 +43,7 @@ namespace SportscardSystem.Logic.Services
 
         public IQueryable<IVisitDto> GetAllVisits()
         {
-            var allVisits = dbContext.Visits.ProjectTo<IVisitDto>();
+            var allVisits = dbContext.Visits.ProjectTo<VisitDto>();
             Guard.WhenArgument(allVisits, "AllVisits can not be null").IsNull().Throw();
 
             return allVisits;

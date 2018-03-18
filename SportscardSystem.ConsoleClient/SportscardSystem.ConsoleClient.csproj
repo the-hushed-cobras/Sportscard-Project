@@ -64,11 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Abstract\Command.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
+    <Compile Include="Core\Factories\Contracts\ISportscardFactory.cs" />
+    <Compile Include="Core\Factories\SportscardFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\CommandProcessor.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
@@ -84,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Core\Factories\Contracts\App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +116,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\Add\" />
     <Folder Include="Commands\Delete\" />
     <Folder Include="Commands\GetFavourite\" />
     <Folder Include="Commands\GetMost\" />

@@ -22,10 +22,10 @@ namespace SportscardSystem.ConsoleClient.Core.Providers
 
         public ICommand ParseCommand(string fullCommand)
         {
-            Guard.WhenArgument(fullCommand, "Full command").IsNotNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(fullCommand, "Full command").IsNullOrWhiteSpace().Throw();
 
             var commandTokens = fullCommand.Split();
-            var commandName = commandTokens[0];
+            var commandName = commandTokens[0].ToLower();
 
             var command = commandFactory.CreateCommand(commandName);
 
@@ -34,7 +34,7 @@ namespace SportscardSystem.ConsoleClient.Core.Providers
 
         public IList<string> ParseParameters(string fullCommand)
         {
-            Guard.WhenArgument(fullCommand, "Full command").IsNotNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(fullCommand, "Full command").IsNullOrWhiteSpace().Throw();
 
             var commandTokens = fullCommand.Split();
             var commandParts = commandTokens.Skip(1).ToList();

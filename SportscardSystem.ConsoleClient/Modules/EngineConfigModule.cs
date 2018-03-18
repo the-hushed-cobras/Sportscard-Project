@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using SportscardSystem.ConsoleClient.Commands.Add;
+using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
@@ -19,8 +21,13 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
 
-            //Registering command factory and commands
+            //Registering factories
+            builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
+
+
+            //Registering add commands
+            builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
 
             base.Load(builder);
         }

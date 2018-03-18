@@ -41,7 +41,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
         }
 
-        public IQueryable<ClientDto> GetAllClients()
+        public IQueryable<IClientDto> GetAllClients()
         {
             var allClients = this.dbContext.Clients.ProjectTo<ClientDto>();
             Guard.WhenArgument(allClients, "AllClients can not be null").IsNull().Throw();

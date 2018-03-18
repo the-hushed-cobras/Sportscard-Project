@@ -15,7 +15,7 @@ namespace SportscardSystem.ConsoleClient.Core.Providers
 
         public string ProcessCommand(string commandAsString)
         {
-            Guard.WhenArgument(commandAsString, "command").IsNotNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(commandAsString, "command").IsNullOrWhiteSpace().Throw();
 
             var command = parser.ParseCommand(commandAsString);
             var parameters = parser.ParseParameters(commandAsString);
