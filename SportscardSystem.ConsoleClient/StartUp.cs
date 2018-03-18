@@ -15,7 +15,8 @@ namespace SportscardSystem.Client
             Init();
 
             var builder = new ContainerBuilder();
-            builder.RegisterModule<AutofacConfigModule>();
+            builder.RegisterModule<DbContextConfigModule>();
+            builder.RegisterModule<EngineConfigModule>();
 
             var container = builder.Build();
             var clientService = container.Resolve<IClientService>();

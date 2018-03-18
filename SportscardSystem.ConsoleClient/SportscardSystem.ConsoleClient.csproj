@@ -77,7 +77,8 @@
     <Compile Include="Core\Providers\Contracts\ICommandProcessor.cs" />
     <Compile Include="Core\Providers\Contracts\IReader.cs" />
     <Compile Include="Core\Providers\Contracts\IWriter.cs" />
-    <Compile Include="Modules\AutofacConfigModule.cs" />
+    <Compile Include="Modules\DbContextConfigModule.cs" />
+    <Compile Include="Modules\EngineConfigModule.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,11 +90,11 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+    <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
       <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
       <Name>SportscardSystem.Architecture.Automapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sportscard.Logic\SportscardSystem.Logic.csproj">
+    <ProjectReference Include="..\SportscardSystem.Logic\SportscardSystem.Logic.csproj">
       <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
       <Name>SportscardSystem.Logic</Name>
     </ProjectReference>

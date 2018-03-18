@@ -7,7 +7,7 @@ using SportscardSystem.Logic.Services.Contracts;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
-    public class AutofacConfigModule : Module
+    public class DbContextConfigModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

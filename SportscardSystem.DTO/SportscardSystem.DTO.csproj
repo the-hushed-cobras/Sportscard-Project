@@ -55,8 +55,8 @@
     <Compile Include="VisitDto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
-      <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
+    <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+      <Project>{4f332200-6022-4724-8160-7de70716216f}</Project>
       <Name>SportscardSystem.Architecture.Automapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">

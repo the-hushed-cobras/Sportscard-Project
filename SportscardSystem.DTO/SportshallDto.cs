@@ -1,9 +1,11 @@
-﻿using SportscardSystem.DTO.Contracts;
+﻿using SportscardSystem.Architecture.Automapper.Contracts;
+using SportscardSystem.DTO.Contracts;
+using SportscardSystem.Models;
 using System;
 
 namespace SportscardSystem.DTO
 {
-    public class SportshallDto : ISportshallDto
+    public class SportshallDto : ISportshallDto, IMapFrom<Sportshall>
     {
         public Guid Id { get; set; }
 
