@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Abstract\Command.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
@@ -109,6 +110,12 @@
       <Name>SportscardSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\Add\" />
+    <Folder Include="Commands\Delete\" />
+    <Folder Include="Commands\GetFavourite\" />
+    <Folder Include="Commands\GetMost\" />
+    <Folder Include="Commands\Visits\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

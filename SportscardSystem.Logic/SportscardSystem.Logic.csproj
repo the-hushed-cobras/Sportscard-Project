@@ -82,7 +82,7 @@
     <Compile Include="Services\VisitService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+    <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
       <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
       <Name>SportscardSystem.Architecture.Automapper</Name>
     </ProjectReference>

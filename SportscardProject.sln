@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Models", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.DTO", "SportscardSystem.DTO\SportscardSystem.DTO.csproj", "{24F14C4B-3F31-416D-B4FD-A037D435EA37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic", "Sportscard.Logic\SportscardSystem.Logic.csproj", "{22DF1230-537B-4F7C-9B03-575F9E198D5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic", "SportscardSystem.Logic\SportscardSystem.Logic.csproj", "{22DF1230-537B-4F7C-9B03-575F9E198D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Architecture.Automapper", "Sportscard.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj", "{4F332200-6022-4724-8160-7DE70716216F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Architecture.Automapper", "SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj", "{4F332200-6022-4724-8160-7DE70716216F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
