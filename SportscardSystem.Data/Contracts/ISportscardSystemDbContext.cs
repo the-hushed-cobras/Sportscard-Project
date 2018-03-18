@@ -8,32 +8,32 @@ namespace SportscardSystem.Data.Contracts
         /// <summary>
         /// A collection of all Sportscards in the database
         /// </summary>
-        DbSet<Sportscard> Sportscards { get; set; }
+        IDbSet<Sportscard> Sportscards { get; set; }
 
         /// <summary>
         /// A collection of all Clients in the database
         /// </summary>
-        DbSet<Client> Clients { get; set; }
+        IDbSet<Client> Clients { get; set; }
 
         /// <summary>
         /// A collection of all Companies in the database
         /// </summary>
-        DbSet<Company> Companies { get; set; }
+        IDbSet<Company> Companies { get; set; }
 
         /// <summary>
         /// A collection of all Sportshalls in the database
         /// </summary>
-        DbSet<Sportshall> Sportshalls { get; set; }
+        IDbSet<Sportshall> Sportshalls { get; set; }
 
         /// <summary>
         /// A collection of all Sports in the database
         /// </summary>
-        DbSet<Sport> Sports { get; set; }
+        IDbSet<Sport> Sports { get; set; }
 
         /// <summary>
         /// A collection of all Visits in the database
         /// </summary>
-        DbSet<Visit> Visits { get; set; }
+        IDbSet<Visit> Visits { get; set; }
 
         /// <summary>
         /// Save the data in our database

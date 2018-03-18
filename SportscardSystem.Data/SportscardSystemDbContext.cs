@@ -35,16 +35,16 @@ namespace SportscardSystem.Data
 
             base.OnModelCreating(modelBuilder);
         }
-        public virtual DbSet<Sportscard> Sportscards { get; set; }
+        public virtual IDbSet<Sportscard> Sportscards { get; set; }
 
-        public virtual DbSet<Client> Clients { get; set; }
+        public virtual IDbSet<Client> Clients { get; set; }
 
-        public virtual DbSet<Company> Companies { get; set; }
+        public virtual IDbSet<Company> Companies { get; set; }
 
-        public virtual DbSet<Sportshall> Sportshalls { get; set; }
+        public virtual IDbSet<Sportshall> Sportshalls { get; set; }
 
-        public virtual DbSet<Sport> Sports { get; set; }
+        public virtual IDbSet<Sport> Sports { get; set; }
 
-        public virtual DbSet<Visit> Visits { get; set; }
+        public virtual IDbSet<Visit> Visits { get; set; }
     }
 }

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Architecture.Automapper", "SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj", "{4F332200-6022-4724-8160-7DE70716216F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic.UnitTests", "SportscardSystem.Logic.UnitTests\SportscardSystem.Logic.UnitTests.csproj", "{33581DB9-1087-4C41-9C25-BF73DFE4BD87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4F332200-6022-4724-8160-7DE70716216F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F332200-6022-4724-8160-7DE70716216F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F332200-6022-4724-8160-7DE70716216F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
