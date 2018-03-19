@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
+using SportscardSystem.Data;
 using SportscardSystem.Data.Contracts;
 using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
@@ -31,11 +32,11 @@ namespace SportscardSystem.Logic.Services
 
             var companyToAdd = this.mapper.Map<Company>(companyDto);
 
-          //  if (!this.dbContext.Companies.Any(c => c.Name == companyDto.Name))
-            //{
+            if (!this.dbContext.Companies.Any(c => c.Name == companyDto.Name))
+            {
                 this.dbContext.Companies.Add(companyToAdd);
                 this.dbContext.SaveChanges();
-            //}
+            }
         }
 
         //To be implemented

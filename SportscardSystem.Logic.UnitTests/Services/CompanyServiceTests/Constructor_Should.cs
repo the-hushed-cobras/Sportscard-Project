@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SportscardSystem.Data;
 using SportscardSystem.Data.Contracts;
 using SportscardSystem.Logic.Services;
 using SportscardSystem.Logic.Services.Contracts;
@@ -33,7 +34,6 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             //var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
-
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new CompanyService(null, mapperMock.Object));
         }
@@ -44,7 +44,6 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             //var mapperMock = new Mock<IMapper>();
-
 
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new CompanyService(dbContextMock.Object, null));
