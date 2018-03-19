@@ -1,11 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.Models
 {
-    public class Sportscard
+    public class Sportscard : AuditInfo
     {
+        public Sportscard()
+        {
+            this.CreatedOn = DateTime.Now;
+            this.IsDeleted = false;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.Models
 {
-    public class Company
+    public class Company : AuditInfo
     {
-        public Company()
+
+        public Company() 
         {
             this.Sportscards = new HashSet<Sportscard>();
             this.Clients = new HashSet<Client>();
+            this.CreatedOn = DateTime.Now;
+            this.IsDeleted = false;
         }
 
         [Key]

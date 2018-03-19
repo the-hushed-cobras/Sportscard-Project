@@ -30,7 +30,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
 
             var clientToAdd = this.mapper.Map<Client>(clientDto);
-
+            
             this.dbContext.Clients.Add(clientToAdd);
             this.dbContext.SaveChanges();
         }

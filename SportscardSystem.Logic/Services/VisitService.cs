@@ -31,7 +31,7 @@ namespace SportscardSystem.Logic.Services
 
             var visitToAdd = this.mapper.Map<Visit>(visitDto);
 
-            if (!this.dbContext.Visits.Any(v => v.ClientId == visitDto.ClientId && v.Date.Day == visitDto.Date.Day))
+            if (!this.dbContext.Visits.Any(v => v.ClientId == visitDto.ClientId && v.CreatedOn.Day == visitDto.CreatedOn.Day))
             {
                 this.dbContext.Visits.Add(visitToAdd);
                 this.dbContext.SaveChanges();

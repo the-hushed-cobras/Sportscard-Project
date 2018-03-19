@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.Models
 {
-    public class Sport
+    public class Sport : AuditInfo
     {
         public Sport()
         {
             this.SportsHalls = new HashSet<Sportshall>();
             this.Visits = new HashSet<Visit>();
+            this.CreatedOn = DateTime.Now;
+            this.IsDeleted = false;
         }
 
         [Key]

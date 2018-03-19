@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Company.cs" />
+    <Compile Include="Contracts\AuditInfo.cs" />
+    <Compile Include="Contracts\IAuditInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sport.cs" />
     <Compile Include="Sportscard.cs" />
