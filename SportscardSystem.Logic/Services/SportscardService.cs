@@ -31,8 +31,15 @@ namespace SportscardSystem.Logic.Services
 
             var sportscardToAdd = this.mapper.Map<Sportscard>(sportscardDto);
 
-            this.dbContext.Sportscards.Add(sportscardToAdd);
-            this.dbContext.SaveChanges();
+            if (!this.dbContext.Sportscards.Any(s => s.ClientId == sportscardDto.ClientId && s.CompanyId == sportscardDto.CompanyId))
+            {
+                this.dbContext.Sportscards.Add(sportscardToAdd);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("A Sportscard with the current ClientId and CompanyId alreadu exists!");
+            }
         }
 
         //To be implemented

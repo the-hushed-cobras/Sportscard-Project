@@ -31,8 +31,15 @@ namespace SportscardSystem.Logic.Services
 
             var sportToAdd = this.mapper.Map<Sport>(sportDto);
 
-            this.dbContext.Sports.Add(sportToAdd);
-            this.dbContext.SaveChanges();
+            if (!this.dbContext.Sports.Any(s => s.Name == sportDto.Name))
+            {
+                this.dbContext.Sports.Add(sportToAdd);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("A sport with the same name already exists!");
+            }
         }
 
         //To be implemented

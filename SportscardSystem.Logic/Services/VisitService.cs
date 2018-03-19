@@ -31,8 +31,15 @@ namespace SportscardSystem.Logic.Services
 
             var visitToAdd = this.mapper.Map<Visit>(visitDto);
 
-            this.dbContext.Visits.Add(visitToAdd);
-            this.dbContext.SaveChanges();
+            if (!this.dbContext.Visits.Any(v => v.ClientId == visitDto.ClientId && v.Date.Day == visitDto.Date.Day))
+            {
+                this.dbContext.Visits.Add(visitToAdd);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("A client with this ClientId has already used his daily visit!");
+            }
         }
 
         //To be implemented

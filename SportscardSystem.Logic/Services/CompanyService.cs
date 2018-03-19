@@ -37,6 +37,10 @@ namespace SportscardSystem.Logic.Services
                 this.dbContext.Companies.Add(companyToAdd);
                 this.dbContext.SaveChanges();
             }
+            else
+            {
+                throw new ArgumentException("A company with the same name already exists!");
+            }
         }
 
         //To be implemented
