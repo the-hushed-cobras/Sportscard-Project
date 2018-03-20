@@ -15,9 +15,18 @@ namespace SportscardSystem.ConsoleClient.Modules
         protected override void Load(ContainerBuilder builder)
         {
             //Registering PdfExporter
-            builder.RegisterType<PdfStreamWrapper>().WithParameter("directory", FileDirectory).WithParameter("fileName", PdfSportscardsTableName).Named<IPdfStream>("pdfstream");
+            builder
+                .RegisterType<PdfStreamWrapper>()
+                .WithParameter("directory", FileDirectory)
+                .WithParameter("fileName", PdfSportscardsTableName)
+                .Named<IPdfStream>("pdfstream");
+
             builder.RegisterType<PdfSportscardsTableGenerator>().As<IPdfSportscardsTableGenerator>();
-            builder.RegisterType<PdfSportscardsTableExporter>().WithParameter(ResolvedParameter.ForNamed<IPdfStream>("pdfstream")).As<IPdfExporter>();
+
+            builder
+                .RegisterType<PdfSportscardsTableExporter>()
+                .WithParameter(ResolvedParameter.ForNamed<IPdfStream>("pdfstream"))
+                .As<IPdfExporter>();
 
             base.Load(builder);
         }
