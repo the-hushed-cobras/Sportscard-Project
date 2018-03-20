@@ -66,6 +66,7 @@
     <Compile Include="Commands\Abstract\Command.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />

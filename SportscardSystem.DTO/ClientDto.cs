@@ -16,5 +16,10 @@ namespace SportscardSystem.DTO
         public int? Age { get; set; }
 
         public Guid CompanyId { get; set; }
+
+        public override string ToString()
+        {
+            return $"Client name: {this.FirstName} {this.LastName}";
+        }
     }
 }

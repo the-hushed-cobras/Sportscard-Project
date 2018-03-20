@@ -10,5 +10,10 @@ namespace SportscardSystem.DTO
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"Company name: {this.Name}";
+        }
     }
 }

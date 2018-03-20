@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
+using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
@@ -28,6 +29,7 @@ namespace SportscardSystem.ConsoleClient.Modules
 
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
+            builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
 
             base.Load(builder);
         }
