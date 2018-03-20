@@ -13,7 +13,7 @@ namespace SportscardSystem.DTO
 
         public override string ToString()
         {
-            return $"Company name: {this.Name}";
+            return $"{this.Name}";
         }
     }
 }

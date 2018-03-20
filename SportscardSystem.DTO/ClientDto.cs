@@ -19,7 +19,7 @@ namespace SportscardSystem.DTO
 
         public override string ToString()
         {
-            return $"Client name: {this.FirstName} {this.LastName}";
+            return $"{this.FirstName} {this.LastName}";
         }
     }
 }

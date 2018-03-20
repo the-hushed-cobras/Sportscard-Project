@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Architectu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic.UnitTests", "SportscardSystem.Logic.UnitTests\SportscardSystem.Logic.UnitTests.csproj", "{33581DB9-1087-4C41-9C25-BF73DFE4BD87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporter", "SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj", "{6ED87A38-7BF4-4513-8613-90FE2A278B45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33581DB9-1087-4C41-9C25-BF73DFE4BD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

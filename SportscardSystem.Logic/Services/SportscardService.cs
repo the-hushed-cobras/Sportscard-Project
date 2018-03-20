@@ -7,7 +7,10 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 
 namespace SportscardSystem.Logic.Services
 {
@@ -38,7 +41,7 @@ namespace SportscardSystem.Logic.Services
             }
             else
             {
-                throw new ArgumentException("A Sportscard with the current ClientId and CompanyId alreadu exists!");
+                throw new ArgumentException("A Sportscard with the current ClientId and CompanyId already exists!");
             }
         }
 
@@ -54,6 +57,22 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(allSportscards, "AllSportscards can not be null").IsNull().Throw();
 
             return allSportscards;
+        }
+
+        public IQueryable<ISportscardViewDto> GetReport()
+        {
+            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>();
+            var sportscardsDecoded = new List<ISportscardViewDto>();
+
+            foreach (var sportscard in allSportscards)
+            {
+                var clientName = dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).ToString();
+                var companyName = dbContext.Companies.FirstOrDefault(c => c.Id == sportscard.CompanyId).ToString();
+
+                sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
+            }
+
+            return sportscardsDecoded.AsQueryable();
         }
     }
 }
