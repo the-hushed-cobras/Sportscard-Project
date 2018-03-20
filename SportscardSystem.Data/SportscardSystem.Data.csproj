@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201803192239339_AuditInfo were added and setuped.Designer.cs">
       <DependentUpon>201803192239339_AuditInfo were added and setuped.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803200002424_Testing.cs" />
+    <Compile Include="Migrations\201803200002424_Testing.Designer.cs">
+      <DependentUpon>201803200002424_Testing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SportscardSystemDbContext.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803192239339_AuditInfo were added and setuped.resx">
       <DependentUpon>201803192239339_AuditInfo were added and setuped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803200002424_Testing.resx">
+      <DependentUpon>201803200002424_Testing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

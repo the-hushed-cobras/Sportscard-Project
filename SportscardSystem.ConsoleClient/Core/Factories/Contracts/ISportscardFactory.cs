@@ -1,5 +1,6 @@
 ﻿using SportscardSystem.DTO.Contracts;
 using System;
+using SportscardSystem.Models;
 
 namespace SportscardSystem.ConsoleClient.Core.Factories.Contracts
 {
@@ -13,7 +14,7 @@ namespace SportscardSystem.ConsoleClient.Core.Factories.Contracts
         /// <param name="age"></param>
         /// <param name="companyId"></param>
         /// <returns>Instance of <see cref="IClientDto"/> interface.</returns>
-        IClientDto CreateClientDto(string firstName, string lastName, int age, Guid companyId);
+        IClientDto CreateClientDto(string firstName, string lastName, int? age, Guid CompanyId);
 
         /// <summary>
         /// Represents a method that implements the <see cref="ICompanyDto"> interface with properties given as arguments.

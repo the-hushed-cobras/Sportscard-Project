@@ -12,7 +12,7 @@ namespace SportscardSystem.ConsoleClient.Modules
         protected override void Load(ContainerBuilder builder)
         {
             //Registering dbContext
-            builder.RegisterType<SportscardSystemDbContext>().As<ISportscardSystemDbContext>().InstancePerDependency();
+            builder.RegisterType<SportscardSystemDbContext>().As<ISportscardSystemDbContext>()/*.InstancePerDependency()*/.SingleInstance();
 
             //Registering services
             builder.RegisterType<ClientService>().As<IClientService>().InstancePerDependency();

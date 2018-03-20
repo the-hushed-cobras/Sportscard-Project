@@ -39,6 +39,19 @@ namespace SportscardSystem.Logic.Services
         public void DeleteClient(IClientDto clientDto)
         {
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
+            var client = dbContext.Clients.FirstOrDefault(x => x.FirstName == clientDto.FirstName);
+            if (client.FirstName == clientDto.FirstName)
+            {
+                client.IsDeleted = true;
+                client.DeletedOn = DateTime.Now;
+                dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("There are no such client!");
+            }
+
+            
         }
 
         public IQueryable<IClientDto> GetAllClients()

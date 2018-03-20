@@ -1,5 +1,6 @@
 ﻿using SportscardSystem.DTO.Contracts;
 using System.Linq;
+using SportscardSystem.Data.Contracts;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {

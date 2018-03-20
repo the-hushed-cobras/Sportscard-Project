@@ -16,5 +16,8 @@ namespace SportscardSystem.DTO
         public int? Age { get; set; }
 
         public Guid CompanyId { get; set; }
+
+        public Company Company { get; set; }
+
     }
 }
