@@ -17,6 +17,7 @@ namespace SportscardSystem.Client
             var builder = new ContainerBuilder();
             builder.RegisterModule<DbContextConfigModule>();
             builder.RegisterModule<EngineConfigModule>();
+            builder.RegisterModule<ImportExportConfigModule>();
 
             var container = builder.Build();
 

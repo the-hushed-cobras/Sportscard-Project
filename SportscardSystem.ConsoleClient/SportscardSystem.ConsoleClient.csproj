@@ -66,6 +66,7 @@
     <Compile Include="Commands\Abstract\Command.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\ExportPdf\ExportSportscardsTableCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Core\Providers\Contracts\IWriter.cs" />
     <Compile Include="Modules\DbContextConfigModule.cs" />
     <Compile Include="Modules\EngineConfigModule.cs" />
+    <Compile Include="Modules\ImportExportConfigModule.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +116,10 @@
     <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">
       <Project>{4175b715-446a-4432-aaab-9721a37c7c08}</Project>
       <Name>SportscardSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj">
+      <Project>{6ED87A38-7BF4-4513-8613-90FE2A278B45}</Project>
+      <Name>SportscardSystem.PdfExporter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

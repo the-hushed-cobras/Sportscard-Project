@@ -22,5 +22,11 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <param name="sportscard"></param>
         void DeleteSportscard(ISportscardDto sportscard);
+
+        /// <summary>
+        /// Gets all sportscards with their client and company names
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<ISportscardViewDto> GetReport();
     }
 }

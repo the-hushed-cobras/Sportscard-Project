@@ -66,8 +66,8 @@ namespace SportscardSystem.Logic.Services
 
             foreach (var sportscard in allSportscards)
             {
-                var clientName = dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).ToString();
-                var companyName = dbContext.Companies.FirstOrDefault(c => c.Id == sportscard.CompanyId).ToString();
+                var clientName = $"{dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} {dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
+                var companyName = dbContext.Companies.FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
 
                 sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
             }

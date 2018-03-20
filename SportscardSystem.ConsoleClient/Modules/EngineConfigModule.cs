@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
+using SportscardSystem.ConsoleClient.Commands.ExportPdf;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
@@ -30,6 +31,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
+            builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
 
             base.Load(builder);
         }
