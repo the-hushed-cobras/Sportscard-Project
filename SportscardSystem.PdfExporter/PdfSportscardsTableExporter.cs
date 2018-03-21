@@ -7,11 +7,15 @@ using System.Collections.Generic;
 
 namespace SportscardSystem.PdfExporter
 {
-    public class PdfSportscardsTableExporter : PdfExporterBase, IPdfExporter
+    public class PdfSportscardsTableExporter : PdfTableGeneratorBase, IPdfSportscardsTableExporter
     {
+        private readonly IPdfSportscardsTableGenerator pdfTableGenerator;
+
         public PdfSportscardsTableExporter(IPdfStream pdfStream, IPdfSportscardsTableGenerator pdfTableGenerator) 
-            : base(pdfStream, pdfTableGenerator)
+            : base(pdfStream)
         {
+            Guard.WhenArgument(pdfTableGenerator, "Table generator can not be null!").IsNull().Throw();
+            this.pdfTableGenerator = pdfTableGenerator;
         }
 
         public void ExportPdfReport(IEnumerable<ISportscardViewDto> report)
@@ -19,7 +23,7 @@ namespace SportscardSystem.PdfExporter
             Guard.WhenArgument(report, "Sportscards report").IsNull().Throw();
             
             this.PdfStream.Document.Open();
-            this.PdfStream.Document.Add(this.PdfTableGenerator.CreateSportscardsTable(report));
+            this.PdfStream.Document.Add(this.pdfTableGenerator.CreateSportscardsTable(report));
             this.PdfStream.Document.Close();
         }
     }

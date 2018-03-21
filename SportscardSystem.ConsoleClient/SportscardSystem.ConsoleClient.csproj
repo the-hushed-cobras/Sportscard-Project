@@ -67,6 +67,7 @@
     <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportscardsTableCommand.cs" />
+    <Compile Include="Commands\ExportPdf\ExportSportshallsTableCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />

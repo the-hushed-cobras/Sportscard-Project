@@ -4,13 +4,14 @@ using SportscardSystem.PdfExporter;
 using SportscardSystem.PdfExporter.Contracts;
 using SportscardSystem.PdfExporter.Utils;
 using SportscardSystem.PdfExporter.Utils.Contracts;
+using System;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
     public class ImportExportConfigModule : Module
     {
         private const string FileDirectory = "./../../../ ";
-        private const string PdfSportscardsTableName = "SportscardsTable.pdf";
+        private const string TableName = "Report.pdf";
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -18,7 +19,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder
                 .RegisterType<PdfStreamWrapper>()
                 .WithParameter("directory", FileDirectory)
-                .WithParameter("fileName", PdfSportscardsTableName)
+                .WithParameter("fileName", TableName)
                 .Named<IPdfStream>("pdfstream");
 
             builder.RegisterType<PdfSportscardsTableGenerator>().As<IPdfSportscardsTableGenerator>();
@@ -26,7 +27,14 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder
                 .RegisterType<PdfSportscardsTableExporter>()
                 .WithParameter(ResolvedParameter.ForNamed<IPdfStream>("pdfstream"))
-                .As<IPdfExporter>();
+                .As<IPdfSportscardsTableExporter>();
+
+            builder.RegisterType<PdfSportshallsTableGenerator>().As<IPdfSportshallsTableGenerator>();
+
+            builder
+                .RegisterType<PdfSportshallsTableExporter>()
+                .WithParameter(ResolvedParameter.ForNamed<IPdfStream>("pdfstream"))
+                .As<IPdfSportshallsTableExporter>();
 
             base.Load(builder);
         }

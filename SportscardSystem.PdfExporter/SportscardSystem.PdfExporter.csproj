@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstracts\PdfExporterBase.cs" />
-    <Compile Include="Contracts\IPdfExporter.cs" />
+    <Compile Include="Abstracts\PdfTableGeneratorBase.cs" />
+    <Compile Include="Contracts\IPdfSportscardsTableExporter.cs" />
+    <Compile Include="Contracts\IPdfSportshallsTableExporter.cs" />
     <Compile Include="PdfSportscardsTableExporter.cs" />
+    <Compile Include="PdfSportshallsTableExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Contracts\IPdfSportshallsTableGenerator.cs" />
     <Compile Include="Utils\Contracts\IPdfStream.cs" />
     <Compile Include="Utils\Contracts\IPdfSportscardsTableGenerator.cs" />
     <Compile Include="Utils\PdfSportscardsTableGenerator.cs" />
+    <Compile Include="Utils\PdfSportshallsTableGenerator.cs" />
     <Compile Include="Utils\PdfStreamWrapper.cs" />
   </ItemGroup>
   <ItemGroup>

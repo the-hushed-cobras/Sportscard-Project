@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace SportscardSystem.PdfExporter.Contracts
 {
-    public interface IPdfExporter
+    public interface IPdfSportshallsTableExporter
     {
-        void ExportPdfReport(IEnumerable<ISportscardViewDto> report);
+        void ExportPdfReport(IEnumerable<ISportshallViewDto> report);
     }
 }

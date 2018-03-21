@@ -32,6 +32,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
+            builder.RegisterType<ExportSportshallsTableCommand>().Named<ICommand>("exportsportshallstable");
 
             base.Load(builder);
         }

@@ -1,13 +1,11 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using iTextSharp.text.pdf;
+using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 
-//namespace SportscardSystem.PdfExporter.Utils.Contracts
-//{
-//    public interface IPdfSportshallsTableGenerator
-//    {
-//        PdfPTable CreateSportshallsTable(IEnumerable<ISportscardViewDto> report);
-//    }
-//}
+namespace SportscardSystem.PdfExporter.Utils.Contracts
+{
+    public interface IPdfSportshallsTableGenerator
+    {
+        PdfPTable CreateSportshallsTable(IEnumerable<ISportshallViewDto> report);
+    }
+}

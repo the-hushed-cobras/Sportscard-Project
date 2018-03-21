@@ -18,7 +18,7 @@ namespace SportscardSystem.DTO
             this.companyName = companyName;
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; }
 
         public string ClientName => this.clientName;
 

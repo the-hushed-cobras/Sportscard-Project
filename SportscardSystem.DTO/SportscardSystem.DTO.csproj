@@ -51,12 +51,14 @@
     <Compile Include="Contracts\ISportscardDto.cs" />
     <Compile Include="Contracts\ISportscardViewDto.cs" />
     <Compile Include="Contracts\ISportshallDto.cs" />
+    <Compile Include="Contracts\ISportshallViewDto.cs" />
     <Compile Include="Contracts\IVisitDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SportscardDto.cs" />
     <Compile Include="SportDto.cs" />
     <Compile Include="SportscardViewDto.cs" />
     <Compile Include="SportshallDto.cs" />
+    <Compile Include="SportshallViewDto.cs" />
     <Compile Include="VisitDto.cs" />
   </ItemGroup>
   <ItemGroup>

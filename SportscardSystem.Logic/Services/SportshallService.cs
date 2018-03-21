@@ -7,6 +7,7 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -53,6 +54,22 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(allSportshalls, "AllSportshalls can not be null").IsNull().Throw();
 
             return allSportshalls;
+        }
+
+        public IQueryable<ISportshallViewDto> GetReport()
+        {
+            var allSportshalls = dbContext.Sportshalls.ProjectTo<SportshallDto>();
+            var sportscardsDecoded = new List<ISportshallViewDto>();
+
+            foreach (var sportshall in allSportshalls)
+            {
+                var sports = dbContext.Sportshalls.Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
+                var allSports = sports.ProjectTo<SportDto>();
+
+                sportscardsDecoded.Add(new SportshallViewDto(sportshall.Name, allSports));
+            }
+
+            return sportscardsDecoded.AsQueryable();
         }
     }
 }
