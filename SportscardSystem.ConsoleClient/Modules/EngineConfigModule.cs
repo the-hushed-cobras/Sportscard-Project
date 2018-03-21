@@ -7,6 +7,7 @@ using SportscardSystem.ConsoleClient.Core.Factories;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
+using SportscardSystem.ConsoleClient.Validator;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
@@ -20,6 +21,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<CommandProcessor>().As<ICommandProcessor>().SingleInstance();
             builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
+            builder.RegisterType<ValidateCore>().As<IValidateCore>().SingleInstance();
 
             //Registering factories
             builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();

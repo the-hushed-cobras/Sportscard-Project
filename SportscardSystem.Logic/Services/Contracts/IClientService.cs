@@ -1,6 +1,7 @@
 ﻿using SportscardSystem.DTO.Contracts;
 using System.Linq;
 using SportscardSystem.Data.Contracts;
+using System;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
@@ -29,5 +30,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <returns></returns>
         IQueryable<IClientDto> GetMostActiveClient();
+
+        Guid GetCompanyGuidByName(string companyName);
     }
 }

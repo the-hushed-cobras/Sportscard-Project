@@ -67,5 +67,22 @@ namespace SportscardSystem.Logic.Services
         {
             throw new NotImplementedException();
         }
+
+        public Guid GetCompanyGuidByName(string companyName)
+        {
+            Guid result;
+            try
+            {
+                result = this.dbContext.Companies.FirstOrDefault(x => x.Name == companyName).Id;
+
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such company exists!");
+            }
+
+            return result;
+        }
     }
 }

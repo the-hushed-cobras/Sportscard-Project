@@ -1,5 +1,6 @@
 ﻿using SportscardSystem.DTO.Contracts;
 using System.Linq;
+using System;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
@@ -22,5 +23,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <param name="company"></param>
         void DeleteCompany(ICompanyDto companyDto);
+
+        
     }
 }

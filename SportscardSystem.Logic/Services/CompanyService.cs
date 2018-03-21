@@ -56,5 +56,7 @@ namespace SportscardSystem.Logic.Services
 
             return allCompanies;
         }
+
+        
     }
 }
