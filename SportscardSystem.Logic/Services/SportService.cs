@@ -7,6 +7,7 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -48,12 +49,17 @@ namespace SportscardSystem.Logic.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<ISportDto> GetAllSports()
+        public IEnumerable<ISportDto> GetAllSports()
         {
-            var allSports = dbContext.Sports.ProjectTo<SportDto>();
+            var allSports = dbContext.Sports.ProjectTo<SportDto>().ToList();
             Guard.WhenArgument(allSports, "AllSports can not be null").IsNull().Throw();
 
             return allSports;
+        }
+
+        public ISportDto GetMostPlayedSport()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace SportscardSystem.Logic.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<ISportshallDto> GetAllSportshalls()
+        public IEnumerable<ISportshallDto> GetAllSportshalls()
         {
             var allSportshalls = dbContext.Sportshalls.ProjectTo<SportshallDto>();
             Guard.WhenArgument(allSportshalls, "AllSportshalls can not be null").IsNull().Throw();
@@ -56,20 +56,25 @@ namespace SportscardSystem.Logic.Services
             return allSportshalls;
         }
 
-        public IQueryable<ISportshallViewDto> GetReport()
+        public ISportshallDto GetMostVisitedSportshall()
         {
-            var allSportshalls = dbContext.Sportshalls.ProjectTo<SportshallDto>();
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ISportshallViewDto> GetReport()
+        {
+            var allSportshalls = dbContext.Sportshalls.ProjectTo<SportshallDto>().ToList();
             var sportscardsDecoded = new List<ISportshallViewDto>();
 
             foreach (var sportshall in allSportshalls)
             {
                 var sports = dbContext.Sportshalls.Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
-                var allSports = sports.ProjectTo<SportDto>();
+                var allSports = sports.ProjectTo<SportDto>().ToList();
 
                 sportscardsDecoded.Add(new SportshallViewDto(sportshall.Name, allSports));
             }
 
-            return sportscardsDecoded.AsQueryable();
+            return sportscardsDecoded;
         }
     }
 }

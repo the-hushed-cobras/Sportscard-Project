@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 using System;
 
@@ -10,7 +11,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all companies registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<ICompanyDto> GetAllCompanies();
+        IEnumerable<ICompanyDto> GetAllCompanies();
 
         /// <summary>
         /// Adds a new company to the database
@@ -24,6 +25,10 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// <param name="company"></param>
         void DeleteCompany(ICompanyDto companyDto);
 
-        
+        /// <summary>
+        /// Gets the company with the most visits
+        /// </summary>
+        /// <returns></returns>
+        ICompanyDto GetMostActiveCompany();
     }
 }

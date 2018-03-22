@@ -18,10 +18,12 @@ namespace SportscardSystem.PdfExporter
             this.pdfTableGenerator = pdfTableGenerator;
         }
 
-        public void ExportPdfReport(IEnumerable<ISportscardViewDto> report)
+        public void ExportPdfReport(IEnumerable<ISportscardViewDto> report, string fileName)
         {
             Guard.WhenArgument(report, "Sportscards report").IsNull().Throw();
-            
+
+            this.PdfStream.Init(fileName);
+
             this.PdfStream.Document.Open();
             this.PdfStream.Document.Add(this.pdfTableGenerator.CreateSportscardsTable(report));
             this.PdfStream.Document.Close();

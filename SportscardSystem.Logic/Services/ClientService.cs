@@ -7,6 +7,7 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -46,18 +47,23 @@ namespace SportscardSystem.Logic.Services
             
         }
 
-        public IQueryable<IClientDto> GetAllClients()
+        public IEnumerable<IClientDto> GetAllClients()
         {
-            var allClients = this.dbContext.Clients.ProjectTo<ClientDto>();
+            var allClients = this.dbContext.Clients.ProjectTo<ClientDto>().ToList();
             Guard.WhenArgument(allClients, "AllClients can not be null").IsNull().Throw();
 
             Console.WriteLine("test");
             return allClients;
         }
 
-        public IQueryable<IClientDto> GetMostActiveClient()
+        public IClientDto GetMostActiveClient()
         {
-            throw new NotImplementedException();
+            var mostActiveClient = this.dbContext.Clients.OrderByDescending(c => c.Visits.Count()).ThenBy(c => c.FirstName).FirstOrDefault();
+            Guard.WhenArgument(mostActiveClient, "Most active client can not be null!").IsNull().Throw();
+
+            var mostActiveClientDto = this.mapper.Map<ClientDto>(mostActiveClient);
+
+            return mostActiveClientDto;
         }
 
         public Guid GetCompanyGuidByName(string companyName)

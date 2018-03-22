@@ -2,7 +2,7 @@
 
 namespace SportscardSystem.DTO.Contracts
 {
-    public interface ISportscardViewDto
+    public interface ISportscardViewDto : IPdfViewDto
     {
         /// <summary>
         /// Sportscard's unique id

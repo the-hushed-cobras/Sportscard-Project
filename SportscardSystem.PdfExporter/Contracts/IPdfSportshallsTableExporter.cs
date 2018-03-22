@@ -5,6 +5,6 @@ namespace SportscardSystem.PdfExporter.Contracts
 {
     public interface IPdfSportshallsTableExporter
     {
-        void ExportPdfReport(IEnumerable<ISportshallViewDto> report);
+        void ExportPdfReport(IEnumerable<ISportshallViewDto> report, string fileName);
     }
 }

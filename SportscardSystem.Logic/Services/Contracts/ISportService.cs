@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
@@ -9,7 +10,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all sport registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<ISportDto> GetAllSports();
+        IEnumerable<ISportDto> GetAllSports();
 
         /// <summary>
         /// Adds a new sport to the database
@@ -22,5 +23,11 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <param name="sport"></param>
         void DeleteSport(ISportDto sport);
+
+        /// <summary>
+        /// Gets the most played sport
+        /// </summary>
+        /// <returns></returns>
+        ISportDto GetMostPlayedSport();
     }
 }

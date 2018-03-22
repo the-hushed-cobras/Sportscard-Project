@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SportscardSystem.DTO.Contracts
 {
-    public interface ISportshallViewDto
+    public interface ISportshallViewDto : IPdfViewDto
     {
         /// <summary>
         /// Sportshall unique id

@@ -8,6 +8,7 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -49,11 +50,11 @@ namespace SportscardSystem.Logic.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<ICompanyDto> GetAllCompanies()
+        public IEnumerable<ICompanyDto> GetAllCompanies()
         {
             try
             {
-                var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>();
+                var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>().ToList();
                 return allCompanies;
             }
             catch (NullReferenceException)
@@ -62,6 +63,14 @@ namespace SportscardSystem.Logic.Services
             }
         }
 
-        
+        public ICompanyDto GetMostActiveCompany()
+        {
+            var mostActiveCompany = dbContext.Companies.OrderByDescending(c => c.Clients.Sum(cl => cl.Visits.Count())).ThenBy(c => c.Name).FirstOrDefault();
+            Guard.WhenArgument(mostActiveCompany, "Most active company can not be null!").IsNull().Throw();
+
+            var mostActiveCompanyDto = this.mapper.Map<CompanyDto>(mostActiveCompany);
+
+            return mostActiveCompanyDto;
+        }
     }
 }

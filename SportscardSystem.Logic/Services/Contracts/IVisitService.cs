@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
@@ -9,7 +10,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all visit registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<IVisitDto> GetAllVisits();
+        IEnumerable<IVisitDto> GetAllVisits();
 
         /// <summary>
         /// Adds a new visit to the database

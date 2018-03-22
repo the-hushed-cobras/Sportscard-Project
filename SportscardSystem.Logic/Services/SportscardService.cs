@@ -51,17 +51,17 @@ namespace SportscardSystem.Logic.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<ISportscardDto> GetAllSportscards()
+        public IEnumerable<ISportscardDto> GetAllSportscards()
         {
-            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>();
+            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>().ToList();
             Guard.WhenArgument(allSportscards, "AllSportscards can not be null").IsNull().Throw();
 
             return allSportscards;
         }
 
-        public IQueryable<ISportscardViewDto> GetReport()
+        public IEnumerable<ISportscardViewDto> GetReport()
         {
-            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>();
+            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>().ToList();
             var sportscardsDecoded = new List<ISportscardViewDto>();
 
             foreach (var sportscard in allSportscards)
@@ -72,7 +72,7 @@ namespace SportscardSystem.Logic.Services
                 sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
             }
 
-            return sportscardsDecoded.AsQueryable();
+            return sportscardsDecoded;
         }
     }
 }

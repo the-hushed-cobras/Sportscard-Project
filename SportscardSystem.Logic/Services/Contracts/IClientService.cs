@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 using SportscardSystem.Data.Contracts;
 using System;
@@ -13,7 +14,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all clients registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<IClientDto> GetAllClients();
+        IEnumerable<IClientDto> GetAllClients();
 
         /// <summary>
         /// Adds a new client to the database
@@ -31,6 +32,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets the client/s with the most visits
         /// </summary>
         /// <returns></returns>
+        IClientDto GetMostActiveClient();
         IQueryable<IClientDto> GetMostActiveClient();
 
         Guid GetCompanyGuidByName(string companyName);
