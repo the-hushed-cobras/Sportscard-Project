@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
@@ -9,7 +10,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all sportshall registered in the database
         /// </summary>
         /// <returns></returns>
-        IQueryable<ISportshallDto> GetAllSportshalls();
+        IEnumerable<ISportshallDto> GetAllSportshalls();
 
         /// <summary>
         /// Adds a new sportshall to the database
@@ -27,6 +28,12 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Gets all sportscards with their client and company names
         /// </summary>
         /// <returns></returns>
-        IQueryable<ISportshallViewDto> GetReport();
+        IEnumerable<ISportshallViewDto> GetReport();
+
+        /// <summary>
+        /// Gets the most visited sportshall
+        /// </summary>
+        /// <returns></returns>
+        ISportshallDto GetMostVisitedSportshall();
     }
 }

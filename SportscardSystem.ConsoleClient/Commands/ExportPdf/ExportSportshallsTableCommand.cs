@@ -10,6 +10,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
     {
         private readonly IPdfSportshallsTableExporter pdfWriter;
         private readonly ISportshallService sportshallService;
+        private const string ReportName = "Sportshalls Report.pdf";
 
         public ExportSportshallsTableCommand(IPdfSportshallsTableExporter pdfWriter, ISportshallService sportshallService)
         {
@@ -26,7 +27,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
                 return $"There are no sportshalls in the base.";
             }
 
-            this.pdfWriter.ExportPdfReport(sportshalls);
+            this.pdfWriter.ExportPdfReport(sportshalls, ReportName);
 
             return $"Successfully created pdf report.";
         }

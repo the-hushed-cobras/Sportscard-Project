@@ -1,9 +1,12 @@
 ﻿using Autofac;
+using AutoMapper;
 using SportscardSystem.Architecture.Automapper;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Modules;
 using SportscardSystem.Data;
+using SportscardSystem.Data.Contracts;
 using SportscardSystem.Data.Migrations;
+using SportscardSystem.Logic.Services;
 using System.Data.Entity;
 
 namespace SportscardSystem.Client
@@ -20,6 +23,11 @@ namespace SportscardSystem.Client
             builder.RegisterModule<ImportExportConfigModule>();
 
             var container = builder.Build();
+
+            //var clientService = new ClientService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
+            //var companyService = new CompanyService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
+
+            //companyService.GetMostActiveCompany();
 
             var engine = container.Resolve<IEngine>();
 

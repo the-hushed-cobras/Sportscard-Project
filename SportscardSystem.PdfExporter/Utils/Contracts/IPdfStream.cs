@@ -5,5 +5,7 @@ namespace SportscardSystem.PdfExporter.Utils.Contracts
     public interface IPdfStream
     {
         Document Document { get; }
+
+        void Init(string fileName);
     }
 }

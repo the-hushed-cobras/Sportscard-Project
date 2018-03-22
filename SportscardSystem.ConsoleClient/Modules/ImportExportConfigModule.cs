@@ -11,7 +11,6 @@ namespace SportscardSystem.ConsoleClient.Modules
     public class ImportExportConfigModule : Module
     {
         private const string FileDirectory = "./../../../ ";
-        private const string TableName = "Report.pdf";
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -19,7 +18,6 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder
                 .RegisterType<PdfStreamWrapper>()
                 .WithParameter("directory", FileDirectory)
-                .WithParameter("fileName", TableName)
                 .Named<IPdfStream>("pdfstream");
 
             builder.RegisterType<PdfSportscardsTableGenerator>().As<IPdfSportscardsTableGenerator>();

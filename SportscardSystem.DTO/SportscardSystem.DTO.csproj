@@ -47,6 +47,7 @@
     <Compile Include="CompanyDto.cs" />
     <Compile Include="Contracts\IClientDto.cs" />
     <Compile Include="Contracts\ICompanyDto.cs" />
+    <Compile Include="Contracts\IPdfViewDto.cs" />
     <Compile Include="Contracts\ISportDto.cs" />
     <Compile Include="Contracts\ISportscardDto.cs" />
     <Compile Include="Contracts\ISportscardViewDto.cs" />

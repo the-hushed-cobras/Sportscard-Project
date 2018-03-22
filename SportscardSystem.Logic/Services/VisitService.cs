@@ -7,6 +7,7 @@ using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -48,7 +49,7 @@ namespace SportscardSystem.Logic.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<IVisitDto> GetAllVisits()
+        public IEnumerable<IVisitDto> GetAllVisits()
         {
             var allVisits = dbContext.Visits.ProjectTo<VisitDto>();
             Guard.WhenArgument(allVisits, "AllVisits can not be null").IsNull().Throw();

@@ -13,16 +13,18 @@ namespace SportscardSystem.PdfExporter
     {
         private readonly IPdfSportshallsTableGenerator pdfTableGenerator;
 
-        public PdfSportshallsTableExporter(IPdfStream pdfStream, IPdfSportshallsTableGenerator tableGenerator) 
+        public PdfSportshallsTableExporter(IPdfStream pdfStream, IPdfSportshallsTableGenerator pdfTableGenerator) 
             : base(pdfStream)
         {
-            Guard.WhenArgument(tableGenerator, "Table generator can not be null!").IsNull().Throw();
-            this.pdfTableGenerator = tableGenerator;
+            Guard.WhenArgument(pdfTableGenerator, "Table generator can not be null!").IsNull().Throw();
+            this.pdfTableGenerator = pdfTableGenerator;
         }
 
-        public void ExportPdfReport(IEnumerable<ISportshallViewDto> report)
+        public void ExportPdfReport(IEnumerable<ISportshallViewDto> report, string fileName)
         {
             Guard.WhenArgument(report, "Sportshalls report").IsNull().Throw();
+
+            this.PdfStream.Init(fileName);
 
             this.PdfStream.Document.Open();
             this.PdfStream.Document.Add(this.pdfTableGenerator.CreateSportshallsTable(report));

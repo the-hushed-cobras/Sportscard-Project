@@ -12,20 +12,25 @@ namespace SportscardSystem.PdfExporter.Utils
         private FileStream fileStream;
         private PdfWriter pdfWriter;
         private string directory;
-        private string fileName;
+        private bool isInitialized;
 
-        public PdfStreamWrapper(string directory, string fileName)
+        public void Init(string fileName)
+        {
+            this.document = new Document(PageSize.A4);
+            this.fileStream = new FileStream(this.directory + "\\" + fileName, FileMode.Create, FileAccess.Write);
+            this.pdfWriter = PdfWriter.GetInstance(document, fileStream);
+
+            isInitialized = true;
+        }
+
+        public PdfStreamWrapper(string directory)
         {
             Guard.WhenArgument(directory, "Directory can not be null").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(fileName, "File name can not be null").IsNullOrEmpty().Throw();
-
             this.directory = directory;
-            this.fileName = fileName;
-            this.document = new Document(PageSize.A4);
-            this.fileStream = new FileStream(this.directory + "\\" + this.fileName, FileMode.Create, FileAccess.Write);
-            this.pdfWriter = PdfWriter.GetInstance(document, fileStream);
         }
 
         public Document Document => this.document;
+
+        public bool IsInitialized => this.isInitialized;
     }
 }
