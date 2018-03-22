@@ -2,6 +2,8 @@
 using System.Linq;
 using SportscardSystem.Data.Contracts;
 using System;
+using SportscardSystem.DTO;
+using SportscardSystem.Models;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
@@ -23,7 +25,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified client from the database 
         /// </summary>
         /// <param name="client"></param>
-        void DeleteClient(IClientDto clientDto);
+        void DeleteClient(string firstName, string lastName, int? age);
 
         /// <summary>
         /// Gets the client/s with the most visits
@@ -32,5 +34,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         IQueryable<IClientDto> GetMostActiveClient();
 
         Guid GetCompanyGuidByName(string companyName);
+
+       
     }
 }

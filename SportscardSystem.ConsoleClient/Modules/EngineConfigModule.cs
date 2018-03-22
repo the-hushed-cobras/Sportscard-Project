@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
+using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
@@ -32,6 +33,8 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
             builder.RegisterType<AddSportCommand>().Named<ICommand>("addsport");
             builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
+            builder.RegisterType<DeleteClientCommand>().Named<ICommand>("deleteclient");
+
 
 
 

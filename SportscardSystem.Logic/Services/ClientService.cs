@@ -18,11 +18,8 @@ namespace SportscardSystem.Logic.Services
 
         public ClientService(ISportscardSystemDbContext dbContext, IMapper mapper)
         {
-            Guard.WhenArgument(dbContext, "DbContext can not be null").IsNull().Throw();
-            Guard.WhenArgument(mapper, "Mapper can not be null").IsNull().Throw();
-
-            this.dbContext = dbContext;
-            this.mapper = mapper;
+            this.dbContext = dbContext ?? throw new ArgumentNullException("Context can't be null.");
+            this.mapper = mapper ?? throw new ArgumentNullException("Mapper can't be null.");
         }
 
         public void AddClient(IClientDto clientDto)
@@ -33,23 +30,18 @@ namespace SportscardSystem.Logic.Services
             
             this.dbContext.Clients.Add(clientToAdd);
             this.dbContext.SaveChanges();
+            
         }
 
         //To be implemented
-        public void DeleteClient(IClientDto clientDto)
+        public void DeleteClient(string firstName, string lastName, int? age)
         {
-            Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
-            var client = dbContext.Clients.FirstOrDefault(x => x.FirstName == clientDto.FirstName);
-            if (client.FirstName == clientDto.FirstName)
-            {
-                client.IsDeleted = true;
-                client.DeletedOn = DateTime.Now;
-                dbContext.SaveChanges();
-            }
-            else
-            {
-                throw new ArgumentException("There are no such client!");
-            }
+            Client client = this.dbContext.Clients.FirstOrDefault(x => x.Age == age && x.FirstName == firstName && x.LastName == lastName) ?? throw new ArgumentNullException("There is no client with this params");
+            
+            client.IsDeleted = true;
+            client.DeletedOn = DateTime.Now;
+           
+            dbContext.SaveChanges();
 
             
         }
@@ -84,5 +76,7 @@ namespace SportscardSystem.Logic.Services
 
             return result;
         }
+
+        
     }
 }

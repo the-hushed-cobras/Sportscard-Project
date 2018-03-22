@@ -23,13 +23,9 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
 
         public AddClientCommand(ISportscardFactory sportscardFactory, IClientService clientService, ICompanyService companyService, IValidateCore coreValidator) : base(sportscardFactory)
         {
-            Guard.WhenArgument(clientService, "Client service can not be null!").IsNull().Throw();
-            Guard.WhenArgument(sportscardFactory, "SportCardFactory can not be null!").IsNull().Throw();
-            Guard.WhenArgument(companyService, "Company service can not be null!").IsNull().Throw();
-
-            this.clientService = clientService;
-            this.companyService = companyService;
-            this.coreValidator = coreValidator ?? throw new ArgumentNullException();
+            this.clientService = clientService ?? throw new ArgumentNullException("Client service can not be null!"); ;
+            this.companyService = companyService ?? throw new ArgumentNullException("Company service can not be null!"); 
+            this.coreValidator = coreValidator ?? throw new ArgumentNullException("Validator can't be null");
         }
 
         public string Execute(IList<string> parameters)
@@ -39,7 +35,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             int? clientAge;
             string companyName;
             Guid companyId;
-
+            //
             Guard.WhenArgument(parameters.Count, "Parameters count.").IsGreaterThan(4).Throw();
             Guard.WhenArgument(clientFirstName, "Client first name.").IsNullOrEmpty().Throw();
             Guard.WhenArgument(clientLastName, "Client last name.").IsNullOrEmpty().Throw();
@@ -53,13 +49,10 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             {
                 clientAge = this.coreValidator.IntFromString(parameters[2], "Client's age.");
                 Guard.WhenArgument(clientAge, "Clients Age.").IsNull().Throw();
-                if (clientAge < 18 || clientAge > 100)
-                {
-                    throw new ArgumentException("Client age should be from 18 to 100 years old.");
-                }
+                this.coreValidator.ClientAgeValidation(clientAge, "Client's age");
                 companyName = parameters[3];
                 
-            }
+            } 
             Guard.WhenArgument(companyName, "Company Name").IsNullOrEmpty().Throw();
             companyId = this.clientService.GetCompanyGuidByName(companyName);
 
@@ -68,10 +61,6 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             this.clientService.AddClient(client);
 
             return $"\"{clientFirstName} {clientLastName}\" client was added to database.";
-
-
         }
-        //TODO: To be extracted into a separate class.
-        
     }
 }

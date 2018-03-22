@@ -25,5 +25,15 @@ namespace SportscardSystem.ConsoleClient.Validator
 
             return parsedValue;
         }
+
+        public void ClientAgeValidation(int? age, string parameterName)
+        {
+            if (age < 18 || age > 100)
+            {
+                throw new ArgumentException("Client age should be from 18 to 100 years old.");
+            }
+        }
+
+        
     }
 }
