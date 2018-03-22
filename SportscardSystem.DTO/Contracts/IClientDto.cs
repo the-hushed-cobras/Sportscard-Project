@@ -31,7 +31,7 @@ namespace SportscardSystem.DTO.Contracts
         /// </summary>
         Guid CompanyId { get; set; }
 
-        Company Company { get; set; }
+     
 
     }
 }
