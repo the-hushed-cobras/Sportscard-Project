@@ -33,7 +33,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <returns></returns>
         IClientDto GetMostActiveClient();
-        IQueryable<IClientDto> GetMostActiveClient();
+        //IQueryable<IClientDto> GetMostActiveClient();
 
         Guid GetCompanyGuidByName(string companyName);
 
