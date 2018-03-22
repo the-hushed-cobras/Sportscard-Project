@@ -51,10 +51,15 @@ namespace SportscardSystem.Logic.Services
 
         public IQueryable<ICompanyDto> GetAllCompanies()
         {
-            var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>();
-            Guard.WhenArgument(allCompanies, "AllCompanies can not be null").IsNull().Throw();
-
-            return allCompanies;
+            try
+            {
+                var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>();
+                return allCompanies;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Companies can not be null");
+            }
         }
 
         

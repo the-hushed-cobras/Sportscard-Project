@@ -17,7 +17,9 @@ namespace SportscardSystem.DTO
 
         public Guid CompanyId { get; set; }
 
-        public Company Company { get; set; }
-
+        public override string ToString()
+        {
+            return $"{this.FirstName} {this.LastName}";
+        }
     }
 }

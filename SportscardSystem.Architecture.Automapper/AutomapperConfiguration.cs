@@ -9,7 +9,6 @@ namespace SportscardSystem.Architecture.Automapper
 {
     public static class AutomapperConfiguration
     {
-
         public static void Initialize()
         {
             var types = AppDomain.CurrentDomain

@@ -11,7 +11,9 @@ namespace SportscardSystem.DTO
 
         public string Name { get; set; }
 
-        //public DateTime CreatedOn { get; set; }
-
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
     }
 }
