@@ -2,6 +2,7 @@
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.PdfExporter.Contracts;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
@@ -10,7 +11,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
     {
         private readonly IPdfSportshallsTableExporter pdfWriter;
         private readonly ISportshallService sportshallService;
-        private const string ReportName = "Sportshalls Report.pdf";
+        private  string reportName = "Sportshalls Report.pdf";
 
         public ExportSportshallsTableCommand(IPdfSportshallsTableExporter pdfWriter, ISportshallService sportshallService)
         {
@@ -27,7 +28,16 @@ namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
                 return $"There are no sportshalls in the base.";
             }
 
-            this.pdfWriter.ExportPdfReport(sportshalls, ReportName);
+            var counter = 0;
+
+            while (File.Exists(Directory.GetCurrentDirectory() + "/../../../" + reportName))
+            {
+                counter++;
+
+                reportName = $"Sportshalls Report({counter}).pdf";
+            }
+
+            this.pdfWriter.ExportPdfReport(sportshalls, reportName);
 
             return $"Successfully created pdf report.";
         }
