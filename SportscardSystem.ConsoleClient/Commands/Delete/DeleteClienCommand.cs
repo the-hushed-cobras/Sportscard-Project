@@ -20,16 +20,18 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public DeleteClientCommand(ISportscardFactory sportscardFactory, IClientService clientService, IValidateCore coreValidator) : base(sportscardFactory)
         {
-            Guard.WhenArgument(clientService, "Client service can not be null").IsNull().Throw();
-            this.clientService = clientService;
+            this.clientService = clientService ?? throw new ArgumentNullException("Client service can't be null.");
             this.coreValidator = coreValidator ?? throw new ArgumentNullException("Validator can't be null.");
         }
 
         public string Execute(IList<string> parameters)
         {
-            string clietnFirstName = parameters[0];
-            string clietnLastName = parameters[1];
+            string clientFirstName = parameters[0];
+            string clientLastName = parameters[1];
             int? clientAge;
+            Guard.WhenArgument(clientFirstName, "Client first name").IsNotNullOrEmpty().Throw();
+            Guard.WhenArgument(clientLastName, "Client last name").IsNotNullOrEmpty().Throw();
+
             if (parameters.Count == 3)
             {
                 clientAge = this.coreValidator.IntFromString(parameters[2], "Client's Age");
@@ -40,11 +42,9 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
                 clientAge = null;
             }
             
-            this.clientService.DeleteClient(clietnFirstName, clietnLastName, clientAge);
+            this.clientService.DeleteClient(clientFirstName, clientLastName, clientAge);
 
-
-
-            return $"\"{clietnFirstName}\"  was deleted from database.";
+            return $"\"{clientFirstName}\"  was deleted from database.";
 
         }
     }
