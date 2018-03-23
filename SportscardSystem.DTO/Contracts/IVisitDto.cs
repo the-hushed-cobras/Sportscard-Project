@@ -27,6 +27,6 @@ namespace SportscardSystem.DTO.Contracts
         /// <summary>
         /// Visit's date
         /// </summary>
-        DateTime Date { get; set; }
+        DateTime CreatedOn { get; set; }
     }
 }

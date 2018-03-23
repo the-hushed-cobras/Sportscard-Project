@@ -2,6 +2,7 @@
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
 using System;
+using Autofac.Core.Registration;
 
 namespace SportscardSystem.ConsoleClient.Core
 {
@@ -32,9 +33,10 @@ namespace SportscardSystem.ConsoleClient.Core
         {
             while (true)
             {
+
                 try
                 {
-                    var commandAsString = reader.ReadLine();
+                    string commandAsString = reader.ReadLine();
 
                     if (commandAsString.ToLower() == TerminationCommand.ToLower())
                     {
@@ -44,10 +46,8 @@ namespace SportscardSystem.ConsoleClient.Core
                     var executionResult = this.processor.ProcessCommand(commandAsString);
                     writer.WriteLine(executionResult);
                 }
-                catch (Exception ex)
-                {
-                    writer.WriteLine(ex.Message);
-                }
+                catch (ComponentNotRegisteredException) { this.writer.WriteLine($"There is no such command implemented! Please contact Dev team to implement it :)"); }
+                catch (Exception ex){writer.WriteLine(ex.Message);}
             }
         }
     }

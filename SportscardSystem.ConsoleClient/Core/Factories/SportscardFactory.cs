@@ -2,14 +2,15 @@
 using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using System;
+using SportscardSystem.Models;
 
 namespace SportscardSystem.ConsoleClient.Core.Factories
 {
     public class SportscardFactory : ISportscardFactory
     {
-        public IClientDto CreateClientDto(string firstName, string lastName, int age, Guid companyId)
+        public IClientDto CreateClientDto(string firstName, string lastName, int? age, Guid Id)
         {
-            return new ClientDto() { FirstName = firstName, LastName = lastName, CompanyId = companyId };
+            return new ClientDto() { FirstName = firstName, LastName = lastName, Age = age, CompanyId = Id };
         }
 
         public ICompanyDto CreateCompanyDto(string name)
@@ -34,7 +35,7 @@ namespace SportscardSystem.ConsoleClient.Core.Factories
 
         public IVisitDto CreateVisitDto(Guid clientId, Guid sportshallId, Guid sportId, DateTime date)
         {
-            return new VisitDto() { ClientId = clientId, SportshallId = sportshallId, SportId = sportId, Date = date };
+            return new VisitDto() { ClientId = clientId, SportshallId = sportshallId, SportId = sportId, CreatedOn = date };
         }
     }
 }

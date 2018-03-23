@@ -3,12 +3,16 @@ using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
+using SportscardSystem.ConsoleClient.Commands.Delete;
+using SportscardSystem.ConsoleClient.Commands.ExportPdf;
+using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
+using SportscardSystem.ConsoleClient.Validator;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
@@ -22,6 +26,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<CommandProcessor>().As<ICommandProcessor>().SingleInstance();
             builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
+            builder.RegisterType<ValidateCore>().As<IValidateCore>().SingleInstance();
 
             //Registering factories
             builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();
@@ -33,6 +38,11 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
             builder.RegisterType<ExportSportshallsTableCommand>().Named<ICommand>("exportsportshallstable");
+            builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
+            builder.RegisterType<DeleteClientCommand>().Named<ICommand>("deleteclient");
+
+
+
 
             base.Load(builder);
         }

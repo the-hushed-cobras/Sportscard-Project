@@ -1,11 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.Models
 {
-    public class Visit
+    public class Visit : AuditInfo
     {
+        public Visit()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -34,6 +40,7 @@ namespace SportscardSystem.Models
         [Required]
         public virtual Sport Sport { get; set; }
 
-        public DateTime Date { get; set; }
+        //[Required]
+        //public DateTime Date { get; set; }
     }
 }

@@ -30,5 +30,8 @@ namespace SportscardSystem.DTO.Contracts
         /// Client's company unique id
         /// </summary>
         Guid CompanyId { get; set; }
+
+     
+
     }
 }

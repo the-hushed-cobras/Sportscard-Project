@@ -15,6 +15,6 @@ namespace SportscardSystem.DTO
 
         public Guid SportId { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }
