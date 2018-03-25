@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Commands.Abstract;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
-using SportscardSystem.Data.Contracts;
-using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
-using SportscardSystem.Models;
+using System;
+using System.Collections.Generic;
 
 namespace SportscardSystem.ConsoleClient.Commands.Add
 {
@@ -23,9 +17,13 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
 
         public AddClientCommand(ISportscardFactory sportscardFactory, IClientService clientService, ICompanyService companyService, IValidateCore coreValidator) : base(sportscardFactory)
         {
-            this.clientService = clientService ?? throw new ArgumentNullException("Client service can not be null!"); ;
-            this.companyService = companyService ?? throw new ArgumentNullException("Company service can not be null!"); 
-            this.coreValidator = coreValidator ?? throw new ArgumentNullException("Validator can't be null");
+            Guard.WhenArgument(clientService, "Client service can not be null!").IsNull().Throw();
+            Guard.WhenArgument(companyService, "Company service can not be null!").IsNull().Throw();
+            Guard.WhenArgument(coreValidator, "Validator can not be null!").IsNull().Throw();
+
+            this.clientService = clientService;
+            this.companyService = companyService; 
+            this.coreValidator = coreValidator;
         }
 
         public string Execute(IList<string> parameters)
@@ -35,10 +33,11 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             int? clientAge;
             string companyName;
             Guid companyId;
-            //
+
             Guard.WhenArgument(parameters.Count, "Parameters count.").IsGreaterThan(4).Throw();
             Guard.WhenArgument(clientFirstName, "Client first name.").IsNullOrEmpty().Throw();
             Guard.WhenArgument(clientLastName, "Client last name.").IsNullOrEmpty().Throw();
+            
             //1 Validation command lenght 
             if (parameters.Count == 3)
             {
@@ -49,14 +48,15 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             {
                 clientAge = this.coreValidator.IntFromString(parameters[2], "Client's age.");
                 Guard.WhenArgument(clientAge, "Clients Age.").IsNull().Throw();
+
                 this.coreValidator.ClientAgeValidation(clientAge, "Client's age");
                 companyName = parameters[3];
-                
-            } 
+            }
+            
             Guard.WhenArgument(companyName, "Company Name").IsNullOrEmpty().Throw();
             companyId = this.clientService.GetCompanyGuidByName(companyName);
 
-            IClientDto client = this.SportscardFactory.CreateClientDto(clientFirstName, clientLastName, clientAge, companyId);
+            var client = this.SportscardFactory.CreateClientDto(clientFirstName, clientLastName, clientAge, companyId);
             Guard.WhenArgument(client, "Client DTO").IsNull().Throw();
             this.clientService.AddClient(client);
 

@@ -28,23 +28,21 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
 
             var clientToAdd = this.mapper.Map<Client>(clientDto);
-            
+
             this.dbContext.Clients.Add(clientToAdd);
             this.dbContext.SaveChanges();
-            
+
         }
 
-        //To be implemented
         public void DeleteClient(string firstName, string lastName, int? age)
         {
-            Client client = this.dbContext.Clients.FirstOrDefault(x => x.Age == age && x.FirstName == firstName && x.LastName == lastName) ?? throw new ArgumentNullException("There is no client with this params");
-            
+            var client = this.dbContext.Clients.FirstOrDefault(x => x.Age == age && x.FirstName == firstName && x.LastName == lastName);
+            Guard.WhenArgument(client, "There is no client with this params").IsNull().Throw();
+
             client.IsDeleted = true;
             client.DeletedOn = DateTime.Now;
-           
-            dbContext.SaveChanges();
 
-            
+            dbContext.SaveChanges();
         }
 
         public IEnumerable<IClientDto> GetAllClients()
@@ -69,10 +67,10 @@ namespace SportscardSystem.Logic.Services
         public Guid GetCompanyGuidByName(string companyName)
         {
             Guid result;
+
             try
             {
                 result = this.dbContext.Companies.FirstOrDefault(x => x.Name == companyName).Id;
-
             }
             catch (Exception)
             {
@@ -82,7 +80,5 @@ namespace SportscardSystem.Logic.Services
 
             return result;
         }
-
-        
     }
 }
