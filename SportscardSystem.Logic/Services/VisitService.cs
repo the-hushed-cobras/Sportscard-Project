@@ -44,14 +44,20 @@ namespace SportscardSystem.Logic.Services
         }
 
         //To be implemented
-        public void DeleteVisit(IVisitDto visitDto)
+        public void DeleteVisit(Guid visitId)
         {
-            throw new NotImplementedException();
+            var visit = this.dbContext.Visits.FirstOrDefault(v => !v.IsDeleted && v.Id == visitId);
+            Guard.WhenArgument(visit, "There is no such visit!").IsNull().Throw();
+
+            visit.IsDeleted = true;
+            visit.DeletedOn = DateTime.Now;
+
+            this.dbContext.SaveChanges();   
         }
 
         public IEnumerable<IVisitDto> GetAllVisits()
         {
-            var allVisits = dbContext.Visits.ProjectTo<VisitDto>();
+            var allVisits = dbContext.Visits.Where(v => !v.IsDeleted).ProjectTo<VisitDto>();
             Guard.WhenArgument(allVisits, "AllVisits can not be null").IsNull().Throw();
 
             return allVisits;

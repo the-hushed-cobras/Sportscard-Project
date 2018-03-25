@@ -1,6 +1,6 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
@@ -19,9 +19,9 @@ namespace SportscardSystem.Logic.Services.Contracts
         void AddVisit(IVisitDto visit);
 
         /// <summary>
-        /// Deletes a specified visit from the database 
+        /// Deletes a specified visit from the database by its id
         /// </summary>
         /// <param name="visit"></param>
-        void DeleteVisit(IVisitDto visit);
+        void DeleteVisit(Guid visitId);
     }
 }

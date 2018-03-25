@@ -45,6 +45,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering delete commands
             builder.RegisterType<DeleteClientCommand>().Named<ICommand>("deleteclient");
             builder.RegisterType<DeleteCompanyCommand>().Named<ICommand>("deletecompany");
+            builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
 
 
 

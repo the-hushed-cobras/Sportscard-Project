@@ -53,7 +53,7 @@ namespace SportscardSystem.Logic.Services
                 visit.DeletedOn = DateTime.Now;
             }
 
-            dbContext.SaveChanges();
+             this.dbContext.SaveChanges();
         }
 
         public IEnumerable<IClientDto> GetAllClients()

@@ -40,7 +40,15 @@ namespace SportscardSystem.Logic.Services
             }
             else
             {
-                throw new ArgumentException("A company with the same name already exists!");
+                if (this.dbContext.Companies.Any(c => c.Name == companyDto.Name && c.IsDeleted))
+                {
+                    this.dbContext.Companies.Add(companyToAdd);
+                    this.dbContext.SaveChanges();
+                }
+                else
+                {
+                    throw new ArgumentException("A company with the same name already exists!");
+                }
             }
         }
 
@@ -64,7 +72,7 @@ namespace SportscardSystem.Logic.Services
                 sportscard.DeletedOn = DateTime.Now;
             }
 
-            dbContext.SaveChanges();
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ICompanyDto> GetAllCompanies()

@@ -52,10 +52,17 @@ namespace SportscardSystem.ConsoleClient.Core
                 }
                 catch (Exception ex)
                 {
-                    var exMessageIndex = ex.Message.IndexOf(": ") + 2;
-                    var exMessage = ex.Message.Substring(exMessageIndex);
+                    var exMessageIndex = ex.Message.IndexOf(": ");
+                    var exMessage = ex.Message.Substring(exMessageIndex + 2);
 
-                    writer.WriteLine(exMessage);
+                    if (exMessageIndex == -1)
+                    {
+                        writer.WriteLine(ex.Message);
+                    }
+                    else
+                    {
+                        writer.WriteLine(exMessage);
+                    }
                 }
             }
         }
