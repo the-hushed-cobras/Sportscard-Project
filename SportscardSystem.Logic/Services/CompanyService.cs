@@ -44,7 +44,6 @@ namespace SportscardSystem.Logic.Services
             }
         }
 
-        //To be implemented
         public void DeleteCompany(string companyName)
         {
             var company = this.dbContext.Companies.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
@@ -52,6 +51,18 @@ namespace SportscardSystem.Logic.Services
 
             company.IsDeleted = true;
             company.DeletedOn = DateTime.Now;
+
+            foreach (var client in company.Clients)
+            {
+                client.IsDeleted = true;
+                client.DeletedOn = DateTime.Now;
+            }
+
+            foreach (var sportscard in company.Sportscards)
+            {
+                sportscard.IsDeleted = true;
+                sportscard.DeletedOn = DateTime.Now;
+            }
 
             dbContext.SaveChanges();
         }
