@@ -43,7 +43,6 @@ namespace SportscardSystem.Logic.Services
             }
         }
 
-        //To be implemented
         public void DeleteVisit(Guid visitId)
         {
             var visit = this.dbContext.Visits.FirstOrDefault(v => !v.IsDeleted && v.Id == visitId);
