@@ -60,7 +60,7 @@ namespace SportscardSystem.Logic.Services
         {
             try
             {
-                var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>().ToList();
+                var allCompanies = dbContext.Companies.Where(c => !c.IsDeleted).ProjectTo<CompanyDto>().ToList();
                 return allCompanies;
             }
             catch (NullReferenceException)
@@ -71,7 +71,7 @@ namespace SportscardSystem.Logic.Services
 
         public ICompanyDto GetMostActiveCompany()
         {
-            var mostActiveCompany = dbContext.Companies.OrderByDescending(c => c.Clients.Sum(cl => cl.Visits.Count())).ThenBy(c => c.Name).FirstOrDefault();
+            var mostActiveCompany = dbContext.Companies.Where(c => !c.IsDeleted).OrderByDescending(c => c.Clients.Sum(cl => cl.Visits.Count())).ThenBy(c => c.Name).FirstOrDefault();
             Guard.WhenArgument(mostActiveCompany, "Most active company can not be null!").IsNull().Throw();
 
             var mostActiveCompanyDto = this.mapper.Map<CompanyDto>(mostActiveCompany);
