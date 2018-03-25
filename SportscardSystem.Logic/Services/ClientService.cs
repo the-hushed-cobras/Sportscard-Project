@@ -41,6 +41,18 @@ namespace SportscardSystem.Logic.Services
             client.IsDeleted = true;
             client.DeletedOn = DateTime.Now;
 
+            foreach (var sportscard in client.Sportscards)
+            {
+                sportscard.IsDeleted = true;
+                sportscard.DeletedOn = DateTime.Now;
+            }
+
+            foreach (var visit in client.Visits)
+            {
+                visit.IsDeleted = true;
+                visit.DeletedOn = DateTime.Now;
+            }
+
             dbContext.SaveChanges();
         }
 
