@@ -45,9 +45,15 @@ namespace SportscardSystem.Logic.Services
         }
 
         //To be implemented
-        public void DeleteCompany(ICompanyDto companyDto)
+        public void DeleteCompany(string companyName)
         {
-            throw new NotImplementedException();
+            var company = this.dbContext.Companies.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
+            Guard.WhenArgument(company, "There is no such company!").IsNull().Throw();
+
+            company.IsDeleted = true;
+            company.DeletedOn = DateTime.Now;
+
+            dbContext.SaveChanges();
         }
 
         public IEnumerable<ICompanyDto> GetAllCompanies()

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Commands.Abstract;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
-using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
+using System.Collections.Generic;
 
 namespace SportscardSystem.ConsoleClient.Commands.Delete
 {
@@ -18,10 +13,14 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
         private readonly IClientService clientService;
         private readonly IValidateCore coreValidator;
 
-        public DeleteClientCommand(ISportscardFactory sportscardFactory, IClientService clientService, IValidateCore coreValidator) : base(sportscardFactory)
+        public DeleteClientCommand(ISportscardFactory sportscardFactory, IClientService clientService, IValidateCore coreValidator)
+            : base(sportscardFactory)
         {
-            this.clientService = clientService ?? throw new ArgumentNullException("Client service can't be null.");
-            this.coreValidator = coreValidator ?? throw new ArgumentNullException("Validator can't be null.");
+            Guard.WhenArgument(clientService, "Client service can not be null!").IsNull().Throw();
+            Guard.WhenArgument(coreValidator, "Validator can not be null!").IsNull().Throw();
+
+            this.clientService = clientService;
+            this.coreValidator = coreValidator;
         }
 
         public string Execute(IList<string> parameters)
@@ -29,6 +28,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
             string clientFirstName = parameters[0];
             string clientLastName = parameters[1];
             int? clientAge;
+
             Guard.WhenArgument(clientFirstName, "Client first name").IsNullOrEmpty().Throw();
             Guard.WhenArgument(clientLastName, "Client last name").IsNullOrEmpty().Throw();
 
@@ -44,8 +44,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
             
             this.clientService.DeleteClient(clientFirstName, clientLastName, clientAge);
 
-            return $"\"{clientFirstName}\"  was deleted from database.";
-
+            return $"{clientFirstName} was deleted from database.";
         }
     }
 }
