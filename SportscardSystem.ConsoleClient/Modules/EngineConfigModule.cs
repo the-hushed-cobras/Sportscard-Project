@@ -1,8 +1,6 @@
 ﻿using Autofac;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
-using SportscardSystem.ConsoleClient.Commands.ExportPdf;
-using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
@@ -32,14 +30,23 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
 
-
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
+            builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
+            builder.RegisterType<AddSportshallCommand>().Named<ICommand>("addsportshall");
+            
+            //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
+
+            //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
             builder.RegisterType<ExportSportshallsTableCommand>().Named<ICommand>("exportsportshallstable");
-            builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
+
+            //Registering delete commands
             builder.RegisterType<DeleteClientCommand>().Named<ICommand>("deleteclient");
+            builder.RegisterType<DeleteCompanyCommand>().Named<ICommand>("deletecompany");
+            builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
+            builder.RegisterType<DeleteSportscardCommand>().Named<ICommand>("deletesportscard");
 
 
 

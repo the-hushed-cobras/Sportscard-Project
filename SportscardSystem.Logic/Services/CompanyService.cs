@@ -40,21 +40,46 @@ namespace SportscardSystem.Logic.Services
             }
             else
             {
-                throw new ArgumentException("A company with the same name already exists!");
+                if (this.dbContext.Companies.Any(c => c.Name == companyDto.Name && c.IsDeleted))
+                {
+                    this.dbContext.Companies.Add(companyToAdd);
+                    this.dbContext.SaveChanges();
+                }
+                else
+                {
+                    throw new ArgumentException("A company with the same name already exists!");
+                }
             }
         }
 
-        //To be implemented
-        public void DeleteCompany(ICompanyDto companyDto)
+        public void DeleteCompany(string companyName)
         {
-            throw new NotImplementedException();
+            var company = this.dbContext.Companies.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
+            Guard.WhenArgument(company, "There is no such company!").IsNull().Throw();
+
+            company.IsDeleted = true;
+            company.DeletedOn = DateTime.Now;
+
+            foreach (var client in company.Clients)
+            {
+                client.IsDeleted = true;
+                client.DeletedOn = DateTime.Now;
+            }
+
+            foreach (var sportscard in company.Sportscards)
+            {
+                sportscard.IsDeleted = true;
+                sportscard.DeletedOn = DateTime.Now;
+            }
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ICompanyDto> GetAllCompanies()
         {
             try
             {
-                var allCompanies = dbContext.Companies.ProjectTo<CompanyDto>().ToList();
+                var allCompanies = dbContext.Companies.Where(c => !c.IsDeleted).ProjectTo<CompanyDto>().ToList();
                 return allCompanies;
             }
             catch (NullReferenceException)
@@ -65,7 +90,7 @@ namespace SportscardSystem.Logic.Services
 
         public ICompanyDto GetMostActiveCompany()
         {
-            var mostActiveCompany = dbContext.Companies.OrderByDescending(c => c.Clients.Sum(cl => cl.Visits.Count())).ThenBy(c => c.Name).FirstOrDefault();
+            var mostActiveCompany = dbContext.Companies.Where(c => !c.IsDeleted).OrderByDescending(c => c.Clients.Sum(cl => cl.Visits.Count())).ThenBy(c => c.Name).FirstOrDefault();
             Guard.WhenArgument(mostActiveCompany, "Most active company can not be null!").IsNull().Throw();
 
             var mostActiveCompanyDto = this.mapper.Map<CompanyDto>(mostActiveCompany);

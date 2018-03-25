@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
+using System;
 
 namespace SportscardSystem.ConsoleClient.Validator
 {
     public class ValidateCore : IValidateCore
     {
-        private readonly IReader reader;
         private readonly IWriter writer;
 
         public ValidateCore(IWriter writer)
         {
-            this.writer = writer ?? throw new ArgumentNullException();
+            Guard.WhenArgument(writer, "Writer can not be null!").IsNull().Throw();
+            this.writer = writer;
         }
+
         //Validations
         public int IntFromString(string commandParameter, string parameterName)
         {
@@ -30,10 +28,8 @@ namespace SportscardSystem.ConsoleClient.Validator
         {
             if (age < 18 || age > 100)
             {
-                throw new ArgumentException("Client age should be from 18 to 100 years old.");
+                throw new ArgumentException("Client age should be between 18 and 100 years.");
             }
         }
-
-        
     }
 }

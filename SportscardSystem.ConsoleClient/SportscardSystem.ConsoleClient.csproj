@@ -67,8 +67,12 @@
     <Compile Include="Commands\Add\AddClientCommand.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Add\AddSportCommand.cs" />
-    <Compile Include="Commands\Delete\DeleteClienCommand.cs" />
+    <Compile Include="Commands\Add\AddSportshallCommand.cs" />
+    <Compile Include="Commands\Delete\DeleteClientCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\Delete\DeleteCompanyCommand.cs" />
+    <Compile Include="Commands\Delete\DeleteSportscardCommand.cs" />
+    <Compile Include="Commands\Delete\DeleteVisitCommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportscardsTableCommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportshallsTableCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />

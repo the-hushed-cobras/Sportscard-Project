@@ -23,7 +23,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified company from the database 
         /// </summary>
         /// <param name="company"></param>
-        void DeleteCompany(ICompanyDto companyDto);
+        void DeleteCompany(string companyName);
 
         /// <summary>
         /// Gets the company with the most visits

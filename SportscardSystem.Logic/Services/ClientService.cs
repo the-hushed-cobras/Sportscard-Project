@@ -28,28 +28,37 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(clientDto, "ClientDto can not be null").IsNull().Throw();
 
             var clientToAdd = this.mapper.Map<Client>(clientDto);
-            
+
             this.dbContext.Clients.Add(clientToAdd);
             this.dbContext.SaveChanges();
-            
         }
 
-        //To be implemented
         public void DeleteClient(string firstName, string lastName, int? age)
         {
-            Client client = this.dbContext.Clients.FirstOrDefault(x => x.Age == age && x.FirstName == firstName && x.LastName == lastName) ?? throw new ArgumentNullException("There is no client with this params");
-            
+            var client = this.dbContext.Clients.FirstOrDefault(x => !x.IsDeleted && x.Age == age && x.FirstName == firstName && x.LastName == lastName);
+            Guard.WhenArgument(client, "There is no client with this params").IsNull().Throw();
+
             client.IsDeleted = true;
             client.DeletedOn = DateTime.Now;
-           
-            dbContext.SaveChanges();
 
-            
+            foreach (var sportscard in client.Sportscards)
+            {
+                sportscard.IsDeleted = true;
+                sportscard.DeletedOn = DateTime.Now;
+            }
+
+            foreach (var visit in client.Visits)
+            {
+                visit.IsDeleted = true;
+                visit.DeletedOn = DateTime.Now;
+            }
+
+             this.dbContext.SaveChanges();
         }
 
         public IEnumerable<IClientDto> GetAllClients()
         {
-            var allClients = this.dbContext.Clients.ProjectTo<ClientDto>().ToList();
+            var allClients = this.dbContext.Clients.Where(c => !c.IsDeleted).ProjectTo<ClientDto>().ToList();
             Guard.WhenArgument(allClients, "AllClients can not be null").IsNull().Throw();
 
             Console.WriteLine("test");
@@ -58,7 +67,7 @@ namespace SportscardSystem.Logic.Services
 
         public IClientDto GetMostActiveClient()
         {
-            var mostActiveClient = this.dbContext.Clients.OrderByDescending(c => c.Visits.Count()).ThenBy(c => c.FirstName).FirstOrDefault();
+            var mostActiveClient = this.dbContext.Clients.Where(c => !c.IsDeleted).OrderByDescending(c => c.Visits.Count()).ThenBy(c => c.FirstName).FirstOrDefault();
             Guard.WhenArgument(mostActiveClient, "Most active client can not be null!").IsNull().Throw();
 
             var mostActiveClientDto = this.mapper.Map<ClientDto>(mostActiveClient);
@@ -69,10 +78,10 @@ namespace SportscardSystem.Logic.Services
         public Guid GetCompanyGuidByName(string companyName)
         {
             Guid result;
+
             try
             {
                 result = this.dbContext.Companies.FirstOrDefault(x => x.Name == companyName).Id;
-
             }
             catch (Exception)
             {
@@ -82,7 +91,5 @@ namespace SportscardSystem.Logic.Services
 
             return result;
         }
-
-        
     }
 }

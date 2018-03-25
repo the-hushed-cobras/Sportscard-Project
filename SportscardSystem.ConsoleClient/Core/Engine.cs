@@ -1,8 +1,8 @@
-﻿using Bytes2you.Validation;
+﻿using Autofac.Core.Registration;
+using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
 using System;
-using Autofac.Core.Registration;
 
 namespace SportscardSystem.ConsoleClient.Core
 {
@@ -46,8 +46,24 @@ namespace SportscardSystem.ConsoleClient.Core
                     var executionResult = this.processor.ProcessCommand(commandAsString);
                     writer.WriteLine(executionResult);
                 }
-                catch (ComponentNotRegisteredException) { this.writer.WriteLine($"There is no such command implemented! Please contact Dev team to implement it :)"); }
-                catch (Exception ex){writer.WriteLine(ex.Message);}
+                catch (ComponentNotRegisteredException)
+                {
+                    this.writer.WriteLine($"There is no such command implemented! Please contact Dev team to implement it :)");
+                }
+                catch (Exception ex)
+                {
+                    var exMessageIndex = ex.Message.IndexOf(": ");
+                    var exMessage = ex.Message.Substring(exMessageIndex + 2);
+
+                    if (exMessageIndex == -1)
+                    {
+                        writer.WriteLine(ex.Message);
+                    }
+                    else
+                    {
+                        writer.WriteLine(exMessage);
+                    }
+                }
             }
         }
     }

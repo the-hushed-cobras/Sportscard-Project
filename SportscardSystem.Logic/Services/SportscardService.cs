@@ -45,10 +45,15 @@ namespace SportscardSystem.Logic.Services
             }
         }
 
-        //To be implemented
-        public void DeleteSportscard(ISportscardDto sportscardDto)
+        public void DeleteSportscard(string firstName, string lastName, string companyName)
         {
-            throw new NotImplementedException();
+            var sportscard = this.dbContext.Sportscards.Where(s => !s.IsDeleted)
+                .FirstOrDefault(v => v.Client.FirstName + v.Client.LastName == firstName + lastName && v.Company.Name == companyName);
+
+            sportscard.IsDeleted = true;
+            sportscard.DeletedOn = DateTime.Now;
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ISportscardDto> GetAllSportscards()
