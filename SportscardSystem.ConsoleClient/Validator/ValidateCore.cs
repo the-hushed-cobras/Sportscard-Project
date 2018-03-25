@@ -13,7 +13,7 @@ namespace SportscardSystem.ConsoleClient.Validator
             Guard.WhenArgument(writer, "Writer can not be null!").IsNull().Throw();
             this.writer = writer;
         }
-      
+
         //Validations
         public int IntFromString(string commandParameter, string parameterName)
         {
