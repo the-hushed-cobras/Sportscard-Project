@@ -31,6 +31,12 @@ namespace SportscardSystem.ConsoleClient.Commands.Visits
             Guard.WhenArgument(lastName, "Last name can not be null!").IsNullOrEmpty().Throw();
 
             var clientVisits = visitService.GetVisitsByClient(firstName.ToLower(), lastName.ToLower());
+            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNull().Throw();
+
+            if (clientVisits.Count() == 0)
+            {
+                return $"{firstName} {lastName} does not have any visits yet.";
+            }
 
             var sb = new StringBuilder();
             sb.AppendLine($"{firstName} {lastName}'s visits:");

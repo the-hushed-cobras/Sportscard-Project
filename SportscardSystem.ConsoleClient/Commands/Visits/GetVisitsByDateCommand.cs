@@ -4,6 +4,7 @@ using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SportscardSystem.ConsoleClient.Commands.Visits
@@ -25,6 +26,12 @@ namespace SportscardSystem.ConsoleClient.Commands.Visits
             Guard.WhenArgument(visitDate, "Visit date can not be null!").IsNullOrEmpty().Throw();
 
             var allVisits = visitService.GetVisitsByDate(visitDate);
+            Guard.WhenArgument(allVisits, "All visits can not be null!").IsNull().Throw();
+
+            if (allVisits.Count() == 0)
+            {
+                return $"There isn't any visits for {visitDate}.";
+            }
 
             var sb = new StringBuilder();
             sb.AppendLine($"All visits for {visitDate}:");
