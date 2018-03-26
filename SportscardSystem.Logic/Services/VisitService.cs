@@ -56,10 +56,21 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<IVisitDto> GetAllVisits()
         {
-            var allVisits = dbContext.Visits.Where(v => !v.IsDeleted).ProjectTo<VisitDto>();
+            var allVisits = dbContext.Visits.Where(v => !v.IsDeleted).ProjectTo<VisitDto>().ToList();
             Guard.WhenArgument(allVisits, "AllVisits can not be null").IsNull().Throw();
 
             return allVisits;
+        }
+
+        public IEnumerable<IVisitViewDto> GetVisitsByClient(string firstName, string lastName)
+        {
+            var clientVisits = dbContext.Visits
+                .Where(v => !v.IsDeleted && v.Client.FirstName.ToLower() == firstName && v.Client.LastName.ToLower() == lastName);
+            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNull().Throw();
+
+            var clientVisitsDto = clientVisits.ProjectTo<VisitViewDto>().ToList();
+
+            return clientVisitsDto;
         }
     }
 }

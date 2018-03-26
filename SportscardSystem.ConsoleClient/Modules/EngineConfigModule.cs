@@ -3,7 +3,9 @@ using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
+using SportscardSystem.ConsoleClient.Commands.GetMost;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
+using SportscardSystem.ConsoleClient.Commands.Visits;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
@@ -38,6 +40,11 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
 
+            //Registering get most commands
+            builder.RegisterType<GetMostActiveClientCommand>().Named<ICommand>("getmostactiveclient");
+            builder.RegisterType<GetMostActiveCompanyCommand>().Named<ICommand>("getmostactivecompany");
+            builder.RegisterType<GetMostPlayedSportCommand>().Named<ICommand>("getmostplayedsport");
+
             //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
             builder.RegisterType<ExportSportshallsTableCommand>().Named<ICommand>("exportsportshallstable");
@@ -48,7 +55,8 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
             builder.RegisterType<DeleteSportscardCommand>().Named<ICommand>("deletesportscard");
 
-
+            //Registering visits commands
+            builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
 
 
             base.Load(builder);
