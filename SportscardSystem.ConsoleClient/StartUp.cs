@@ -27,7 +27,9 @@ namespace SportscardSystem.Client
             //var clientService = new ClientService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
             //var companyService = new CompanyService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
             //var sportService = new SportService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
-            //var visitService = new VisitService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
+            var visitService = new VisitService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
+
+            visitService.GetVisitsByDate("1900-01-01");
 
             //visitService.GetVisitsByClient("alek", "hristov");
             //sportService.GetMostPlayedSport();

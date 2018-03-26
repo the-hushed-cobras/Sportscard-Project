@@ -10,6 +10,16 @@ namespace SportscardSystem.DTO.Contracts
         Guid Id { get; }
 
         /// <summary>
+        /// Client's first name
+        /// </summary>
+        string ClientFirstName { get; }
+
+        /// <summary>
+        /// Client's last name
+        /// </summary>
+        string ClientLastName { get; }
+
+        /// <summary>
         /// Visit's sporthall name
         /// </summary>
         string SportshallName { get; }

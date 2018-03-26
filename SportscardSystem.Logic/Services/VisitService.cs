@@ -8,6 +8,8 @@ using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -71,6 +73,19 @@ namespace SportscardSystem.Logic.Services
             var clientVisitsDto = clientVisits.ProjectTo<VisitViewDto>().ToList();
 
             return clientVisitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetVisitsByDate(string date)
+        {
+            Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
+            var visitDate = DateTime.Parse(date);
+
+            var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
+            Guard.WhenArgument(visits, "Visits can not be null!").IsNull().Throw();
+
+            var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
+
+            return visitsDto;
         }
     }
 }

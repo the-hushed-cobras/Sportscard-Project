@@ -9,6 +9,10 @@ namespace SportscardSystem.DTO
     {
         public Guid Id { get; set; }
 
+        public string ClientFirstName { get; set; }
+
+        public string ClientLastName { get; set; }
+
         public string SportshallName { get; set; }
 
         public string SportName { get; set; }

@@ -80,6 +80,7 @@
     <Compile Include="Commands\GetMost\GetMostPlayedSportCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByClientCommand.cs" />
+    <Compile Include="Commands\Visits\GetVisitsByDateCommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
