@@ -1,4 +1,4 @@
-# Project name: Sportscard
+# Project name: SportscardSystem
 
 ## Team name: The Hushed Cobras
 
