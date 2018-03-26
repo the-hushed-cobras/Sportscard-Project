@@ -33,7 +33,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Visits
 
             foreach (var visit in allVisits)
             {
-                sb.Append($"{counter}. Client name: {visit.ClientFirstName} {visit.ClientLastName}");
+                sb.Append($"{counter}. Client name: {visit.ClientFirstName} {visit.ClientLastName}; ");
                 sb.Append($"Sportshall name: {visit.SportshallName}; ");
                 sb.AppendLine($"Sport name: {visit.SportName}");
 

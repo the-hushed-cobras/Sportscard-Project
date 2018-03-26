@@ -57,6 +57,7 @@ namespace SportscardSystem.ConsoleClient.Modules
 
             //Registering visits commands
             builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
+            builder.RegisterType<GetVisitsByDateCommand>().Named<ICommand>("getvisitsbydate");
 
 
             base.Load(builder);
