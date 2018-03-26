@@ -40,6 +40,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
 
             //Registering get most commands
+            builder.RegisterType<GetMostActiveClientCommand>().Named<ICommand>("getmostactiveclient");
             builder.RegisterType<GetMostActiveCompanyCommand>().Named<ICommand>("getmostactivecompany");
             builder.RegisterType<GetMostPlayedSportCommand>().Named<ICommand>("getmostplayedsport");
 

@@ -67,7 +67,9 @@ namespace SportscardSystem.Logic.Services
 
         public IClientDto GetMostActiveClient()
         {
-            var mostActiveClient = this.dbContext.Clients.Where(c => !c.IsDeleted).OrderByDescending(c => c.Visits.Count()).ThenBy(c => c.FirstName).FirstOrDefault();
+            var mostActiveClient = this.dbContext.Clients.Where(c => !c.IsDeleted)
+                .OrderByDescending(c => c.Visits.Where(v => !v.IsDeleted).Count())
+                .ThenBy(c => c.FirstName).FirstOrDefault();
             Guard.WhenArgument(mostActiveClient, "Most active client can not be null!").IsNull().Throw();
 
             var mostActiveClientDto = this.mapper.Map<ClientDto>(mostActiveClient);
