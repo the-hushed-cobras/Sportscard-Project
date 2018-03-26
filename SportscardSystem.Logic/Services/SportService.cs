@@ -52,15 +52,17 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<ISportDto> GetAllSports()
         {
-            var allSports = dbContext.Sports.Where(s => !s.IsDeleted).ProjectTo<SportDto>().ToList();
+            var allSports = dbContext.Sports?.Where(s => !s.IsDeleted);
             Guard.WhenArgument(allSports, "AllSports can not be null").IsNull().Throw();
 
-            return allSports;
+            var allSportsDto = allSports.ProjectTo<SportDto>().ToList();
+
+            return allSportsDto;
         }
 
         public ISportDto GetMostPlayedSport()
         {
-            var mostPlayedSport = dbContext.Sports.Where(s => !s.IsDeleted)
+            var mostPlayedSport = dbContext.Sports?.Where(s => !s.IsDeleted)
                 .OrderByDescending(s => s.Visits.Where(v => !v.IsDeleted).Count()).ThenBy(s => s.Name).FirstOrDefault();
             Guard.WhenArgument(mostPlayedSport, "Most played sport can not be null!").IsNull().Throw();
 
@@ -76,7 +78,7 @@ namespace SportscardSystem.Logic.Services
 
             var fromDate = DateTime.Parse(date);
 
-            var sportVisits = this.dbContext.Visits
+            var sportVisits = this.dbContext.Visits?
                 .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
             Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
 

@@ -80,9 +80,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClientServiceTests\AddClient_Should.cs" />
+    <Compile Include="Services\ClientServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\ClientServiceTests\GetAllClients_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\AddCompany_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\GetAllCompanies_Should.cs" />
+    <Compile Include="Services\SportscardServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\SportscardServiceTests\AddSportscard_Should.cs" />
+    <Compile Include="Services\SportscardServiceTests\GetAllSportscards_Should.cs" />
+    <Compile Include="Services\SportServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\SportServiceTests\AddSport_Should.cs" />
+    <Compile Include="Services\SportServiceTests\GetAllSports_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\GetAllSportshalls_Should.cs" />
+    <Compile Include="Services\VisitServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\VisitServiceTests\AddVisit_Should.cs" />
+    <Compile Include="Services\VisitServiceTests\GetAllVisits_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
