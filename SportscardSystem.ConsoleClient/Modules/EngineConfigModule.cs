@@ -3,6 +3,7 @@ using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
+using SportscardSystem.ConsoleClient.Commands.GetMost;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
@@ -37,6 +38,9 @@ namespace SportscardSystem.ConsoleClient.Modules
             
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
+
+            //Registering get most commands
+            builder.RegisterType<GetMostPlayedSportCommand>().Named<ICommand>("getmostplayedsport");
 
             //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");

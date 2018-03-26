@@ -59,7 +59,8 @@ namespace SportscardSystem.Logic.Services
 
         public ISportDto GetMostPlayedSport()
         {
-            var mostPlayedSport = dbContext.Sports.Where(s => !s.IsDeleted).OrderByDescending(s => s.Visits.Count()).ThenBy(s => s.Name).FirstOrDefault();
+            var mostPlayedSport = dbContext.Sports.Where(s => !s.IsDeleted)
+                .OrderByDescending(s => s.Visits.Where(v => !v.IsDeleted).Count()).ThenBy(s => s.Name).FirstOrDefault();
             Guard.WhenArgument(mostPlayedSport, "Most played sport can not be null!").IsNull().Throw();
 
             var mostPlayedSportDto = this.mapper.Map<SportDto>(mostPlayedSport);
