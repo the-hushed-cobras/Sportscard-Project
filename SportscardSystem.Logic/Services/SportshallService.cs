@@ -8,6 +8,7 @@ using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -42,6 +43,7 @@ namespace SportscardSystem.Logic.Services
                 throw new ArgumentException("A sporthall with the same name already exists!");
             }
         }
+
         //To be implemented
         public void DeleteSportshall(ISportshallDto sportshallDto)
         {
@@ -75,6 +77,22 @@ namespace SportscardSystem.Logic.Services
             }
 
             return sportscardsDecoded;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportshallVisitsFrom(string sportshallName, string date)
+        {
+            Guard.WhenArgument(sportshallName, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
+
+            var fromDate = DateTime.Parse(date);
+
+            var sportshallVisits = this.dbContext.Visits
+                .Where(v => !v.IsDeleted && v.Sportshall.Name == sportshallName && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+
+            var sportshallVisitsDto = sportshallVisits.ProjectTo<VisitViewDto>().ToList();
+
+            return sportshallVisitsDto;
         }
     }
 }

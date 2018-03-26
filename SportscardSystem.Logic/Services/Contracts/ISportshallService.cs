@@ -35,5 +35,13 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <returns></returns>
         ISportshallDto GetMostVisitedSportshall();
+
+        /// <summary>
+        /// Gets all sportshall visits from the given date
+        /// </summary>
+        /// <param name="sportshallName">Sportshall's name</param>
+        /// <param name="date">Date from which we track visits</param>
+        /// <returns></returns>
+        IEnumerable<IVisitViewDto> GetSportshallVisitsFrom(string sportshallName, string date); 
     }
 }

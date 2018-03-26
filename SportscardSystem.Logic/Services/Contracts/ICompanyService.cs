@@ -30,5 +30,12 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <returns></returns>
         ICompanyDto GetMostActiveCompany();
+
+        /// <summary>
+        /// Gets the most favourite sportshall for a given company.
+        /// </summary>
+        /// <param name="companyName">Company's name</param>
+        /// <returns></returns>
+        ISportshallDto GetCompanysFavouriteSportshall(string companyName);
     }
 }

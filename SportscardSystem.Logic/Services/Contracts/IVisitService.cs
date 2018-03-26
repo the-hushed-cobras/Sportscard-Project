@@ -31,5 +31,13 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// <param name="lastName">Client's last name</param>
         /// <returns></returns>
         IEnumerable<IVisitViewDto> GetVisitsByClient(string firstName, string lastName);
+
+        /// <summary>
+        /// Gets all visits for the following date
+        /// </summary>
+        /// <param name="date">Visit's date</param>
+        /// <returns></returns>
+        IEnumerable<IVisitViewDto> GetVisitsByDate(string date);
+
     }
 }

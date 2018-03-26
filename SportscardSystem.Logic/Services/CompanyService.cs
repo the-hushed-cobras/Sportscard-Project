@@ -88,11 +88,15 @@ namespace SportscardSystem.Logic.Services
             }
         }
 
+        public ISportshallDto GetCompanysFavouriteSportshall(string companyName)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICompanyDto GetMostActiveCompany()
         {
             var mostActiveCompany = dbContext.Companies.Where(c => !c.IsDeleted)
-                .OrderByDescending(c => c.Clients.Where(cl => !cl.IsDeleted)
-                .Sum(cl => cl.Visits.Where(v => !v.IsDeleted).Count()))
+                .OrderByDescending(c => c.Clients.Where(cl => !cl.IsDeleted).Sum(cl => cl.Visits.Where(v => !v.IsDeleted).Count()))
                 .ThenBy(c => c.Name).FirstOrDefault();
             Guard.WhenArgument(mostActiveCompany, "Most active company can not be null!").IsNull().Throw();
 

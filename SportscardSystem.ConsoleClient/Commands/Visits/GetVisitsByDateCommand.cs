@@ -3,19 +3,17 @@ using SportscardSystem.ConsoleClient.Commands.Abstract;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SportscardSystem.ConsoleClient.Commands.Visits
 {
-    public class GetVisitsByClientCommand : Command, ICommand
+    public class GetVisitsByDateCommand : Command, ICommand
     {
         private readonly IVisitService visitService;
 
-        public GetVisitsByClientCommand(ISportscardFactory sportscardFactory, IVisitService visitService) 
+        public GetVisitsByDateCommand(ISportscardFactory sportscardFactory, IVisitService visitService)
             : base(sportscardFactory)
         {
             Guard.WhenArgument(visitService, "Visit service can not be null!").IsNull().Throw();
@@ -24,28 +22,25 @@ namespace SportscardSystem.ConsoleClient.Commands.Visits
 
         public string Execute(IList<string> parameters)
         {
-            var firstName = parameters[0];
-            var lastName = parameters[1];
+            var visitDate = parameters[0];
+            Guard.WhenArgument(visitDate, "Visit date can not be null!").IsNullOrEmpty().Throw();
 
-            Guard.WhenArgument(firstName, "First name can not be null!").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(lastName, "Last name can not be null!").IsNullOrEmpty().Throw();
+            var allVisits = visitService.GetVisitsByDate(visitDate);
+            Guard.WhenArgument(allVisits, "All visits can not be null!").IsNull().Throw();
 
-            var clientVisits = visitService.GetVisitsByClient(firstName.ToLower(), lastName.ToLower());
-            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNull().Throw();
-
-            if (clientVisits.Count() == 0)
+            if (allVisits.Count() == 0)
             {
-                return $"{firstName} {lastName} does not have any visits yet.";
+                return $"There isn't any visits for {visitDate}.";
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine($"{firstName} {lastName}'s visits:");
+            sb.AppendLine($"All visits for {visitDate}:");
 
             var counter = 1;
 
-            foreach (var visit in clientVisits)
+            foreach (var visit in allVisits)
             {
-                sb.Append($"{counter}. Visit date: {visit.CreatedOn.ToShortDateString()}; ");
+                sb.Append($"{counter}. Client name: {visit.ClientFirstName} {visit.ClientLastName}; ");
                 sb.Append($"Sportshall name: {visit.SportshallName}; ");
                 sb.AppendLine($"Sport name: {visit.SportName}");
 

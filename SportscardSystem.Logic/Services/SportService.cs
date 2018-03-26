@@ -8,6 +8,7 @@ using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace SportscardSystem.Logic.Services
@@ -66,6 +67,22 @@ namespace SportscardSystem.Logic.Services
             var mostPlayedSportDto = this.mapper.Map<SportDto>(mostPlayedSport);
 
             return mostPlayedSportDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportVisitsFrom(string sportName, string date)
+        {
+            Guard.WhenArgument(sportName, "Sport name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
+
+            var fromDate = DateTime.Parse(date);
+
+            var sportVisits = this.dbContext.Visits
+                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
+
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
+
+            return sportVisitsDto;
         }
     }
 }
