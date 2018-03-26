@@ -77,6 +77,11 @@ namespace SportscardSystem.Logic.Services
             return mostActiveClientDto;
         }
 
+        public IClientDto GetClientsMostFavouriteSport(string firstName, string lastName)
+        {
+            throw new NotImplementedException();
+        }
+
         public Guid GetCompanyGuidByName(string companyName)
         {
             Guid result;
