@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SportscardSystem.Data;
 using SportscardSystem.Data.Contracts;
+using SportscardSystem.DTO;
 using SportscardSystem.Logic.Services;
 using SportscardSystem.Models;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using SportscardSystem.DTO;
-using System.Linq.Expressions;
-using SportscardSystem.Data;
+using System.Linq;
 
 namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
 {
