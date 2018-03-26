@@ -5,6 +5,7 @@ using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
 using SportscardSystem.ConsoleClient.Commands.GetMost;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
+using SportscardSystem.ConsoleClient.Commands.Visits;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories;
@@ -54,7 +55,8 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
             builder.RegisterType<DeleteSportscardCommand>().Named<ICommand>("deletesportscard");
 
-
+            //Registering visits commands
+            builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
 
 
             base.Load(builder);
