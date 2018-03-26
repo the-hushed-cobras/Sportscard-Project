@@ -2,10 +2,11 @@
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Models;
 using System;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.DTO
 {
-    public class SportDto : ISportDto, IMapFrom<Sport>
+    public class SportDto :  ISportDto, IMapFrom<Sport>
     {
         public Guid Id { get; set; }
 

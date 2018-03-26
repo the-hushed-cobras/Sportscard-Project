@@ -2,10 +2,11 @@
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Models;
 using System;
+using SportscardSystem.Models.Contracts;
 
 namespace SportscardSystem.DTO
 {
-    public class CompanyDto : ICompanyDto, IMapFrom<Company>
+    public class CompanyDto : AuditInfo, ICompanyDto, IMapFrom<Company>
     {
         public Guid Id { get; set; }
 
