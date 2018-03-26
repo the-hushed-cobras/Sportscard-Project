@@ -23,5 +23,13 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <param name="visit"></param>
         void DeleteVisit(Guid visitId);
+
+        /// <summary>
+        /// Gets client's visits by his name
+        /// </summary>
+        /// <param name="firstName">Client's first name</param>
+        /// <param name="lastName">Client's last name</param>
+        /// <returns></returns>
+        IEnumerable<IVisitViewDto> GetVisitsByClient(string firstName, string lastName);
     }
 }
