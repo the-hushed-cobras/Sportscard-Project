@@ -25,7 +25,7 @@ namespace SportscardSystem.ConsoleClient.Commands.FromAndTo
             var sportshallName = parameters[0];
             var fromDate = parameters[1];
 
-            var sportshallVisits = sportshallService.GetSportshallVisitsFrom(sportshallName, fromDate);
+            var sportshallVisits = sportshallService.GetSportshallVisitsFrom(sportshallName.ToLower(), fromDate.ToLower());
             Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
 
             if (sportshallVisits.Count() == 0)

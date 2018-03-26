@@ -29,5 +29,13 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <returns></returns>
         ISportDto GetMostPlayedSport();
+
+        /// <summary>
+        /// Gets all visits for the given sports from the given date until today
+        /// </summary>
+        /// <param name="sportName">Sport's name</param>
+        /// <param name="fromDate">Date from which we track sport visits</param>
+        /// <returns></returns>
+        IEnumerable<IVisitViewDto> GetSportVisitsFrom(string sportName, string fromDate);
     }
 }
