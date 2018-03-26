@@ -114,5 +114,41 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             //Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => companyService.AddCompany(companyDto));
         }
+
+        [TestMethod]
+        public void ThrowsArgumentException_WhenCompanyWithTheSameNameAlreadyExists()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+            var expectedCompany = new Company() { Name = "Company1" };
+
+            var data = new List<Company>
+            {
+                new Company { Name = "Company1" },
+                new Company { Name = "Company2" },
+                new Company { Name = "Company3" },
+            };
+
+            var mockSet = new Mock<DbSet<Company>>();
+
+            mockSet.SetupData(data);
+            mockSet.Setup(m => m.Add(It.IsAny<Company>()));
+
+            dbContextMock
+                .Setup(x => x.Companies)
+                .Returns(mockSet.Object);
+
+            var companyDto = new CompanyDto() { Name = "Company1" };
+
+            mapperMock
+                .Setup(x => x.Map<Company>(companyDto))
+                .Returns(expectedCompany);
+
+            var companyService = new CompanyService(dbContextMock.Object, mapperMock.Object);
+
+            //Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => companyService.AddCompany(companyDto));
+        }
     }
 }

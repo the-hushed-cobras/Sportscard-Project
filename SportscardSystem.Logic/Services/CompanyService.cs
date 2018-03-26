@@ -54,7 +54,7 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteCompany(string companyName)
         {
-            var company = this.dbContext.Companies.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
+            var company = this.dbContext.Companies?.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
             Guard.WhenArgument(company, "There is no such company!").IsNull().Throw();
 
             company.IsDeleted = true;
@@ -79,8 +79,12 @@ namespace SportscardSystem.Logic.Services
         {
             try
             {
-                var allCompanies = dbContext.Companies.Where(c => !c.IsDeleted).ProjectTo<CompanyDto>().ToList();
-                return allCompanies;
+                var allCompanies = dbContext.Companies?.Where(c => !c.IsDeleted);
+                Guard.WhenArgument(allCompanies, "All Companies can not be null!").IsNull().Throw();
+
+                var allCompaniesDto = allCompanies.ProjectTo<CompanyDto>().ToList();
+
+                return allCompaniesDto;
             }
             catch (NullReferenceException)
             {
@@ -95,7 +99,7 @@ namespace SportscardSystem.Logic.Services
 
         public ICompanyDto GetMostActiveCompany()
         {
-            var mostActiveCompany = dbContext.Companies.Where(c => !c.IsDeleted)
+            var mostActiveCompany = dbContext.Companies?.Where(c => !c.IsDeleted)
                 .OrderByDescending(c => c.Clients.Where(cl => !cl.IsDeleted).Sum(cl => cl.Visits.Where(v => !v.IsDeleted).Count()))
                 .ThenBy(c => c.Name).FirstOrDefault();
             Guard.WhenArgument(mostActiveCompany, "Most active company can not be null!").IsNull().Throw();

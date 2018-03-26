@@ -47,7 +47,7 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteSportscard(string firstName, string lastName, string companyName)
         {
-            var sportscard = this.dbContext.Sportscards.Where(s => !s.IsDeleted)
+            var sportscard = this.dbContext.Sportscards?.Where(s => !s.IsDeleted)
                 .FirstOrDefault(v => v.Client.FirstName + v.Client.LastName == firstName + lastName && v.Company.Name == companyName);
 
             sportscard.IsDeleted = true;
@@ -58,21 +58,23 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<ISportscardDto> GetAllSportscards()
         {
-            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>().ToList();
+            var allSportscards = dbContext.Sportscards?.Where(s => !s.IsDeleted);
             Guard.WhenArgument(allSportscards, "AllSportscards can not be null").IsNull().Throw();
 
-            return allSportscards;
+            var allsportscardsDto = allSportscards.ProjectTo<SportscardDto>().ToList();
+
+            return allsportscardsDto;
         }
 
         public IEnumerable<ISportscardViewDto> GetReport()
         {
-            var allSportscards = dbContext.Sportscards.ProjectTo<SportscardDto>().ToList();
+            var allSportscards = dbContext.Sportscards?.ProjectTo<SportscardDto>().ToList();
             var sportscardsDecoded = new List<ISportscardViewDto>();
 
             foreach (var sportscard in allSportscards)
             {
-                var clientName = $"{dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} {dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
-                var companyName = dbContext.Companies.FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
+                var clientName = $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} {dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
+                var companyName = dbContext.Companies?.FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
 
                 sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
             }
