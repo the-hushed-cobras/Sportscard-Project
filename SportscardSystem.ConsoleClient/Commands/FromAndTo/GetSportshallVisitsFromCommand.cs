@@ -25,12 +25,15 @@ namespace SportscardSystem.ConsoleClient.Commands.FromAndTo
             var sportshallName = parameters[0];
             var fromDate = parameters[1];
 
+            Guard.WhenArgument(sportshallName, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(fromDate, "From date can not be null!").IsNullOrEmpty().Throw();
+
             var sportshallVisits = sportshallService.GetSportshallVisitsFrom(sportshallName.ToLower(), fromDate.ToLower());
             Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
 
             if (sportshallVisits.Count() == 0)
             {
-                return $"There isn't any visits in {sportshallName} from {fromDate} till today.";
+                return $"There isn't any visits in {sportshallName} from {fromDate} till today's date.";
             }
 
             var sb = new StringBuilder();
