@@ -26,8 +26,9 @@ namespace SportscardSystem.Client
 
             //var clientService = new ClientService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
             //var companyService = new CompanyService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
+            //var sportService = new SportService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
 
-            //companyService.GetMostActiveCompany();
+            //sportService.GetMostPlayedSport();
 
             var engine = container.Resolve<IEngine>();
 
