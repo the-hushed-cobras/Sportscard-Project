@@ -3,6 +3,7 @@ using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
+using SportscardSystem.ConsoleClient.Commands.FromAndTo;
 using SportscardSystem.ConsoleClient.Commands.GetMost;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Commands.Visits;
@@ -58,6 +59,9 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering visits commands
             builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
             builder.RegisterType<GetVisitsByDateCommand>().Named<ICommand>("getvisitsbydate");
+
+            //Registering from and to commands
+            builder.RegisterType<GetSportshallVisitsFromCommand>().Named<ICommand>("getsportshallvisitsfrom");
 
 
             base.Load(builder);
