@@ -72,6 +72,7 @@
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Delete\DeleteCompanyCommand.cs" />
     <Compile Include="Commands\Delete\DeleteSportscardCommand.cs" />
+    <Compile Include="Commands\Delete\DeleteSportshallCommand.cs" />
     <Compile Include="Commands\Delete\DeleteVisitCommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportscardsTableCommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportshallsTableCommand.cs" />

@@ -22,7 +22,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified sportshall from the database 
         /// </summary>
         /// <param name="sportshall"></param>
-        void DeleteSportshall(ISportshallDto sportshall);
+        void DeleteSportshall(string sportshallName);
 
         /// <summary>
         /// Gets all sportscards with their client and company names
