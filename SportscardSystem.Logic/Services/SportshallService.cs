@@ -45,9 +45,28 @@ namespace SportscardSystem.Logic.Services
         }
 
         //To be implemented
-        public void DeleteSportshall(ISportshallDto sportshallDto)
+        public void DeleteSportshall(string sportshallName)
         {
-            throw new NotImplementedException();
+            var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted)
+                .FirstOrDefault(v => v.Name == sportshallName);
+
+            Guard.WhenArgument(sportshall, "The are no sportshall with this name.").IsNull().Throw();
+
+            sportshall.IsDeleted = true;
+            sportshall.DeletedOn = DateTime.Now;
+
+            foreach (var sport in sportshall.Sports)
+            {
+                sport.IsDeleted = true;
+                sport.DeletedOn = DateTime.Now;
+            }
+            foreach (var visit in sportshall.Visits)
+            {
+                visit.IsDeleted = true;
+                visit.DeletedOn = DateTime.Now;
+            }
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ISportshallDto> GetAllSportshalls()
