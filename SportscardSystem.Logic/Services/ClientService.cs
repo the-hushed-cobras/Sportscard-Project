@@ -35,7 +35,7 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteClient(string firstName, string lastName, int? age)
         {
-            var client = this.dbContext.Clients.FirstOrDefault(x => !x.IsDeleted && x.Age == age && x.FirstName == firstName && x.LastName == lastName);
+            var client = this.dbContext.Clients?.FirstOrDefault(x => !x.IsDeleted && x.Age == age && x.FirstName == firstName && x.LastName == lastName);
             Guard.WhenArgument(client, "There is no client with this params").IsNull().Throw();
 
             client.IsDeleted = true;
@@ -58,16 +58,17 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<IClientDto> GetAllClients()
         {
-            var allClients = this.dbContext.Clients.Where(c => !c.IsDeleted).ProjectTo<ClientDto>().ToList();
+            var allClients = this.dbContext.Clients?.Where(c => !c.IsDeleted);
             Guard.WhenArgument(allClients, "AllClients can not be null").IsNull().Throw();
 
-            Console.WriteLine("test");
-            return allClients;
+            var allClientDto = allClients.ProjectTo<ClientDto>().ToList();
+
+            return allClientDto;
         }
 
         public IClientDto GetMostActiveClient()
         {
-            var mostActiveClient = this.dbContext.Clients.Where(c => !c.IsDeleted)
+            var mostActiveClient = this.dbContext.Clients?.Where(c => !c.IsDeleted)
                 .OrderByDescending(c => c.Visits.Where(v => !v.IsDeleted).Count())
                 .ThenBy(c => c.FirstName).FirstOrDefault();
             Guard.WhenArgument(mostActiveClient, "Most active client can not be null!").IsNull().Throw();

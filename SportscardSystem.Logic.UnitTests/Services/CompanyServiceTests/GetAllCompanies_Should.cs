@@ -17,7 +17,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
     public class GetAllCompanies_Should
     {
         [TestMethod]
-        public void ReturnIQueryableOfCompaniesDto_WhenCollectionIsNotNull()
+        public void ReturnIEnumerableOfCompaniesDto_WhenCollectionIsNotNull()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -48,11 +48,11 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             //Assert
             Assert.AreEqual(data.Count, companies.Count());
             Assert.IsNotNull(companies);
-            Assert.IsInstanceOfType(companies, typeof(IQueryable<ICompanyDto>));
+            Assert.IsInstanceOfType(companies, typeof(IEnumerable<ICompanyDto>));
         }
 
         [TestMethod]
-        public void ThrowNullArgumentException_WhenCompaniesIsNull()
+        public void ThrowArgumentNullException_WhenCompaniesIsNull()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -78,7 +78,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             var companyService = new CompanyService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<NullReferenceException>(() => companyService.GetAllCompanies());
+            Assert.ThrowsException<ArgumentNullException>(() => companyService.GetAllCompanies());
         }
     }
 }
