@@ -22,7 +22,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified visit from the database by its id
         /// </summary>
         /// <param name="visit"></param>
-        void DeleteVisit(Guid visitId);
+        void DeleteVisit(Guid? visitId);
 
         /// <summary>
         /// Gets client's visits by his name

@@ -1,5 +1,6 @@
 ﻿using SportscardSystem.Data.Contracts;
 using SportscardSystem.Models;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -9,6 +10,12 @@ namespace SportscardSystem.Data
     {
         public SportscardSystemDbContext()
             : base("name=SportscardSystem")
+        {
+
+        }
+
+        public SportscardSystemDbContext(DbConnection connection)
+            : base(connection, true)
         {
 
         }

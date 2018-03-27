@@ -47,8 +47,13 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteSportscard(string firstName, string lastName, string companyName)
         {
+            Guard.WhenArgument(firstName, "First name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(lastName, "Last name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(companyName, "Company name can not be null!").IsNullOrEmpty().Throw();
+
             var sportscard = this.dbContext.Sportscards?.Where(s => !s.IsDeleted)
                 .FirstOrDefault(v => v.Client.FirstName + v.Client.LastName == firstName + lastName && v.Company.Name == companyName);
+            Guard.WhenArgument(sportscard, "Sportscard can not be null!").IsNull().Throw();
 
             sportscard.IsDeleted = true;
             sportscard.DeletedOn = DateTime.Now;

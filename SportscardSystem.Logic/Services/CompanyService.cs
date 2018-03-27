@@ -54,6 +54,8 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteCompany(string companyName)
         {
+            Guard.WhenArgument(companyName, "Company name can not be null!").IsNullOrEmpty().Throw();
+
             var company = this.dbContext.Companies?.FirstOrDefault(c => !c.IsDeleted && c.Name == companyName);
             Guard.WhenArgument(company, "There is no such company!").IsNull().Throw();
 
