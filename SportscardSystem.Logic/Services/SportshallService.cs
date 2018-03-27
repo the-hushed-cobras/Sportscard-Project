@@ -55,18 +55,18 @@ namespace SportscardSystem.Logic.Services
             sportshall.IsDeleted = true;
             sportshall.DeletedOn = DateTime.Now;
 
-            foreach (var sport in sportshall.Sports)
-            {
-                sportshall.Sports.Remove(sport);
-                //sport.IsDeleted = true;
-                //sport.DeletedOn = DateTime.Now;
-            }
-            foreach (var visit in sportshall.Visits)
-            {
-                sportshall.Visits.Remove(visit);
-                //visit.IsDeleted = true;
-                //visit.DeletedOn = DateTime.Now;
-            }
+            //foreach (var sport in sportshall.Sports)
+            //{
+            //    //sportshall.Sports.Remove(sport);
+            //    sport.IsDeleted = true;
+            //    sport.DeletedOn = DateTime.Now;
+            //}
+            //foreach (var visit in sportshall.Visits)
+            //{
+            //    //sportshall.Visits.Remove(visit);
+            //    visit.IsDeleted = true;
+            //    visit.DeletedOn = DateTime.Now;
+            //}
 
             this.dbContext.SaveChanges();
         }
@@ -83,7 +83,14 @@ namespace SportscardSystem.Logic.Services
 
         public ISportshallDto GetMostVisitedSportshall()
         {
-            throw new NotImplementedException();
+            Sportshall sportshall = this.dbContext.Sportshalls?.Where(s => !s.IsDeleted)
+                .OrderByDescending(c => c.Visits.Where(v => !v.IsDeleted).Count())
+                .FirstOrDefault();
+            Guard.WhenArgument(sportshall, "Most visited sportshall can not be null.").IsNull().Throw();
+            Guard.WhenArgument(sportshall.Visits.Where(v => !v.IsDeleted).Count(), "There no sportshall with visits.").IsLessThan(1).Throw();
+            ISportshallDto sportshallDto = this.mapper.Map<SportshallDto>(sportshall);
+
+            return sportshallDto;
         }
 
         public IEnumerable<ISportshallViewDto> GetReport()

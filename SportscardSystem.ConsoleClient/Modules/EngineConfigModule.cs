@@ -47,6 +47,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<GetMostActiveClientCommand>().Named<ICommand>("getmostactiveclient");
             builder.RegisterType<GetMostActiveCompanyCommand>().Named<ICommand>("getmostactivecompany");
             builder.RegisterType<GetMostPlayedSportCommand>().Named<ICommand>("getmostplayedsport");
+            builder.RegisterType<GetMostVisitedSportshallCommand>().Named<ICommand>("getmostvisitedsportshall");
 
             //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");

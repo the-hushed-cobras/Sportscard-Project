@@ -82,6 +82,7 @@
     <Compile Include="Commands\GetMost\GetMostActiveClientCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostActiveCompanyCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostPlayedSportCommand.cs" />
+    <Compile Include="Commands\GetMost\GetMostVisitedSportshallCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByClientCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByDateCommand.cs" />
