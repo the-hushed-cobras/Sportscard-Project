@@ -18,6 +18,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public DeleteSportshallCommand(ISportscardFactory sportscardFactory, ISportshallService sportshallService) : base(sportscardFactory)
         {
+            Guard.WhenArgument(sportscardFactory, "Sportscard Factory can not be null.").IsNull().Throw();
+            Guard.WhenArgument(sportshallService, "SportshallService  can not be null.").IsNull().Throw();
             this.sportshallService = sportshallService;
             this.sportscardFactory = sportscardFactory;
         }

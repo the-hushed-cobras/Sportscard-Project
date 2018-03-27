@@ -38,6 +38,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
             builder.RegisterType<AddSportshallCommand>().Named<ICommand>("addsportshall");
             builder.RegisterType<AddSportCommand>().Named<ICommand>("addsport");
+            builder.RegisterType<AddSportToSportshallCommand>().Named<ICommand>("addsporttosportshall");
 
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");

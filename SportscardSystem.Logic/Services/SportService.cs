@@ -28,14 +28,14 @@ namespace SportscardSystem.Logic.Services
         }
         public void AddSportToSportshall(string sport, string hallName)
         {
-            var sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
+            Sportshall sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
             Guard.WhenArgument(sportshall, "No such sportshall.").IsNull().Throw();
-            var sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
+            Sport sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
             Guard.WhenArgument(sportAtDb, "No such sport at database, please add it :-)").IsNull().Throw();
             if (!(sportshall.Sports.Any(s => s.Name == sportAtDb.Name && s.IsDeleted == true)))
             {
                 Console.WriteLine("Test");
-                sportshall.Sports.Add(sportAtDb);
+                sportshall.Sports.Add(new Sport(){Id = sportAtDb.Id, Name = sportAtDb.Name });
                 this.dbContext.SaveChanges();
             }
             else
