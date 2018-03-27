@@ -16,6 +16,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
     [TestClass]
     public class GetAllVisits_Should
     {
+        [TestMethod]
         public void ReturnIEnumerableOfVisitDto_WhenCollectionIsNotNull()
         {
             //Arrange

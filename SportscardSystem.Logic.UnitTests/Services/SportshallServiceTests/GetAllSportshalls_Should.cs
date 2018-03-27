@@ -16,6 +16,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
     [TestClass]
     public class GetAllSportshalls_Should
     {
+        [TestMethod]
         public void ReturnIEnumerableOfSportshallsDto_WhenCollectionIsNotNull()
         {
             //Arrange
