@@ -73,7 +73,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidFirstNameParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullFirstNameParameter()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -127,7 +127,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidLastNameParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullLastNameParameter()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -181,7 +181,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidCompanyNameParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullCompanyNameParameter()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -232,6 +232,168 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
 
             //Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => sportscardService.DeleteSportscard(client.FirstName, client.LastName, null));
+        }
+
+        [TestMethod]
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptyFirstNameParameter()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+
+            var client = new Client()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
+                FirstName = "Pesho",
+                LastName = "Peshev"
+            };
+
+            var company = new Company()
+            {
+                Id = new Guid("aa992eab-b53c-4f7d-a5f3-a204d560eb93"),
+                Name = "Meka M"
+            };
+
+            var expectedSportscard = new Sportscard()
+            {
+                ClientId = client.Id,
+                CompanyId = company.Id,
+                IsDeleted = true
+            };
+
+            var data = new List<Sportscard>
+            {
+                new Sportscard
+                {
+                    ClientId = client.Id,
+                    Client = client,
+                    CompanyId = company.Id,
+                    Company = company,
+                    IsDeleted = false,
+                    DeletedOn = DateTime.Now.Date
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Sportscard>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Sportscards)
+                .Returns(mockSet.Object);
+
+            var sportscardService = new SportscardService(dbContextMock.Object, mapperMock.Object);
+
+            //Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => sportscardService.DeleteSportscard(string.Empty, client.LastName, company.Name));
+        }
+
+        [TestMethod]
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptyLastNameParameter()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+
+            var client = new Client()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
+                FirstName = "Pesho",
+                LastName = "Peshev"
+            };
+
+            var company = new Company()
+            {
+                Id = new Guid("aa992eab-b53c-4f7d-a5f3-a204d560eb93"),
+                Name = "Meka M"
+            };
+
+            var expectedSportscard = new Sportscard()
+            {
+                ClientId = client.Id,
+                CompanyId = company.Id,
+                IsDeleted = true
+            };
+
+            var data = new List<Sportscard>
+            {
+                new Sportscard
+                {
+                    ClientId = client.Id,
+                    Client = client,
+                    CompanyId = company.Id,
+                    Company = company,
+                    IsDeleted = false,
+                    DeletedOn = DateTime.Now.Date
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Sportscard>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Sportscards)
+                .Returns(mockSet.Object);
+
+            var sportscardService = new SportscardService(dbContextMock.Object, mapperMock.Object);
+
+            //Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => sportscardService.DeleteSportscard(client.FirstName, string.Empty, company.Name));
+        }
+
+        [TestMethod]
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptyCompanyNameParameter()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+
+            var client = new Client()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
+                FirstName = "Pesho",
+                LastName = "Peshev"
+            };
+
+            var company = new Company()
+            {
+                Id = new Guid("aa992eab-b53c-4f7d-a5f3-a204d560eb93"),
+                Name = "Meka M"
+            };
+
+            var expectedSportscard = new Sportscard()
+            {
+                ClientId = client.Id,
+                CompanyId = company.Id,
+                IsDeleted = true
+            };
+
+            var data = new List<Sportscard>
+            {
+                new Sportscard
+                {
+                    ClientId = client.Id,
+                    Client = client,
+                    CompanyId = company.Id,
+                    Company = company,
+                    IsDeleted = false,
+                    DeletedOn = DateTime.Now.Date
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Sportscard>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Sportscards)
+                .Returns(mockSet.Object);
+
+            var sportscardService = new SportscardService(dbContextMock.Object, mapperMock.Object);
+
+            //Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => sportscardService.DeleteSportscard(client.FirstName, client.LastName, string.Empty));
         }
 
         [TestMethod]
