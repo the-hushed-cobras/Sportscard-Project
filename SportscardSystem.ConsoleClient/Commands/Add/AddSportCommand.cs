@@ -24,11 +24,14 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "Count of the parameters.").IsNotEqual(1).Throw();
+
             string name;
 
             try
             {
                 name = parameters[0];
+               
             }
             catch 
             {

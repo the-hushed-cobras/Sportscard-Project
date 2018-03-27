@@ -20,7 +20,7 @@ namespace SportscardSystem.ConsoleClient.Core.Factories
 
         public ISportDto CreateSportDto(string name)
         {
-            return new SportDto() { Name = name };
+            return new SportDto() { Name = name};
         }
 
         public ISportscardDto CreateSportscardDto(Guid clientId, Guid companyId)

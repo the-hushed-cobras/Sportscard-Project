@@ -33,7 +33,7 @@ namespace SportscardSystem.Logic.Services
 
             var sportshallToAdd = this.mapper.Map<Sportshall>(sportshallDto);
 
-            if (!this.dbContext.Sportshalls.Any(s => s.Name == sportshallDto.Name))
+            if (!this.dbContext.Sportshalls.Any(s => s.Name == sportshallDto.Name && !s.IsDeleted))
             {
                 this.dbContext.Sportshalls.Add(sportshallToAdd);
                 this.dbContext.SaveChanges();

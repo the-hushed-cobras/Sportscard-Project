@@ -16,7 +16,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Adds a new sport to the database
         /// </summary>
         /// <param name="sport"></param>
-        void AddSport(ISportDto sport);
+        void AddSport(ISportDto sportDto);
 
         /// <summary>
         /// Deletes a specified sport from the database 
