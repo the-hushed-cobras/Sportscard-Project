@@ -14,7 +14,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
     public class DeleteCompany_Should
     {
         [TestMethod]
-        public void InvokeSaveChangesMethod_WhenSportscardWithTheSameClientNameAndCompanyExists()
+        public void InvokeSaveChangesMethod_WhenSportscardWithCompanyNameThatExists()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
