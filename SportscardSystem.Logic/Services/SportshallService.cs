@@ -57,13 +57,15 @@ namespace SportscardSystem.Logic.Services
 
             foreach (var sport in sportshall.Sports)
             {
-                sport.IsDeleted = true;
-                sport.DeletedOn = DateTime.Now;
+                sportshall.Sports.Remove(sport);
+                //sport.IsDeleted = true;
+                //sport.DeletedOn = DateTime.Now;
             }
             foreach (var visit in sportshall.Visits)
             {
-                visit.IsDeleted = true;
-                visit.DeletedOn = DateTime.Now;
+                sportshall.Visits.Remove(visit);
+                //visit.IsDeleted = true;
+                //visit.DeletedOn = DateTime.Now;
             }
 
             this.dbContext.SaveChanges();
