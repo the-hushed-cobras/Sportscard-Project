@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportscardSystem.ConsoleClient.Core;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
+using System;
 
 namespace SportscardSystem.ConsoleClient.UnitTests.Core.EngineTests
 {
