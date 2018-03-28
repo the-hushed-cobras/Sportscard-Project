@@ -124,5 +124,27 @@ namespace SportscardSystem.Logic.Services
 
             return sportshallVisitsDto;
         }
+
+        public IEnumerable<IVisitViewDto> GetSportshallVisitFromTo (string sportshallName, string fromDate, string toDate)
+        {
+            Guard.WhenArgument(sportshallName, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(fromDate, "Date from can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(toDate, "Date to from can not be null!").IsNullOrEmpty().Throw();
+
+            var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted && s.Name.ToLower() == sportshallName.ToLower()).FirstOrDefault();
+            Guard.WhenArgument(sportshall, "There are no sportshall with this name.").IsNull().Throw();
+
+            var fromDateParse = DateTime.Parse(fromDate);
+            var toDateParse = DateTime.Parse(toDate);
+
+            var sportshallVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower() && 
+                DbFunctions.TruncateTime(v.CreatedOn) >= fromDateParse.Date && DbFunctions.TruncateTime(v.CreatedOn) <= toDateParse.Date);
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+
+            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
+
+            return sportshallVisitsDto;
+        }
     }
 }
