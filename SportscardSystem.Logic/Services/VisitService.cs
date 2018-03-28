@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
 using SportscardSystem.Data.Contracts;
@@ -6,11 +10,6 @@ using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Linq;
 
 namespace SportscardSystem.Logic.Services
 {
@@ -89,6 +88,19 @@ namespace SportscardSystem.Logic.Services
 
             var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
             Guard.WhenArgument(visits, "Visits can not be null!").IsNull().Throw();
+
+            var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
+
+            return visitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetVisitsBySportshall(string sportshall)
+        {
+            var sporthall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted && s.Name.ToLower() == sportshall.ToLower()).FirstOrDefault();
+            Guard.WhenArgument(sporthall, "There are no sportshall with this name").IsNull().Throw();
+
+            var visits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sporthall.Name.ToLower());
 
             var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
 
