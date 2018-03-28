@@ -38,7 +38,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
                 IsDeleted = false,
                 Sport = new Sport() { Name = "Gym" },
                 Sportshall = new Sportshall() { Name = "Topfit" },
-                CreatedOn = DateTime.Now.Date
+                CreatedOn = DateTime.Parse("2018-03-28")
             };
 
             var data = new List<Visit>
@@ -54,7 +54,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
                     IsDeleted = false,
                     Sport = new Sport() { Name = "Yoga" },
                     Sportshall = new Sportshall() { Name = "Pulse" },
-                    CreatedOn = DateTime.Now.AddDays(-1)
+                    CreatedOn = DateTime.Parse("2018-03-27")
                 }
             };
 

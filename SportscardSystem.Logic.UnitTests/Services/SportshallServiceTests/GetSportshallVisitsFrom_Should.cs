@@ -411,7 +411,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 IsDeleted = false,
                 Sport = new Sport() { Name = "Gym" },
                 Sportshall = new Sportshall() { Name = "Topfit" },
-                CreatedOn = DateTime.Now.Date
+                CreatedOn = DateTime.Parse("2018-03-27")
             };
 
             var data = new List<Visit>
@@ -427,7 +427,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                     IsDeleted = false,
                     Sport = new Sport() { Name = "Yoga" },
                     Sportshall = new Sportshall() { Name = "Topfit" },
-                    CreatedOn = DateTime.Now.AddDays(-1)
+                    CreatedOn = DateTime.Parse("2018-03-28")
                 },
                 new Visit()
                 {
@@ -440,7 +440,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                     IsDeleted = false,
                     Sport = new Sport() { Name = "Boxing" },
                     Sportshall = new Sportshall() { Name = "Topfit" },
-                    CreatedOn = DateTime.Now.AddDays(-10)
+                    CreatedOn = DateTime.Parse("2018-02-28")
                 }
             };
 
@@ -485,7 +485,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 IsDeleted = false,
                 Sport = new Sport() { Name = "Gym" },
                 Sportshall = new Sportshall() { Name = "Topfit" },
-                CreatedOn = DateTime.Now.Date
+                CreatedOn = DateTime.Parse("2018-03-28")
             };
 
             var data = new List<Visit>
@@ -501,7 +501,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                     IsDeleted = false,
                     Sport = new Sport() { Name = "Yoga" },
                     Sportshall = new Sportshall() { Name = "Topfit" },
-                    CreatedOn = DateTime.Now.AddDays(-1)
+                    CreatedOn = DateTime.Parse("2018-03-27")
                 },
                 new Visit()
                 {
