@@ -2,11 +2,8 @@
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportscardSystem.ConsoleClient.Core.Providers
 {
