@@ -44,5 +44,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         Guid GetSportshallGuidByName(string sportshallName);
 
         Guid GetSportGuidByName(string sportName);
+
+        IEnumerable<IVisitViewDto> GetVisitsBySport(string sport);
     }
 }

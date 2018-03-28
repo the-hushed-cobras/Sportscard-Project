@@ -48,41 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ISportscardSystemDbContext.cs" />
-    <Compile Include="Migrations\201803151446543_GuidTest.cs" />
-    <Compile Include="Migrations\201803151446543_GuidTest.Designer.cs">
-      <DependentUpon>201803151446543_GuidTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191302327_AuditionInfo Test.cs" />
-    <Compile Include="Migrations\201803191302327_AuditionInfo Test.Designer.cs">
-      <DependentUpon>201803191302327_AuditionInfo Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191308482_AuditionInfo Test1.cs" />
-    <Compile Include="Migrations\201803191308482_AuditionInfo Test1.Designer.cs">
-      <DependentUpon>201803191308482_AuditionInfo Test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191322090_DateTimeTest.cs" />
-    <Compile Include="Migrations\201803191322090_DateTimeTest.Designer.cs">
-      <DependentUpon>201803191322090_DateTimeTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191339098_Audit Info were added.cs" />
-    <Compile Include="Migrations\201803191339098_Audit Info were added.Designer.cs">
-      <DependentUpon>201803191339098_Audit Info were added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191715507_Test3.cs" />
-    <Compile Include="Migrations\201803191715507_Test3.Designer.cs">
-      <DependentUpon>201803191715507_Test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803191718587_Test4.cs" />
-    <Compile Include="Migrations\201803191718587_Test4.Designer.cs">
-      <DependentUpon>201803191718587_Test4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803192239339_AuditInfo were added and setuped.cs" />
-    <Compile Include="Migrations\201803192239339_AuditInfo were added and setuped.Designer.cs">
-      <DependentUpon>201803192239339_AuditInfo were added and setuped.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803200002424_Testing.cs" />
-    <Compile Include="Migrations\201803200002424_Testing.Designer.cs">
-      <DependentUpon>201803200002424_Testing.cs</DependentUpon>
+    <Compile Include="Migrations\201803281659269_Init.cs" />
+    <Compile Include="Migrations\201803281659269_Init.Designer.cs">
+      <DependentUpon>201803281659269_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,39 +63,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803151446543_GuidTest.resx">
-      <DependentUpon>201803151446543_GuidTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191302327_AuditionInfo Test.resx">
-      <DependentUpon>201803191302327_AuditionInfo Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191308482_AuditionInfo Test1.resx">
-      <DependentUpon>201803191308482_AuditionInfo Test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191322090_DateTimeTest.resx">
-      <DependentUpon>201803191322090_DateTimeTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191339098_Audit Info were added.resx">
-      <DependentUpon>201803191339098_Audit Info were added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191715507_Test3.resx">
-      <DependentUpon>201803191715507_Test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803191718587_Test4.resx">
-      <DependentUpon>201803191718587_Test4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803192239339_AuditInfo were added and setuped.resx">
-      <DependentUpon>201803192239339_AuditInfo were added and setuped.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803200002424_Testing.resx">
-      <DependentUpon>201803200002424_Testing.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SportscardSystem.Models\SportscardSystem.Models.csproj">
       <Project>{4175b715-446a-4432-aaab-9721a37c7c08}</Project>
       <Name>SportscardSystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803281659269_Init.resx">
+      <DependentUpon>201803281659269_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

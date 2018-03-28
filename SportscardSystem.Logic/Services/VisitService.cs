@@ -142,5 +142,16 @@ namespace SportscardSystem.Logic.Services
 
             return result;
         }
+
+        public IEnumerable<IVisitViewDto> GetVisitsBySport(string sport)
+        {
+            var sportVisits = dbContext.Visits
+                .Where(v => !v.IsDeleted && v.Sport.Name == sport);
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
+
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
+
+            return sportVisitsDto;
+        }
     }
 }

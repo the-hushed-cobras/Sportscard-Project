@@ -30,7 +30,7 @@ namespace SportscardSystem.Client
             //var visitService = new VisitService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
             //var sportshallService = new SportshallService(container.Resolve<ISportscardSystemDbContext>(), container.Resolve<IMapper>());
 
-            sportService.GetSportVisitsFrom("Gym", "1900-01-01");
+            //sportService.GetSportVisitsFrom("Gym", "1900-01-01");
             //sportshallService.GetSportshallVisitsFrom("Topfit", "1900-01-01");
             //visitService.GetVisitsByDate("1900-01-01");
             //visitService.GetVisitsByClient("alek", "hristov");
