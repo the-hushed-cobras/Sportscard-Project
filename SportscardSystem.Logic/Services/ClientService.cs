@@ -74,6 +74,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(mostActiveClient, "Most active client can not be null!").IsNull().Throw();
 
             var mostActiveClientDto = this.mapper.Map<ClientDto>(mostActiveClient);
+            Guard.WhenArgument(mostActiveClientDto, "Most active client can not be null!").IsNull().Throw();
 
             return mostActiveClientDto;
         }

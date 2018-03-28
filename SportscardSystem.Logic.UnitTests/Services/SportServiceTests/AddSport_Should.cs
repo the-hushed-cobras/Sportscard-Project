@@ -26,7 +26,13 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
             {
                 new Sport { Name = "Gym" },
                 new Sport { Name = "Yoga" },
-                new Sport { Name = "Pilates" }
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
             };
 
             var mockSet = new Mock<DbSet<Sport>>();
@@ -35,7 +41,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
             mockSet.Setup(m => m.Add(It.IsAny<Sport>()));
 
             dbContextMock
-                .Setup(x => x.Sports)
+                .Setup((x) => x.Sports)
                 .Returns(mockSet.Object);
 
             var sportDto = new SportDto() { Name = "Boxing" };
