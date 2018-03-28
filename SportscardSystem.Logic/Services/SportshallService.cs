@@ -67,13 +67,21 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<ISportshallViewDto> GetReport()
         {
-            var allSportshalls = dbContext.Sportshalls?.ProjectTo<SportshallDto>().ToList();
+            var allSportshalls = dbContext.Sportshalls?.Where(s => !s.IsDeleted);
+            Guard.WhenArgument(allSportshalls, "All sportshalls can not be null!").IsNullOrEmpty().Throw();
+
+            var allSportshallsDto = allSportshalls.ProjectTo<SportshallDto>().ToList();
+            Guard.WhenArgument(allSportshallsDto, "All sportshallsDto can not be null!").IsNullOrEmpty().Throw();
+
             var sportscardsDecoded = new List<ISportshallViewDto>();
 
-            foreach (var sportshall in allSportshalls)
+            foreach (var sportshall in allSportshallsDto)
             {
-                var sports = dbContext.Sportshalls?.Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
+                var sports = dbContext.Sportshalls?.Where(c => !c.IsDeleted).Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
+                Guard.WhenArgument(sports, "Sports can not be null!").IsNullOrEmpty().Throw();
+
                 var allSports = sports.ProjectTo<SportDto>().ToList();
+                Guard.WhenArgument(allSports, "All sports can not be null!").IsNullOrEmpty().Throw();
 
                 sportscardsDecoded.Add(new SportshallViewDto(sportshall.Name, allSports));
             }

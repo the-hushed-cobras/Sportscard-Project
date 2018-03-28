@@ -83,13 +83,13 @@ namespace SportscardSystem.Logic.Services
 
             var sportscardsDecoded = new List<ISportscardViewDto>();
 
-            foreach (var sportscard in allSportscards)
+            foreach (var sportscard in allSportscardsDto)
             {
                 var clientName = 
-                    $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} " +
-                    $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
+                    $"{dbContext.Clients?.Where(c => !c.IsDeleted).FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} " +
+                    $"{dbContext.Clients?.Where(c => !c.IsDeleted).FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
 
-                var companyName = dbContext.Companies?.FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
+                var companyName = dbContext.Companies?.Where(c => !c.IsDeleted).FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
 
                 sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
             }

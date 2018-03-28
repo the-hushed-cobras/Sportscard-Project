@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportscardSystem.Architecture.Automapper;
@@ -230,28 +229,28 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
                 IsDeleted = false
             };
 
-            var data = new List<Sportscard>();
-            //{
-            //    new Sportscard
-            //    {
-            //        Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271322"),
-            //        Client = firstClient,
-            //        ClientId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-            //        Company = firstCompany,
-            //        CompanyId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271320"),
-            //        IsDeleted = false
+            var data = new List<Sportscard>()
+            {
+                new Sportscard
+                {
+                    Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271322"),
+                    Client = firstClient,
+                    ClientId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
+                    Company = firstCompany,
+                    CompanyId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271320"),
+                    IsDeleted = false
 
-            //    },
-            //    new Sportscard
-            //    {
-            //        Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271321"),
-            //        Client = secondClient,
-            //        ClientId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323"),
-            //        Company = secondCompany,
-            //        CompanyId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271319"),
-            //        IsDeleted = false
-            //    }
-            //};
+                },
+                new Sportscard
+                {
+                    Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271321"),
+                    Client = secondClient,
+                    ClientId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323"),
+                    Company = secondCompany,
+                    CompanyId = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271319"),
+                    IsDeleted = false
+                }
+            };
 
             var mockSet = new Mock<DbSet<Sportscard>>();
 
