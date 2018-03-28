@@ -69,6 +69,7 @@
     <Compile Include="Commands\Add\AddSportCommand.cs" />
     <Compile Include="Commands\Add\AddSportshallCommand.cs" />
     <Compile Include="Commands\Add\AddSportToSportshallCommand.cs" />
+    <Compile Include="Commands\Add\AddVisitCommand.cs" />
     <Compile Include="Commands\Delete\DeleteClientCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Delete\DeleteCompanyCommand.cs" />

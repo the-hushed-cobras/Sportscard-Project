@@ -91,5 +91,57 @@ namespace SportscardSystem.Logic.Services
 
             return visitsDto;
         }
+
+        public Guid GetClientGuidByNamesAndCompanyId(string clientFirstName, string clientLastName, Guid companyId)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Clients.FirstOrDefault(x => x.FirstName == clientFirstName && x.LastName == clientLastName
+                                                                 && x.CompanyId == companyId).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such client exists!");
+            }
+
+            return result;
+        }
+
+        public Guid GetSportshallGuidByName(string sportshallName)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Sportshalls.FirstOrDefault(x => x.Name == sportshallName).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such sportshall exists!");
+            }
+
+            return result;
+        }
+
+        public Guid GetSportGuidByName(string sportName)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Sports.FirstOrDefault(x => x.Name == sportName).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such sport exists!");
+            }
+
+            return result;
+        }
     }
 }
