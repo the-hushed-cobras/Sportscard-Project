@@ -1,7 +1,9 @@
 # Project name: SportscardSystem
 
 [![Build Status](https://travis-ci.org/the-hushed-cobras/SportscardSystem-Project.svg?branch=master)](https://travis-ci.org/the-hushed-cobras/SportscardSystem-Project)
-![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+![license](https://img.shields.io/github/license/the-hushed-cobras/SportscardSystem-Project.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/badges/shields.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)
 
 ## Team name: The Hushed Cobras
 
