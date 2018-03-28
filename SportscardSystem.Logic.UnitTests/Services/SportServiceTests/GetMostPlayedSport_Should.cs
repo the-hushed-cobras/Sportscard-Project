@@ -9,212 +9,195 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace SportscardSystem.Logic.UnitTests.Services.ClientServiceTests
+namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
 {
     [TestClass]
-    public class GetMostActiveClient_Should
+    public class GetMostPlayedSport_Should
     {
         [TestMethod]
-        public void ReturnClientDto_WhenThereAreAnyClients()
+        public void ReturnSportDto_WhenThereAreAnySports()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
-            var client = new Client()
+            var sport = new Sport()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
-                IsDeleted = false,
+                Name = "Gym",
+                IsDeleted = false
             };
 
             var visit = new Visit()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
-                Client = client,
                 IsDeleted = false,
-                Sport = new Sport() { Name = "Gym" },
+                Sport = sport,
                 Sportshall = new Sportshall() { Name = "Topfit" },
                 CreatedOn = DateTime.Now.Date
             };
 
             var visits = new List<Visit>();
             visits.Add(visit);
-            client.Visits = visits;
+            sport.Visits = visits;
 
-            var data = new List<Client>
+            var data = new List<Sport>
             {
-                new Client
+                new Sport
                 {
                     Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323"),
-                    FirstName = "Gosho",
-                    LastName = "Goshev",
-                    Age = 26,
+                    Name = "Yoga",
                     IsDeleted = false,
                     Visits = new List<Visit>()
                 }
             };
-            data.Add(client);
+            data.Add(sport);
 
-            var mockSet = new Mock<DbSet<Client>>();
+            var mockSet = new Mock<DbSet<Sport>>();
 
             mockSet.SetupData(data);
 
             dbContextMock
-                .Setup(x => x.Clients)
+                .Setup(x => x.Sports)
                 .Returns(mockSet.Object);
 
-            var expectedClientDto = new ClientDto()
+            var expectedSportDto = new SportDto()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
+                Name = "Gym"
             };
 
             mapperMock
-                .Setup(x => x.Map<ClientDto>(client))
-                .Returns(expectedClientDto);
+                .Setup(x => x.Map<SportDto>(sport))
+                .Returns(expectedSportDto);
 
-            var clientService = new ClientService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act
-            var mostActiveClient = clientService.GetMostActiveClient();
+            var mostPlayedSport = sportService.GetMostPlayedSport();
 
             //Assert
-            Assert.AreEqual(expectedClientDto.Id, mostActiveClient.Id);
+            Assert.AreEqual(expectedSportDto.Id, mostPlayedSport.Id);
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenThereIsNoClients()
+        public void ThrowArgumentNullException_WhenThereIsNoSports()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
-            var client = new Client()
+            var sport = new Sport()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
-                IsDeleted = false,
+                Name = "Gym",
+                IsDeleted = false
             };
 
             var visit = new Visit()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
-                Client = client,
                 IsDeleted = false,
-                Sport = new Sport() { Name = "Gym" },
+                Sport = sport,
                 Sportshall = new Sportshall() { Name = "Topfit" },
                 CreatedOn = DateTime.Now.Date
             };
 
             var visits = new List<Visit>();
             visits.Add(visit);
-            client.Visits = visits;
+            sport.Visits = visits;
 
-            var data = new List<Client>
+            var data = new List<Sport>
             {
-            };
 
-            var mockSet = new Mock<DbSet<Client>>();
+            };
+            //data.Add(sport);
+
+            var mockSet = new Mock<DbSet<Sport>>();
 
             mockSet.SetupData(data);
 
             dbContextMock
-                .Setup(x => x.Clients)
+                .Setup(x => x.Sports)
                 .Returns(mockSet.Object);
 
-            var expectedClientDto = new ClientDto()
+            var expectedSportDto = new SportDto()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
+                Name = "Gym"
             };
 
             mapperMock
-                .Setup(x => x.Map<ClientDto>(client))
-                .Returns(expectedClientDto);
+                .Setup(x => x.Map<SportDto>(sport))
+                .Returns(expectedSportDto);
 
-            var clientService = new ClientService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => clientService.GetMostActiveClient());
+            Assert.ThrowsException<ArgumentNullException>(() => sportService.GetMostPlayedSport());
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenMapperIsUnableToMapObject()
+        public void ThrowArgumentNullException_WhenMapperIsUnableToMapSport()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
-            var client = new Client()
+            var sport = new Sport()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
-                IsDeleted = false,
+                Name = "Gym",
+                IsDeleted = false
             };
 
             var visit = new Visit()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271325"),
-                Client = client,
                 IsDeleted = false,
-                Sport = new Sport() { Name = "Gym" },
+                Sport = sport,
                 Sportshall = new Sportshall() { Name = "Topfit" },
                 CreatedOn = DateTime.Now.Date
             };
 
             var visits = new List<Visit>();
             visits.Add(visit);
-            client.Visits = visits;
+            sport.Visits = visits;
 
-            var data = new List<Client>
+            var data = new List<Sport>
             {
-                new Client
+                new Sport
                 {
                     Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323"),
-                    FirstName = "Gosho",
-                    LastName = "Goshev",
-                    Age = 26,
+                    Name = "Yoga",
                     IsDeleted = false,
                     Visits = new List<Visit>()
                 }
             };
-            data.Add(client);
+            data.Add(sport);
 
-            var mockSet = new Mock<DbSet<Client>>();
+            var mockSet = new Mock<DbSet<Sport>>();
 
             mockSet.SetupData(data);
 
             dbContextMock
-                .Setup(x => x.Clients)
+                .Setup(x => x.Sports)
                 .Returns(mockSet.Object);
 
-            var expectedClientDto = new ClientDto()
+            var expectedSportDto = new SportDto()
             {
                 Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
-                FirstName = "Stamat",
-                LastName = "Stamatov",
-                Age = 25,
+                Name = "Gym"
             };
 
             mapperMock
-                .Setup(x => x.Map<ClientDto>(new Client()))
-                .Returns(expectedClientDto);
+                .Setup(x => x.Map<SportDto>(new Sport()))
+                .Returns(expectedSportDto);
 
-            var clientService = new ClientService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => clientService.GetMostActiveClient());
+            Assert.ThrowsException<ArgumentNullException>(() => sportService.GetMostPlayedSport());
         }
     }
 }

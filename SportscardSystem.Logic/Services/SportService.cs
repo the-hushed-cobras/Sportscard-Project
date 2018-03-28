@@ -67,6 +67,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(mostPlayedSport, "Most played sport can not be null!").IsNull().Throw();
 
             var mostPlayedSportDto = this.mapper.Map<SportDto>(mostPlayedSport);
+            Guard.WhenArgument(mostPlayedSportDto, "Most played sport can not be null!").IsNull().Throw();
 
             return mostPlayedSportDto;
         }
