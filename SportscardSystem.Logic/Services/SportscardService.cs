@@ -52,8 +52,8 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(companyName, "Company name can not be null!").IsNullOrEmpty().Throw();
 
             var sportscard = this.dbContext.Sportscards?.Where(s => !s.IsDeleted)
-                .FirstOrDefault(v => 
-                v.Client.FirstName.ToLower() + v.Client.LastName.ToLower() == firstName.ToLower() + lastName.ToLower() && 
+                .FirstOrDefault(v =>
+                v.Client.FirstName.ToLower() + v.Client.LastName.ToLower() == firstName.ToLower() + lastName.ToLower() &&
                 v.Company.Name.ToLower() == companyName.ToLower());
             Guard.WhenArgument(sportscard, "Sportscard can not be null!").IsNull().Throw();
 
@@ -75,12 +75,20 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<ISportscardViewDto> GetReport()
         {
-            var allSportscards = dbContext.Sportscards?.ProjectTo<SportscardDto>().ToList();
+            var allSportscards = dbContext.Sportscards?.Where(s => !s.IsDeleted);
+            Guard.WhenArgument(allSportscards, "All sportscards can not be null!").IsNullOrEmpty().Throw();
+
+            var allSportscardsDto = allSportscards.ProjectTo<SportscardDto>().ToList();
+            Guard.WhenArgument(allSportscardsDto, "All sportscardsdto can not be null!").IsNullOrEmpty().Throw();
+
             var sportscardsDecoded = new List<ISportscardViewDto>();
 
             foreach (var sportscard in allSportscards)
             {
-                var clientName = $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} {dbContext.Clients.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
+                var clientName = 
+                    $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).FirstName} " +
+                    $"{dbContext.Clients?.FirstOrDefault(c => c.Id == sportscard.ClientId).LastName}";
+
                 var companyName = dbContext.Companies?.FirstOrDefault(c => c.Id == sportscard.CompanyId).Name;
 
                 sportscardsDecoded.Add(new SportscardViewDto(clientName, companyName));
