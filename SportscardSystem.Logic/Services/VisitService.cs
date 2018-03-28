@@ -70,9 +70,12 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<IVisitViewDto> GetVisitsByClient(string firstName, string lastName)
         {
-            var clientVisits = dbContext.Visits
-                .Where(v => !v.IsDeleted && v.Client.FirstName.ToLower() == firstName && v.Client.LastName.ToLower() == lastName);
-            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNull().Throw();
+            Guard.WhenArgument(firstName, "First name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(lastName, "Last name can not be null!").IsNullOrEmpty().Throw();
+
+            var clientVisits = dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Client.FirstName.ToLower() == firstName.ToLower() && v.Client.LastName.ToLower() == lastName.ToLower());
+            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNullOrEmpty().Throw();
 
             var clientVisitsDto = clientVisits.ProjectTo<VisitViewDto>().ToList();
 

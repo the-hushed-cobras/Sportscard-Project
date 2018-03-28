@@ -112,6 +112,7 @@
     <Compile Include="Services\VisitServiceTests\AddVisit_Should.cs" />
     <Compile Include="Services\VisitServiceTests\GetAllVisits_Should.cs" />
     <Compile Include="Services\VisitServiceTests\DeleteVisit_Should.cs" />
+    <Compile Include="Services\VisitServiceTests\GetVisitsByClient_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
