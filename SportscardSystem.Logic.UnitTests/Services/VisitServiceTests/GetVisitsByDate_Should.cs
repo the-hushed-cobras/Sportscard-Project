@@ -16,7 +16,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
     public class GetVisitsByDate_Should
     {
         [TestMethod]
-        public void ReturnIVisitViewDto_WhenThereIsAnyOnTheSameDate()
+        public void ReturnCollectionOfIVisitViewDto_WhenThereIsAnyVisitsOnTheGivenDate()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();

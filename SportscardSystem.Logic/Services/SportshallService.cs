@@ -88,11 +88,14 @@ namespace SportscardSystem.Logic.Services
 
             var fromDate = DateTime.Parse(date);
 
+            //var sportshallVisits = this.dbContext.Visits?
+            //    .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower() && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
             var sportshallVisits = this.dbContext.Visits?
-                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower() && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
-            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower());
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNullOrEmpty().Throw();
 
-            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
+            //var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
+            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList().Where(v => v.CreatedOn.Date >= fromDate.Date);
 
             return sportshallVisitsDto;
         }
