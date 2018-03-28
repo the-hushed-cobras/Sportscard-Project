@@ -86,10 +86,12 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
             var visitDate = DateTime.Parse(date);
 
-            var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
-            Guard.WhenArgument(visits, "Visits can not be null!").IsNull().Throw();
+            //var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
+            var visits = dbContext.Visits.Where(v => !v.IsDeleted);
+            Guard.WhenArgument(visits, "Visits can not be null!").IsNullOrEmpty().Throw();
 
-            var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
+            //var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
+            var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList().Where(v => v.CreatedOn.Date == visitDate.Date);
 
             return visitsDto;
         }
