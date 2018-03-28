@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
+namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
 {
     [TestClass]
-    public class GetSportshallVisitsFrom_Should
+    public class GetSportVisitsFrom_Should
     {
         [TestMethod]
         public void ReturnCollectionOfIVisitViewDto_WhenThereIsAnyVisitsFromTheGivenDate()
@@ -52,7 +52,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                         LastName = "Peshev"
                     },
                     IsDeleted = false,
-                    Sport = new Sport() { Name = "Yoga" },
+                    Sport = new Sport() { Name = "Gym" },
                     Sportshall = new Sportshall() { Name = "Topfit" },
                     CreatedOn = DateTime.Now.AddDays(-1)
                 },
@@ -65,7 +65,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                         LastName = "Goshev"
                     },
                     IsDeleted = false,
-                    Sport = new Sport() { Name = "Boxing" },
+                    Sport = new Sport() { Name = "Gym" },
                     Sportshall = new Sportshall() { Name = "Topfit" },
                     CreatedOn = DateTime.Now.AddDays(-10)
                 }
@@ -83,17 +83,17 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act
-            var sportshallVisitsFrom = sportshallService.GetSportshallVisitsFrom("Topfit", "2018-03-27");
+            var sportVisitsFrom = sportService.GetSportVisitsFrom("Gym", "2018-03-27");
 
             //Assert
-            Assert.AreEqual(2, sportshallVisitsFrom.Count());
+            Assert.AreEqual(2, sportVisitsFrom.Count());
         }
 
         [TestMethod]
-        public void ThrowNullArgumentException_WhenInvokedWithInvalidNullSportshallNameParameter()
+        public void ThrowNullArgumentException_WhenInvokedWithInvalidNullSportNameParameter()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -160,14 +160,14 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => sportshallService.GetSportshallVisitsFrom(null, "2018-03-27"));
+            Assert.ThrowsException<ArgumentNullException>(() => sportService.GetSportVisitsFrom(null, "2018-03-27"));
         }
 
         [TestMethod]
-        public void ThrowArgumentException_WhenInvokedWithInvalidEmptySportshallNameParameter()
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptySportNameParameter()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -234,10 +234,10 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => sportshallService.GetSportshallVisitsFrom(string.Empty, "2018-03-27"));
+            Assert.ThrowsException<ArgumentException>(() => sportService.GetSportVisitsFrom(string.Empty, "2018-03-27"));
         }
 
         [TestMethod]
@@ -308,10 +308,10 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => sportshallService.GetSportshallVisitsFrom("Topfit", null));
+            Assert.ThrowsException<ArgumentNullException>(() => sportService.GetSportVisitsFrom("Topfit", null));
         }
 
         [TestMethod]
@@ -382,14 +382,14 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => sportshallService.GetSportshallVisitsFrom("Topfit", string.Empty));
+            Assert.ThrowsException<ArgumentException>(() => sportService.GetSportVisitsFrom("Topfit", string.Empty));
         }
 
         [TestMethod]
-        public void ThrowArgumentException_WhenThereIsNoSportshallWithTheGivenName()
+        public void ThrowArgumentException_WhenThereIsNoSportWithTheGivenName()
         {
             //Arrange
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
@@ -456,10 +456,10 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act && Assert
-           Assert.ThrowsException<ArgumentException>(() => sportshallService.GetSportshallVisitsFrom("TEST", "2018-03-27"));
+            Assert.ThrowsException<ArgumentException>(() => sportService.GetSportVisitsFrom("TEST", "2018-03-27"));
         }
 
         [TestMethod]
@@ -530,13 +530,13 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
                 .Setup(x => x.Visits)
                 .Returns(mockSet.Object);
 
-            var sportshallService = new SportshallService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act
-            var sportshallVisits = sportshallService.GetSportshallVisitsFrom("Topfit", "2018-03-29");
+            var sportVisits = sportService.GetSportVisitsFrom("Gym", "2018-03-29");
 
             //Assert
-            Assert.AreEqual(0, sportshallVisits.Count());
+            Assert.AreEqual(0, sportVisits.Count());
         }
     }
 }

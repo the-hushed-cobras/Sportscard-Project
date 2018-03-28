@@ -105,6 +105,7 @@
     <Compile Include="Services\SportServiceTests\AddSport_Should.cs" />
     <Compile Include="Services\SportServiceTests\GetAllSports_Should.cs" />
     <Compile Include="Services\SportServiceTests\GetMostPlayedSport_Should.cs" />
+    <Compile Include="Services\SportServiceTests\GetSportVisitsFrom_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetAllSportshalls_Should.cs" />
