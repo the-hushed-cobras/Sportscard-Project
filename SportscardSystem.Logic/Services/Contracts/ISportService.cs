@@ -26,7 +26,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified sport from the database 
         /// </summary>
         /// <param name="sport"></param>
-        void DeleteSport(ISportDto sport);
+        void DeleteSport(string sportName);
 
         /// <summary>
         /// Gets the most played sport

@@ -79,11 +79,18 @@ namespace SportscardSystem.Logic.Services
                 throw new ArgumentException("A sport with the same name already exists!");
             }
         }
-
-        //To be implemented
-        public void DeleteSport(ISportDto sportDto)
+        
+        public void DeleteSport(string sportName)
         {
-            throw new NotImplementedException();
+            var sport = this.dbContext.Sports.Where(s => !s.IsDeleted)
+                .FirstOrDefault(v => v.Name == sportName);
+
+            Guard.WhenArgument(sport, "There is no sport with this name.").IsNull().Throw();
+
+            sport.IsDeleted = true;
+            sport.DeletedOn = DateTime.Now;
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ISportDto> GetAllSports()

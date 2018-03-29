@@ -1,8 +1,12 @@
 namespace SportscardSystem.Data.Migrations
 {
+    using Newtonsoft.Json;
+    using SportscardSystem.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     public sealed class Configuration : DbMigrationsConfiguration<SportscardSystem.Data.SportscardSystemDbContext>
