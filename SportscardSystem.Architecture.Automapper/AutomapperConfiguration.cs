@@ -57,6 +57,6 @@ namespace SportscardSystem.Architecture.Automapper
             {
                 type.CreateMappings(cfg);
             }
-        }
+       }
     }
 }

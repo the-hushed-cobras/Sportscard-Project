@@ -36,7 +36,7 @@ namespace SportscardSystem.Models
         /// <summary>
         /// Navigation property - represents related entity
         /// </summary>
-        [Required]
+        //[Required]
         public virtual Company Company { get; set; }
 
         /// <summary>

@@ -105,6 +105,7 @@
     <Compile Include="Services\SportscardServiceTests\DeleteSportscard_Should.cs" />
     <Compile Include="Services\SportServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportServiceTests\AddSport_Should.cs" />
+    <Compile Include="Services\SportServiceTests\DeleteSport_Should.cs" />
     <Compile Include="Services\SportServiceTests\GetAllSports_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
