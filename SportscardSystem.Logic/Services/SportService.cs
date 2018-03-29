@@ -111,7 +111,6 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate)
         {
-
             DateTime fromDateArg;
             DateTime toDateArg;
             try
@@ -121,11 +120,10 @@ namespace SportscardSystem.Logic.Services
             }
             catch
             {
-
                 throw new ArgumentException("Cant parse date from string");
             }
             Sport sport = this.dbContext.Sports.Where(s => !s.IsDeleted).FirstOrDefault(s => s.Name.ToLower() == sportName.ToLower());
-            Guard.WhenArgument(sport, "Date").IsNull().Throw();
+            Guard.WhenArgument(sport, "There are no this sport at Db.").IsNull().Throw();
             var sportVisits = this.dbContext.Visits?
                 .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName.ToLower());
             Guard.WhenArgument(sportVisits, "Sport visits can not be null.").IsNullOrEmpty().Throw();
