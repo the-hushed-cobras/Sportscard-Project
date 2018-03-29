@@ -39,6 +39,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddSportshallCommand>().Named<ICommand>("addsportshall");
             builder.RegisterType<AddSportCommand>().Named<ICommand>("addsport");
             builder.RegisterType<AddSportToSportshallCommand>().Named<ICommand>("addsporttosportshall");
+            builder.RegisterType<AddVisitCommand>().Named<ICommand>("addvisit");
 
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
@@ -59,7 +60,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
             builder.RegisterType<DeleteSportscardCommand>().Named<ICommand>("deletesportscard");
             builder.RegisterType<DeleteSportshallCommand>().Named<ICommand>("deletesportshall");
-
+            builder.RegisterType<DeleteSportFromSportshallCommand>().Named<ICommand>("deletesportfromsportshall");
 
             //Registering visits commands
             builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
