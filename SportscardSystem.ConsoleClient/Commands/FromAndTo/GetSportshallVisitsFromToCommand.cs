@@ -21,6 +21,7 @@ namespace SportscardSystem.ConsoleClient.Commands.FromAndTo
 
         public string Execute(IList<string> parameters)
         {
+
             Guard.WhenArgument(parameters.Count(), "Parameters for this comman should be 3.").IsNotEqual(3).Throw();
 
             string sportshallName = parameters[0];

@@ -108,5 +108,31 @@ namespace SportscardSystem.Logic.Services
 
             return sportVisitsDto;
         }
+
+        public IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate)
+        {
+
+            DateTime fromDateArg;
+            DateTime toDateArg;
+            try
+            {
+                fromDateArg = DateTime.Parse(fromDate);
+                toDateArg = DateTime.Parse(toDate);
+            }
+            catch
+            {
+
+                throw new ArgumentException("Cant parse date from string");
+            }
+            Sport sport = this.dbContext.Sports.Where(s => !s.IsDeleted).FirstOrDefault(s => s.Name.ToLower() == sportName.ToLower());
+            Guard.WhenArgument(sport, "Date").IsNull().Throw();
+            var sportVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName.ToLower());
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null.").IsNullOrEmpty().Throw();
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList()
+                .Where(v => v.CreatedOn.Date >= fromDateArg.Date && v.CreatedOn.Date <= toDateArg.Date);
+
+            return sportVisitsDto;
+        }
     }
 }

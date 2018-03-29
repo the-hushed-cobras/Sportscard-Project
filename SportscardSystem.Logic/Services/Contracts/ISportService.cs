@@ -37,5 +37,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// <param name="fromDate">Date from which we track sport visits</param>
         /// <returns></returns>
         IEnumerable<IVisitViewDto> GetSportVisitsFrom(string sportName, string fromDate);
+
+        IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate);
     }
 }
