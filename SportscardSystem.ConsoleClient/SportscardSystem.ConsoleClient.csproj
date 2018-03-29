@@ -84,6 +84,7 @@
     <Compile Include="Commands\ExportPdf\ExportSportscardsTableCommand.cs" />
     <Compile Include="Commands\ExportPdf\ExportSportshallsTableCommand.cs" />
     <Compile Include="Commands\FromAndTo\GetSportshallVisitsFromCommand.cs" />
+    <Compile Include="Commands\FromAndTo\GetSportshallVisitsToCommand.cs" />
     <Compile Include="Commands\FromAndTo\GetSportVisitsFromCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostActiveClientCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostActiveCompanyCommand.cs" />
