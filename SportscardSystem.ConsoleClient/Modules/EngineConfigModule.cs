@@ -72,6 +72,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<GetSportshallVisitsFromCommand>().Named<ICommand>("getsportshallvisitsfrom");
             builder.RegisterType<GetSportshallVisitsToCommand>().Named<ICommand>("getsportshallvisitsto");
             builder.RegisterType<GetSportVisitsFromCommand>().Named<ICommand>("getsportvisitsfrom");
+            builder.RegisterType<GetSportVisitsToCommand>().Named<ICommand>("getsportvisitsto");
 
 
             base.Load(builder);
