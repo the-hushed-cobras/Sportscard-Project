@@ -143,10 +143,10 @@ namespace SportscardSystem.Logic.Services
             return result;
         }
 
-        public IEnumerable<IVisitViewDto> GetVisitsBySport(string sport)
+        public IEnumerable<IVisitViewDto> GetVisitsBySport(string sportName)
         {
             var sportVisits = dbContext.Visits
-                .Where(v => !v.IsDeleted && v.Sport.Name == sport);
+                .Where(v => !v.IsDeleted && v.Sport.Name == sportName);
             Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
 
             var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
