@@ -79,6 +79,14 @@
     <Compile Include="Commands\Delete\DeleteSportshallCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
