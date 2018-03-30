@@ -50,6 +50,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddSportCommand>().Named<ICommand>("addsport");
             builder.RegisterType<AddSportToSportshallCommand>().Named<ICommand>("addsporttosportshall");
             builder.RegisterType<AddVisitCommand>().Named<ICommand>("addvisit");
+            builder.RegisterType<AddSportscardCommand>().Named<ICommand>("addsportscard");
 
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");

@@ -70,6 +70,7 @@
     <Compile Include="Commands\Add\AddClientCommand.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand.cs" />
     <Compile Include="Commands\Add\AddSportCommand.cs" />
+    <Compile Include="Commands\Add\AddSportscardCommand.cs" />
     <Compile Include="Commands\Add\AddSportshallCommand.cs" />
     <Compile Include="Commands\Add\AddSportToSportshallCommand.cs" />
     <Compile Include="Commands\Add\AddVisitCommand.cs" />
