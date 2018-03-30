@@ -6,7 +6,7 @@ using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
 
-namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_Should
+namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportshallCommand_Should
 {
     [TestClass]
     public class Constructor_Should
@@ -16,14 +16,14 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
         {
             //Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var sportService = new Mock<ISportService>();
+            var sportshallService = new Mock<ISportshallService>();
 
             //Act
-            var addSportCommand = new AddSportCommand(sportscardFactoryMock.Object, sportService.Object);
+            var addSportshallCommand = new AddSportshallCommand(sportscardFactoryMock.Object, sportshallService.Object);
 
             //Assert
-            Assert.IsNotNull(addSportCommand);
-            Assert.IsInstanceOfType(addSportCommand, typeof(ICommand));
+            Assert.IsNotNull(addSportshallCommand);
+            Assert.IsInstanceOfType(addSportshallCommand, typeof(ICommand));
         }
 
         [TestMethod]
@@ -31,21 +31,21 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
         {
             //Arrange
             //var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var sportService = new Mock<ISportService>();
+            var sportshallService = new Mock<ISportshallService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportCommand(null, sportService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddSportshallCommand(null, sportshallService.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullSportServiceParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullSportshallServiceParameter()
         {
             //Arrange
             //var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var sportService = new Mock<ISportService>();
+            var sportshallService = new Mock<ISportshallService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportCommand(null, sportService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddSportshallCommand(null, sportshallService.Object));
         }
     }
 }

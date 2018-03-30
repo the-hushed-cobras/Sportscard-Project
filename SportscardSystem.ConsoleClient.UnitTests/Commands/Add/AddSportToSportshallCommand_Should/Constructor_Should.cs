@@ -6,7 +6,7 @@ using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
 
-namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_Should
+namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportToSportshallCommand_Should
 {
     [TestClass]
     public class Constructor_Should
@@ -19,11 +19,11 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
             var sportService = new Mock<ISportService>();
 
             //Act
-            var addSportCommand = new AddSportCommand(sportscardFactoryMock.Object, sportService.Object);
+            var addSportToSportshallCommand = new AddSportToSportshallCommand(sportscardFactoryMock.Object, sportService.Object);
 
             //Assert
-            Assert.IsNotNull(addSportCommand);
-            Assert.IsInstanceOfType(addSportCommand, typeof(ICommand));
+            Assert.IsNotNull(addSportToSportshallCommand);
+            Assert.IsInstanceOfType(addSportToSportshallCommand, typeof(ICommand));
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
             var sportService = new Mock<ISportService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportCommand(null, sportService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddSportToSportshallCommand(null, sportService.Object));
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
             var sportService = new Mock<ISportService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportCommand(null, sportService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddSportToSportshallCommand(null, sportService.Object));
         }
     }
 }

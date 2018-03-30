@@ -29,14 +29,14 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
                 .Setup(x => x.CreateSportDto(sportName))
                 .Returns(expectedSport);
 
-            var addCompanyCommand = new AddSportCommand(sportscardFactoryMock.Object, sportServiceMock.Object);
+            var addSportCommand = new AddSportCommand(sportscardFactoryMock.Object, sportServiceMock.Object);
             var parameters = new List<string>()
             {
                 sportName
             };
 
             //Act
-            addCompanyCommand.Execute(parameters);
+            addSportCommand.Execute(parameters);
 
             //Assert
             sportServiceMock.Verify(x => x.AddSport(expectedSport), Times.Once);

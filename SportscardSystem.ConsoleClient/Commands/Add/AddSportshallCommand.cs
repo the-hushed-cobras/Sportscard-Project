@@ -21,6 +21,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "Count of the parameters.").IsNotEqual(1).Throw();
+
             string name;
 
             try
@@ -31,6 +33,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             {
                 throw new ArgumentException("Failed to parse AddSportshall command parameters.");
             }
+
+            Guard.WhenArgument(name, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
 
             var sportshall = this.SportscardFactory.CreateSportshallDto(name);
             sportshallService.AddSportshall(sportshall);
