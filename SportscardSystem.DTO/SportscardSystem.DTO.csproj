@@ -58,6 +58,11 @@
     <Compile Include="Contracts\ISportshallViewDto.cs" />
     <Compile Include="Contracts\IVisitDto.cs" />
     <Compile Include="Contracts\IVisitViewDto.cs" />
+    <Compile Include="JSON\ClientJsonDto.cs" />
+    <Compile Include="JSON\CompanyJsonDto.cs" />
+    <Compile Include="JSON\SportJsonDto.cs" />
+    <Compile Include="JSON\SportshallJsonDto.cs" />
+    <Compile Include="JSON\VisitJsonDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SportscardDto.cs" />
     <Compile Include="SportDto.cs" />
