@@ -22,7 +22,8 @@ namespace SportscardSystem.PdfExporter
 
         public void ExportPdfReport(IEnumerable<ISportshallViewDto> report, string fileName)
         {
-            Guard.WhenArgument(report, "Sportshalls report").IsNull().Throw();
+            Guard.WhenArgument(report, "Sportshalls report can not be null!").IsNull().Throw();
+            Guard.WhenArgument(fileName, "File name can not be null!").IsNullOrEmpty().Throw();
 
             this.PdfStream.Init(fileName);
 
