@@ -8,9 +8,6 @@ namespace SportscardSystem.DTO.JSON
     {
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("clients")]
-        public ICollection<Client> Clients { get; set; }
-
+        
     }
 }
