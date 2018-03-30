@@ -20,6 +20,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "Count of the parameters.").IsNotEqual(3).Throw();
+
             var firstName = parameters[0];
             var lastName = parameters[1];
             var companyName = parameters[2];
