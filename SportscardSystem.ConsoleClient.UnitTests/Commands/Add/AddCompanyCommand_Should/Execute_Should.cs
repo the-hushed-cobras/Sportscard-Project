@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.DTO;
 using SportscardSystem.Logic.Services.Contracts;
+using System;
+using System.Collections.Generic;
 
 namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyCommand_Should
 {
