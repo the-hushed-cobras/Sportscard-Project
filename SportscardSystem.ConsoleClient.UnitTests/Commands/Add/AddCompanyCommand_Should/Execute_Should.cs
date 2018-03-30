@@ -74,7 +74,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyComman
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullCompanyNamrParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullCompanyNameParameter()
         {
             // Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
@@ -102,7 +102,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyComman
         }
 
         [TestMethod]
-        public void ThrowArgumentException_WhenInvokedWithInvalidNullCompanyNamrParameter()
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptyCompanyNameParameter()
         {
             // Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();

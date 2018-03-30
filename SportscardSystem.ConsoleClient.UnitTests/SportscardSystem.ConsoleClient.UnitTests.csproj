@@ -65,6 +65,8 @@
     <Compile Include="Commands\Add\AddClientCommand_Should\Execute_Should.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand_Should\Constructor_Should.cs" />
     <Compile Include="Commands\Add\AddCompanyCommand_Should\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommand_Should\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommand_Should\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
