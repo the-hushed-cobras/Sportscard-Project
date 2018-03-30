@@ -1,13 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
 
-namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteCompanyCommand_Should
+namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteSportscardCommandTests
 {
     [TestClass]
     public class Constructor_Should
@@ -17,14 +16,14 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteCompany
         {
             //Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var companyService = new Mock<ICompanyService>();
+            var sportscardSerivce = new Mock<ISportscardService>();
 
             //Act
-            var deleteCompanyCommand = new DeleteCompanyCommand(sportscardFactoryMock.Object, companyService.Object);
+            var deleteSportscardCommand = new DeleteSportscardCommand(sportscardFactoryMock.Object, sportscardSerivce.Object);
 
             //Assert
-            Assert.IsNotNull(deleteCompanyCommand);
-            Assert.IsInstanceOfType(deleteCompanyCommand, typeof(ICommand));
+            Assert.IsNotNull(deleteSportscardCommand);
+            Assert.IsInstanceOfType(deleteSportscardCommand, typeof(ICommand));
         }
 
         [TestMethod]
@@ -32,10 +31,11 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteCompany
         {
             //Arrange
             //var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var companyService = new Mock<ICompanyService>();
+            var sportscardSerivce = new Mock<ISportscardService>();
+
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new DeleteCompanyCommand(null, companyService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteSportscardCommand(null, sportscardSerivce.Object));
         }
 
         [TestMethod]
@@ -44,10 +44,10 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteCompany
 
             //Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            //var companyService = new Mock<ICompanyService>();
+            //var sportscardSerivce = new Mock<ISportscardService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new DeleteCompanyCommand(sportscardFactoryMock.Object, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteSportscardCommand(sportscardFactoryMock.Object, null));
         }
     }
 }
