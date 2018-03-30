@@ -37,7 +37,9 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
             builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");
             builder.RegisterType<AddSportshallCommand>().Named<ICommand>("addsportshall");
-            
+            builder.RegisterType<AddSportCommand>().Named<ICommand>("addsport");
+            builder.RegisterType<AddSportToSportshallCommand>().Named<ICommand>("addsporttosportshall");
+
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
 
@@ -45,6 +47,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<GetMostActiveClientCommand>().Named<ICommand>("getmostactiveclient");
             builder.RegisterType<GetMostActiveCompanyCommand>().Named<ICommand>("getmostactivecompany");
             builder.RegisterType<GetMostPlayedSportCommand>().Named<ICommand>("getmostplayedsport");
+            builder.RegisterType<GetMostVisitedSportshallCommand>().Named<ICommand>("getmostvisitedsportshall");
 
             //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
@@ -55,14 +58,18 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<DeleteCompanyCommand>().Named<ICommand>("deletecompany");
             builder.RegisterType<DeleteVisitCommand>().Named<ICommand>("deletevisit");
             builder.RegisterType<DeleteSportscardCommand>().Named<ICommand>("deletesportscard");
+            builder.RegisterType<DeleteSportshallCommand>().Named<ICommand>("deletesportshall");
+
 
             //Registering visits commands
             builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
             builder.RegisterType<GetVisitsByDateCommand>().Named<ICommand>("getvisitsbydate");
+            builder.RegisterType<GetVisitsBySporthallCommand>().Named<ICommand>("getvisitsbysportshall");
 
             //Registering from and to commands
             builder.RegisterType<GetSportshallVisitsFromCommand>().Named<ICommand>("getsportshallvisitsfrom");
             builder.RegisterType<GetSportVisitsFromCommand>().Named<ICommand>("getsportvisitsfrom");
+            builder.RegisterType<GetSportshallVisitsFromToCommand>().Named<ICommand>("getsportshallvisitsfromto");
 
 
             base.Load(builder);

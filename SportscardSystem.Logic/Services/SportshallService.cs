@@ -33,7 +33,7 @@ namespace SportscardSystem.Logic.Services
 
             var sportshallToAdd = this.mapper.Map<Sportshall>(sportshallDto);
 
-            if (!this.dbContext.Sportshalls.Any(s => s.Name == sportshallDto.Name))
+            if (!this.dbContext.Sportshalls.Any(s => s.Name == sportshallDto.Name && !s.IsDeleted))
             {
                 this.dbContext.Sportshalls.Add(sportshallToAdd);
                 this.dbContext.SaveChanges();
@@ -45,9 +45,30 @@ namespace SportscardSystem.Logic.Services
         }
 
         //To be implemented
-        public void DeleteSportshall(ISportshallDto sportshallDto)
+        public void DeleteSportshall(string sportshallName)
         {
-            throw new NotImplementedException();
+            var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted)
+                .FirstOrDefault(v => v.Name == sportshallName);
+
+            Guard.WhenArgument(sportshall, "The are no sportshall with this name.").IsNull().Throw();
+
+            sportshall.IsDeleted = true;
+            sportshall.DeletedOn = DateTime.Now;
+
+            //foreach (var sport in sportshall.Sports)
+            //{
+            //    //sportshall.Sports.Remove(sport);
+            //    sport.IsDeleted = true;
+            //    sport.DeletedOn = DateTime.Now;
+            //}
+            //foreach (var visit in sportshall.Visits)
+            //{
+            //    //sportshall.Visits.Remove(visit);
+            //    visit.IsDeleted = true;
+            //    visit.DeletedOn = DateTime.Now;
+            //}
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ISportshallDto> GetAllSportshalls()
@@ -62,7 +83,14 @@ namespace SportscardSystem.Logic.Services
 
         public ISportshallDto GetMostVisitedSportshall()
         {
-            throw new NotImplementedException();
+            Sportshall sportshall = this.dbContext.Sportshalls?.Where(s => !s.IsDeleted)
+                .OrderByDescending(c => c.Visits.Where(v => !v.IsDeleted).Count())
+                .FirstOrDefault();
+            Guard.WhenArgument(sportshall, "Most visited sportshall can not be null.").IsNull().Throw();
+            Guard.WhenArgument(sportshall.Visits.Where(v => !v.IsDeleted).Count(), "There no sportshall with visits.").IsLessThan(1).Throw();
+            ISportshallDto sportshallDto = this.mapper.Map<SportshallDto>(sportshall);
+
+            return sportshallDto;
         }
 
         public IEnumerable<ISportshallViewDto> GetReport()
@@ -104,6 +132,28 @@ namespace SportscardSystem.Logic.Services
 
             //var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
             var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList().Where(v => v.CreatedOn.Date >= fromDate.Date);
+
+            return sportshallVisitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportshallVisitFromTo (string sportshallName, string fromDate, string toDate)
+        {
+            Guard.WhenArgument(sportshallName, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(fromDate, "Date from can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(toDate, "Date to from can not be null!").IsNullOrEmpty().Throw();
+
+            var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted && s.Name.ToLower() == sportshallName.ToLower()).FirstOrDefault();
+            Guard.WhenArgument(sportshall, "There are no sportshall with this name.").IsNull().Throw();
+
+            var fromDateParse = DateTime.Parse(fromDate);
+            var toDateParse = DateTime.Parse(toDate);
+
+            var sportshallVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower() && 
+                DbFunctions.TruncateTime(v.CreatedOn) >= fromDateParse.Date && DbFunctions.TruncateTime(v.CreatedOn) <= toDateParse.Date);
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+
+            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
 
             return sportshallVisitsDto;
         }

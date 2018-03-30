@@ -26,6 +26,24 @@ namespace SportscardSystem.Logic.Services
             this.dbContext = dbContext;
             this.mapper = mapper;
         }
+        public void AddSportToSportshall(string sport, string hallName)
+        {
+            Sportshall sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
+            Guard.WhenArgument(sportshall, "No such sportshall.").IsNull().Throw();
+            Sport sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
+            Guard.WhenArgument(sportAtDb, "No such sport at database, please add it :-)").IsNull().Throw();
+            if (!(sportshall.Sports.Any(s => s.Name == sportAtDb.Name && s.IsDeleted == true)))
+            {
+                Console.WriteLine("Test");
+                sportshall.Sports.Add(new Sport(){Id = sportAtDb.Id, Name = sportAtDb.Name });
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException($"There is already {sport} at this {hallName}");
+            }
+
+        }
 
         public void AddSport(ISportDto sportDto)
         {
@@ -33,7 +51,7 @@ namespace SportscardSystem.Logic.Services
 
             var sportToAdd = this.mapper.Map<Sport>(sportDto);
 
-            if (!this.dbContext.Sports.Any(s => s.Name == sportDto.Name))
+            if (!this.dbContext.Sports.Any(s => s.Name == sportDto.Name && !s.IsDeleted))
             {
                 this.dbContext.Sports.Add(sportToAdd);
                 this.dbContext.SaveChanges();

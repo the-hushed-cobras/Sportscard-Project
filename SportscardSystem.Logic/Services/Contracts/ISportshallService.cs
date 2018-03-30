@@ -22,7 +22,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified sportshall from the database 
         /// </summary>
         /// <param name="sportshall"></param>
-        void DeleteSportshall(ISportshallDto sportshall);
+        void DeleteSportshall(string sportshallName);
 
         /// <summary>
         /// Gets all sportscards with their client and company names
@@ -42,6 +42,10 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// <param name="sportshallName">Sportshall's name</param>
         /// <param name="date">Date from which we track visits</param>
         /// <returns></returns>
-        IEnumerable<IVisitViewDto> GetSportshallVisitsFrom(string sportshallName, string date); 
+        IEnumerable<IVisitViewDto> GetSportshallVisitsFrom(string sportshallName, string date);
+
+        IEnumerable<IVisitViewDto> GetSportshallVisitFromTo(string sportshallName, string fromDate, string toDate);
+
+
     }
 }
