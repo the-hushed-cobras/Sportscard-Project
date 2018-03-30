@@ -95,7 +95,12 @@
     <Compile Include="Commands\GetMost\GetMostActiveCompanyCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostPlayedSportCommand.cs" />
     <Compile Include="Commands\GetMost\GetMostVisitedSportshallCommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllClientsCommand.cs" />
     <Compile Include="Commands\ListAll\ListAllCompaniesCommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommand.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByClientCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByDateCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsBySportshall.cs" />

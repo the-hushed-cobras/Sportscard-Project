@@ -61,10 +61,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Add\AddClientCommand_Should\Constructor_Should.cs" />
-    <Compile Include="Commands\Add\AddClientCommand_Should\Execute_Should.cs" />
-    <Compile Include="Commands\Add\AddCompanyCommand_Should\Constructor_Should.cs" />
-    <Compile Include="Commands\Add\AddCompanyCommand_Should\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddClientCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddClientCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportToSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportToSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteClientCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteClientCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteCompanyCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteCompanyCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
@@ -94,6 +118,7 @@
       <Name>SportscardSystem.Logic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

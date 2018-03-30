@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.DTO;
 using SportscardSystem.Logic.Services.Contracts;
+using System;
+using System.Collections.Generic;
 
 namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyCommand_Should
 {
@@ -74,7 +74,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyComman
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullCompanyNamrParameter()
+        public void ThrowArgumentNullException_WhenInvokedWithInvalidNullCompanyNameParameter()
         {
             // Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
@@ -102,7 +102,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddCompanyComman
         }
 
         [TestMethod]
-        public void ThrowArgumentException_WhenInvokedWithInvalidNullCompanyNamrParameter()
+        public void ThrowArgumentException_WhenInvokedWithInvalidEmptyCompanyNameParameter()
         {
             // Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
