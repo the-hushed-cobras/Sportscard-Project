@@ -15,9 +15,6 @@ namespace SportscardSystem.DTO.JSON
 
         [JsonProperty("age")]
         public int? Age { get; set; }
-        
-        [JsonProperty("visits")]
-        public ICollection<Visit> Visits { get; set; }
 
         [JsonProperty("company")]
         public CompanyJsonDto Company { get; set; }
