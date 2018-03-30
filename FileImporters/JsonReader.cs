@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Bytes2you.Validation;
-using LibrarySystem.FileImporters.Utils.Contracts;
-using LibrarySystem.Models.DTOs.JSON;
+﻿using Bytes2you.Validation;
+using SportscardSystem.DTO.JSON;
+using SportscardSystem.FileImporters.Utils.Contracts;
+using System.Collections.Generic;
 
 namespace SportscardSystem.FileImporters
 {
@@ -14,7 +13,7 @@ namespace SportscardSystem.FileImporters
         /// <summary>
         /// Stream reader object handle.
         /// </summary>
-        private StreamReader streamReaderWrapper;
+        private IStreamReader streamReaderWrapper;
 
         /// <summary>
         /// JSON Journals deserializer object handle.
@@ -40,7 +39,7 @@ namespace SportscardSystem.FileImporters
         /// Imports the specified collection of Journal DTOs from JSON text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs.</returns>
-        public IEnumerable<JournalJsonDto> ImportJournals()
+        public IEnumerable<SportscardJsonDto> ImportJournals()
         {
             using (this.streamReaderWrapper.GetStreamReader())
             {
