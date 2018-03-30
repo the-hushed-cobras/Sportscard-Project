@@ -35,6 +35,8 @@ namespace SportscardSystem.Logic.Services
 
         public void DeleteClient(string firstName, string lastName, int? age)
         {
+            Guard.WhenArgument(firstName, "Client first name").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(lastName, "Client last name").IsNullOrEmpty().Throw();
             var client = this.dbContext.Clients?.FirstOrDefault(x => 
             !x.IsDeleted && 
             x.Age == age && 

@@ -91,6 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClientServiceTests\AddClient_Should.cs" />
     <Compile Include="Services\ClientServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\ClientServiceTests\DeleteClient_Should.cs" />
     <Compile Include="Services\ClientServiceTests\GetAllClients_Should.cs" />
     <Compile Include="Services\ClientServiceTests\GetMostActiveClient_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\AddCompany_Should.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Services\SportscardServiceTests\GetAllSportscards_Should.cs" />
     <Compile Include="Services\SportscardServiceTests\DeleteSportscard_Should.cs" />
     <Compile Include="Services\SportscardServiceTests\GetReport_Should.cs" />
+    <Compile Include="Services\SportServiceTests\AddSportToSporthall_Should.cs" />
     <Compile Include="Services\SportServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportServiceTests\AddSport_Should.cs" />
     <Compile Include="Services\SportServiceTests\GetAllSports_Should.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Services\SportServiceTests\GetSportVisitsFrom_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\DeleteSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetAllSportshalls_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetSportshallVisitsFrom_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetReport_Should.cs" />

@@ -47,8 +47,9 @@ namespace SportscardSystem.Logic.Services
         //To be implemented
         public void DeleteSportshall(string sportshallName)
         {
+            Guard.WhenArgument(sportshallName, "Sportshall's name cannot be null or empty.").IsNullOrEmpty().Throw();
             var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted)
-                .FirstOrDefault(v => v.Name == sportshallName);
+                .FirstOrDefault(v => v.Name.ToLower() == sportshallName.ToLower());
 
             Guard.WhenArgument(sportshall, "The are no sportshall with this name.").IsNull().Throw();
 

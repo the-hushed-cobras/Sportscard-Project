@@ -32,10 +32,10 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(sportshall, "No such sportshall.").IsNull().Throw();
             Sport sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
             Guard.WhenArgument(sportAtDb, "No such sport at database, please add it :-)").IsNull().Throw();
-            if (!(sportshall.Sports.Any(s => s.Name == sportAtDb.Name && s.IsDeleted == true)))
+            if (!(sportshall.Sports.Any(s => s.Name.ToLower() == sportAtDb.Name.ToLower() && !s.IsDeleted)))
             {
-                Console.WriteLine("Test");
-                sportshall.Sports.Add(new Sport(){Id = sportAtDb.Id, Name = sportAtDb.Name });
+                //sportshall.Sports.Add(new Sport() { Id = sportAtDb.Id, Name = sportAtDb.Name });
+                sportshall.Sports.Add(sportAtDb);
                 this.dbContext.SaveChanges();
             }
             else
