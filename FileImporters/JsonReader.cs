@@ -39,7 +39,7 @@ namespace SportscardSystem.FileImporters
         /// Imports the specified collection of Journal DTOs from JSON text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs.</returns>
-        public IEnumerable<SportscardJsonDto> ImportJournals()
+        public IEnumerable<SportscardJsonDto> ImportSportscards()
         {
             using (this.streamReaderWrapper.GetStreamReader())
             {

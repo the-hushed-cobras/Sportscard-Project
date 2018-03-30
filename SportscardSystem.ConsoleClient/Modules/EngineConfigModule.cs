@@ -5,6 +5,7 @@ using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Commands.ExportPdf;
 using SportscardSystem.ConsoleClient.Commands.FromAndTo;
 using SportscardSystem.ConsoleClient.Commands.GetMost;
+using SportscardSystem.ConsoleClient.Commands.ImportJSON;
 using SportscardSystem.ConsoleClient.Commands.ListAll;
 using SportscardSystem.ConsoleClient.Commands.Visits;
 using SportscardSystem.ConsoleClient.Core;
@@ -38,6 +39,9 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering FileImporters
             builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
             builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
+
+            //Registering file import commands
+            builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile");
 
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");

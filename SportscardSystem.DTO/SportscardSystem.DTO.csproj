@@ -61,6 +61,7 @@
     <Compile Include="JSON\ClientJsonDto.cs" />
     <Compile Include="JSON\CompanyJsonDto.cs" />
     <Compile Include="JSON\Contracts\IJsonDto.cs" />
+    <Compile Include="JSON\SportscardJsonDto.cs" />
     <Compile Include="JSON\SportJsonDto.cs" />
     <Compile Include="JSON\SportshallJsonDto.cs" />
     <Compile Include="JSON\VisitJsonDto.cs" />
