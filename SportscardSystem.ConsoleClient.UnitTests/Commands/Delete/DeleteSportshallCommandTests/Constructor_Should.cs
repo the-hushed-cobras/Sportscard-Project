@@ -2,6 +2,7 @@
 using Moq;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
+using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
@@ -19,11 +20,11 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteSportsh
             var sportshallService = new Mock<ISportshallService>();
 
             //Act
-            var addSportshallCommand = new AddSportshallCommand(sportscardFactoryMock.Object, sportshallService.Object);
+            var deleteSportshallCommand = new DeleteSportshallCommand(sportscardFactoryMock.Object, sportshallService.Object);
 
             //Assert
-            Assert.IsNotNull(addSportshallCommand);
-            Assert.IsInstanceOfType(addSportshallCommand, typeof(ICommand));
+            Assert.IsNotNull(deleteSportshallCommand);
+            Assert.IsInstanceOfType(deleteSportshallCommand, typeof(ICommand));
         }
 
         [TestMethod]
@@ -34,18 +35,18 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteSportsh
             var sportshallService = new Mock<ISportshallService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportshallCommand(null, sportshallService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteSportshallCommand(null, sportshallService.Object));
         }
 
         [TestMethod]
         public void ThrowArgumentNullException_WhenInvokedWithInvalidNullSportshallServiceParameter()
         {
             //Arrange
-            //var sportscardFactoryMock = new Mock<ISportscardFactory>();
-            var sportshallService = new Mock<ISportshallService>();
+            var sportscardFactoryMock = new Mock<ISportscardFactory>();
+            //var sportshallService = new Mock<ISportshallService>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddSportshallCommand(null, sportshallService.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteSportshallCommand(sportscardFactoryMock.Object, null));
         }
     }
 }

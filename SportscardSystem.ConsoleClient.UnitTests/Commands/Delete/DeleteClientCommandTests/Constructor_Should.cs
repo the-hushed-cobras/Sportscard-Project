@@ -2,6 +2,7 @@
 using Moq;
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
+using SportscardSystem.ConsoleClient.Commands.Delete;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
 using SportscardSystem.Logic.Services.Contracts;
@@ -21,11 +22,11 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteClientC
             var validatorMock = new Mock<IValidateCore>();
 
             //Act
-            var addClientCommand = new AddClientCommand(sportscardFactoryMock.Object, clientServiceMock.Object, validatorMock.Object);
+            var deleteClientCommand = new DeleteClientCommand(sportscardFactoryMock.Object, clientServiceMock.Object, validatorMock.Object);
 
             //Assert
-            Assert.IsNotNull(addClientCommand);
-            Assert.IsInstanceOfType(addClientCommand, typeof(ICommand));
+            Assert.IsNotNull(deleteClientCommand);
+            Assert.IsInstanceOfType(deleteClientCommand, typeof(ICommand));
         }
 
         [TestMethod]
@@ -49,7 +50,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteClientC
             var validatorMock = new Mock<IValidateCore>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddClientCommand(sportscardFactoryMock.Object, null, validatorMock.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteClientCommand(sportscardFactoryMock.Object, null, validatorMock.Object));
         }
 
         [TestMethod]
@@ -61,7 +62,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Delete.DeleteClientC
             //var validatorMock = new Mock<IValidateCore>();
 
             //Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new AddClientCommand(sportscardFactoryMock.Object, clientServiceMock.Object, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new DeleteClientCommand(sportscardFactoryMock.Object, clientServiceMock.Object, null));
         }
     }
 }
