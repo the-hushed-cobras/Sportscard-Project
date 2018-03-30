@@ -28,7 +28,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.ListAll.ListAllSport
         }
 
         [TestMethod]
-        public void ReturnListOfAllCompaniesString_WhenInvokedWithValidParameters()
+        public void ReturnListOfAllVisitsString_WhenInvokedWithValidParameters()
         {
             //Arrange
             var sportServiceMock = new Mock<ISportService>();

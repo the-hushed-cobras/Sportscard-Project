@@ -87,6 +87,8 @@
     <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
