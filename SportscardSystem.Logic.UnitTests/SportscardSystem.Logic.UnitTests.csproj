@@ -113,6 +113,7 @@
     <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\DeleteSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetAllSportshalls_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\GetMostVisitedSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetSportshallVisitsFrom_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetReport_Should.cs" />
     <Compile Include="Services\VisitServiceTests\Constructor_Should.cs" />
