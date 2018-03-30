@@ -14,6 +14,8 @@ using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
+using SportscardSystem.FileImporters.Utils;
+using SportscardSystem.FileImporters.Utils.Contracts;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
@@ -32,6 +34,10 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering factories
             builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
+
+            //Registering FileImporters
+            builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
+            builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
 
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
@@ -73,7 +79,6 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<GetSportshallVisitsToCommand>().Named<ICommand>("getsportshallvisitsto");
             builder.RegisterType<GetSportVisitsFromCommand>().Named<ICommand>("getsportvisitsfrom");
             builder.RegisterType<GetSportVisitsToCommand>().Named<ICommand>("getsportvisitsto");
-
 
             base.Load(builder);
         }
