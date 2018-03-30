@@ -61,6 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Add\AddClientCommand_Should\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddClientCommand_Should\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommand_Should\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommand_Should\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
@@ -73,9 +77,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+      <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
+      <Name>SportscardSystem.Architecture.Automapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SportscardSystem.ConsoleClient\SportscardSystem.ConsoleClient.csproj">
       <Project>{CF05C7DA-5E37-460D-85E3-12289FCEC234}</Project>
       <Name>SportscardSystem.ConsoleClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.DTO\SportscardSystem.DTO.csproj">
+      <Project>{24F14C4B-3F31-416D-B4FD-A037D435EA37}</Project>
+      <Name>SportscardSystem.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.Logic\SportscardSystem.Logic.csproj">
+      <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
+      <Name>SportscardSystem.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
