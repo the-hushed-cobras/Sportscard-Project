@@ -70,6 +70,7 @@
     <Compile Include="Commands\Add\AddSportshallCommand_Should\Constructor_Should.cs" />
     <Compile Include="Commands\Add\AddSportshallCommand_Should\Execute_Should.cs" />
     <Compile Include="Commands\Add\AddSportToSportshallCommand_Should\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportToSportshallCommand_Should\Execute_Should.cs" />
     <Compile Include="Core\EngineTests\Constructor_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />

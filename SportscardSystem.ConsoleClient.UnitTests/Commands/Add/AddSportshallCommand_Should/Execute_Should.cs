@@ -13,7 +13,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportshallCom
     public class Execute_Should
     {
         [TestMethod]
-        public void CallCompanyAddMethodOnce_WhenInvokedWithValidParameters()
+        public void CallSportshallAddMethodOnce_WhenInvokedWithValidParameters()
         {
             // Arrange
             var sportscardFactoryMock = new Mock<ISportscardFactory>();
