@@ -117,8 +117,39 @@ namespace SportscardSystem.Logic.UnitTests.Services.ClientServiceTests
         }
 
         [TestMethod]
-        public void ThrowArgumenNullException_WhenThereIsNoCompanyWithThisNameAtDb()
+        public void ThrowArgumenException_WhenThereIsNoCompanyWithThisNameAtDb()
         {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+
+            var searchedCompany = new Company()
+            {
+                Name = "Geek&Sundry",
+                IsDeleted = false
+            };
+
+            var data = new List<Company>
+            {
+                new Company
+                {
+                    Name = "NOTGeek&Sundry",
+                    IsDeleted = false,
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Company>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Companies)
+                .Returns(mockSet.Object);
+
+            var clientService = new ClientService(dbContextMock.Object, mapperMock.Object);
+
+            //Act
+            Assert.ThrowsException<ArgumentException>(() => clientService.GetCompanyGuidByName(searchedCompany.Name));
         }
     }
 }
