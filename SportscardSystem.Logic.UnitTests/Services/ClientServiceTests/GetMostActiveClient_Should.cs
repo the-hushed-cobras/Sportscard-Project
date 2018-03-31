@@ -146,7 +146,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.ClientServiceTests
             //Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => clientService.GetMostActiveClient());
         }
-
+         
         [TestMethod]
         public void ThrowArgumentNullException_WhenMapperIsUnableToMapObject()
         {

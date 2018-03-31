@@ -90,7 +90,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(sportshall, "Most visited sportshall can not be null.").IsNull().Throw();
             Guard.WhenArgument(sportshall.Visits.Where(v => !v.IsDeleted).Count(), "There no sportshall with visits.").IsLessThan(1).Throw();
             ISportshallDto sportshallDto = this.mapper.Map<SportshallDto>(sportshall);
-
+            Guard.WhenArgument(sportshallDto, "SportshallDto can not be null.").IsNull().Throw();
             return sportshallDto;
         }
 
