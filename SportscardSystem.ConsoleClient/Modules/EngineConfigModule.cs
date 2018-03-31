@@ -40,7 +40,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering FileImporters
             builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
             builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
-            builder.RegisterType<OurJsonReader>().As<IOurJsonReader>().SingleInstance();
+            builder.RegisterType<JsonReader>().AsSelf();
             
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
