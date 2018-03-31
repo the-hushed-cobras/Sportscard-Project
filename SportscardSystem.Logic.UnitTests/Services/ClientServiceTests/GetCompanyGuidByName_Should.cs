@@ -57,6 +57,32 @@ namespace SportscardSystem.Logic.UnitTests.Services.ClientServiceTests
         [TestMethod]
         public void ThrowArgumentException_WhenCompanyNameIsEmpty()
         {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+            
+            var data = new List<Company>
+            {
+                new Company
+                {
+                    Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
+                    Name = "Meka M",
+                    IsDeleted = false,
+                }
+            };
+
+            var mockSet = new Mock<DbSet<Company>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Companies)
+                .Returns(mockSet.Object);
+
+            var clientService = new ClientService(dbContextMock.Object, mapperMock.Object);
+
+            //Act
+            Assert.ThrowsException<ArgumentException>(() => clientService.GetCompanyGuidByName(string.Empty));
         }
 
         [TestMethod]
