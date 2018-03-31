@@ -103,6 +103,7 @@
     <Compile Include="Services\CompanyServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\GetAllCompanies_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\DeleteCompany_Should.cs" />
+    <Compile Include="Services\CompanyServiceTests\GetMostActiveCompany_Should.cs" />
     <Compile Include="Services\SportscardServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportscardServiceTests\AddSportscard_Should.cs" />
     <Compile Include="Services\SportscardServiceTests\GetAllSportscards_Should.cs" />
