@@ -151,7 +151,7 @@ namespace SportscardSystem.Logic.Services
 
             var sportshallVisits = this.dbContext.Visits?
                 .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower());
-            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNullOrEmpty().Throw();
 
             var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList()
                 .Where(v => v.CreatedOn.Date >= fromDateParse.Date && v.CreatedOn.Date <= toDateParse.Date); 

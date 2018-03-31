@@ -538,5 +538,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
             //Assert
             Assert.AreEqual(0, sportshallVisits.Count());
         }
+
+        
     }
 }
