@@ -15,6 +15,7 @@ using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
+using SportscardSystem.FileImporters;
 using SportscardSystem.FileImporters.Utils;
 using SportscardSystem.FileImporters.Utils.Contracts;
 
@@ -39,6 +40,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering FileImporters
             builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
             builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
+            builder.RegisterType<JsonReader>().AsSelf();    // is this neccessary?
             
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
@@ -53,7 +55,10 @@ namespace SportscardSystem.ConsoleClient.Modules
             //builder.RegisterType<AddSportscardCommand>().As<ICommand>();
             //builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile");
             //builder.RegisterType<ImportSportscardsFromFileCommand>().WithParameter(R);    // well fuck, old synthaxs
-            builder.RegisterType<ImportSportscardsFromFileCommand>().As<ICommand>().Keyed<ICommand>("importsportscardsfromfile");
+
+            //builder.RegisterType<ImportSportscardsFromFileCommand>().As<ICommand>().Keyed<ICommand>("importsportscardsfromfile");
+
+            builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile").WithParameter(new TypedParameter(typeof(ICommand), "addsportscard"));
 
 
             //Registering list commands
