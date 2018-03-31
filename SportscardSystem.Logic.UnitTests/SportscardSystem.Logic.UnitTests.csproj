@@ -98,6 +98,7 @@
     <Compile Include="Services\ClientServiceTests\AddClient_Should.cs" />
     <Compile Include="Services\ClientServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\ClientServiceTests\GetAllClients_Should.cs" />
+    <Compile Include="Services\ClientServiceTests\GetCompanyGuidByName_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\AddCompany_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\CompanyServiceTests\GetAllCompanies_Should.cs" />
