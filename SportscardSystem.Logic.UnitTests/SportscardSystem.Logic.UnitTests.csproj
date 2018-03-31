@@ -115,6 +115,7 @@
     <Compile Include="Services\SportshallServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\AddSportshall_Should.cs" />
     <Compile Include="Services\SportshallServiceTests\GetAllSportshalls_Should.cs" />
+    <Compile Include="Services\SportshallServiceTests\GetSportshallVisitsTo_Should.cs" />
     <Compile Include="Services\VisitServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\VisitServiceTests\AddVisit_Should.cs" />
     <Compile Include="Services\VisitServiceTests\GetAllVisits_Should.cs" />
