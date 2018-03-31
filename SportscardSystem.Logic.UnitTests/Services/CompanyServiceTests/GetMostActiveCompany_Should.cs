@@ -90,5 +90,46 @@ namespace SportscardSystem.Logic.UnitTests.Services.CompanyServiceTests
             //Assert
             Assert.AreEqual(expectedCompanyDto.Id, mostActiveCompany.Id);
         }
+
+        [TestMethod]
+        public void ThrowArgumentNullException_WhenThereAreNoCompanies()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+
+            var company = new CompanyDto()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
+                Name = "Geek&Sundry"
+            };
+
+            var data = new List<Company>
+            {
+            };
+
+            var mockSet = new Mock<DbSet<Company>>();
+
+            mockSet.SetupData(data);
+
+            dbContextMock
+                .Setup(x => x.Companies)
+                .Returns(mockSet.Object);
+
+            var expectedCompanyDto = new CompanyDto()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
+                Name = "Geek&Sundry"
+            };
+
+            mapperMock
+                .Setup(x => x.Map<CompanyDto>(company))
+                .Returns(expectedCompanyDto);
+
+            var companyService = new CompanyService(dbContextMock.Object, mapperMock.Object);
+
+            //Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => companyService.GetMostActiveCompany());
+        }
     }
 }
