@@ -1,0 +1,62 @@
+[
+    {
+       "client":{
+          "firstName" : "Mathew",
+          "lastName" : "Mercer",
+          "age" : 35,
+          "company":{
+              "name" : "Geek&Sundry"
+            }
+        }
+    },
+    {
+       "client":{
+          "firstName" : "Liam",
+          "lastName" : "O'Brien",
+          "age" : 41,
+          "company":{
+              "name" : "Geek&Sundry"
+            }
+        }
+    },
+    {
+       "client":{
+          "firstName" : "Marisha",
+          "lastName" : "Ray",
+          "age" : 28,
+          "company":{
+              "name" : "Geek&Sundry"
+            }
+        }
+    },
+    {
+       "client":{
+          "firstName" : "Alek",
+          "lastName" : "Hristov",
+          "age" : null,
+          "company":{
+              "name" : "the-hushed-cobras"
+            }
+        }
+    },
+    {
+       "client":{
+          "firstName" : "Viacheslav",
+          "lastName" : "Moshkin",
+          "age" : null,
+          "company":{
+              "name" : "the-hushed-cobras"
+            }
+        }
+    },
+    {
+       "client":{
+          "firstName" : "Aleks",
+          "lastName" : "Peneva",
+          "age" : null,
+          "company":{
+              "name" : "the-hushed-cobras"
+            }
+        }
+    }
+]

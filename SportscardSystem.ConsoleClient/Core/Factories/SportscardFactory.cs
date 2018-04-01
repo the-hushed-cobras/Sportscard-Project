@@ -33,9 +33,9 @@ namespace SportscardSystem.ConsoleClient.Core.Factories
             return new SportshallDto() { Name = name};
         }
 
-        public IVisitDto CreateVisitDto(Guid clientId, Guid sportshallId, Guid sportId, DateTime date)
+        public IVisitDto CreateVisitDto(Guid clientId, Guid sportshallId, Guid sportId)
         {
-            return new VisitDto() { ClientId = clientId, SportshallId = sportshallId, SportId = sportId, CreatedOn = date };
+            return new VisitDto() { ClientId = clientId, SportshallId = sportshallId, SportId = sportId, CreatedOn = DateTime.Now };
         }
     }
 }

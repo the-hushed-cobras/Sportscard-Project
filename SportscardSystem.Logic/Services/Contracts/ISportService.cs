@@ -1,4 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,12 +18,16 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// </summary>
         /// <param name="sport"></param>
         void AddSport(ISportDto sportDto);
+
         void AddSportToSportshall(string sport, string hallName);
+
+        void DeleteSportFromSportshall(string sport, string hallName);
+
         /// <summary>
         /// Deletes a specified sport from the database 
         /// </summary>
         /// <param name="sport"></param>
-        void DeleteSport(ISportDto sport);
+        void DeleteSport(Guid? sport);
 
         /// <summary>
         /// Gets the most played sport
@@ -39,5 +44,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         IEnumerable<IVisitViewDto> GetSportVisitsFrom(string sportName, string fromDate);
 
         IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate);
+
+        IEnumerable<IVisitViewDto> GetSportVisitsTo(string sportName, string fromDate);
     }
 }

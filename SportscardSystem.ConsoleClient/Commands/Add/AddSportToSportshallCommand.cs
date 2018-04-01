@@ -9,7 +9,6 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
 {
     public class AddSportToSportshallCommand : Command, ICommand
     {
-        private readonly ISportscardFactory sportscardFactory;
         private readonly ISportService sportService;
 
         public AddSportToSportshallCommand(ISportscardFactory sportscardFactory, ISportService sportService) 

@@ -1,9 +1,10 @@
 namespace SportscardSystem.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using Newtonsoft.Json;
+    using SportscardSystem.Models;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    using System.Linq;
+    using System.IO;
 
     public sealed class Configuration : DbMigrationsConfiguration<SportscardSystem.Data.SportscardSystemDbContext>
     {
@@ -18,6 +19,16 @@ namespace SportscardSystem.Data.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            // // rudimentary implementation of json deserialization
+            //using (StreamReader reader = new StreamReader(@"D:\Desktop\TELERIK\ALPHA\Module-3\Sportscard-project\Clients.json"))
+            //{
+            //    var content = reader.ReadToEnd();
+            //    List<Client> clients = JsonConvert.DeserializeObject<List<Client>>(content);
+            //    context.Clients.AddOrUpdate(clients.ToArray());
+            //}
+
+            //context.SaveChanges();
         }
     }
 }
