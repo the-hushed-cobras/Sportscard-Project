@@ -1,4 +1,5 @@
-﻿using SportscardSystem.ConsoleClient.Commands.Contracts;
+﻿using Bytes2you.Validation;
+using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.PdfExporter.Contracts;
 using System.Collections.Generic;
@@ -15,6 +16,9 @@ namespace SportscardSystem.ConsoleClient.Commands.ExportPdf
 
         public ExportSportshallsTableCommand(IPdfSportshallsTableExporter pdfWriter, ISportshallService sportshallService)
         {
+            Guard.WhenArgument(pdfWriter, "Pdf writer can not be null!").IsNull().Throw();
+            Guard.WhenArgument(sportshallService, "Sportscard service can not be null!").IsNull().Throw();
+
             this.pdfWriter = pdfWriter;
             this.sportshallService = sportshallService;
         }
