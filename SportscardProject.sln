@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporter", "SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj", "{6ED87A38-7BF4-4513-8613-90FE2A278B45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.FileImporters", "FileImporters\SportscardSystem.FileImporters.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileImporters", "FileImporters\FileImporters.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
