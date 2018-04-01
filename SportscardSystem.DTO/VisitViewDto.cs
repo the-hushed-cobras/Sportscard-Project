@@ -18,5 +18,10 @@ namespace SportscardSystem.DTO
         public string SportName { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public override string ToString()
+        {
+            return $"Client name: {ClientFirstName} {ClientLastName}; Sport name: {SportName}; SportshallName: {SportshallName}; Date: {CreatedOn.ToShortDateString()}";
+        }
     }
 }

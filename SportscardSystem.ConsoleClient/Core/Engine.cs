@@ -31,6 +31,8 @@ namespace SportscardSystem.ConsoleClient.Core
 
         public void Start()
         {
+            writer.WriteLine(processor.CommandsHelp());
+
             while (true)
             {
                 try
@@ -48,6 +50,7 @@ namespace SportscardSystem.ConsoleClient.Core
                 catch (ComponentNotRegisteredException)
                 {
                     this.writer.WriteLine($"There is no such command implemented! Please contact Dev team to implement it :)");
+                    writer.WriteLine(processor.CommandsHelp());
                 }
                 catch (Exception ex)
                 {
@@ -62,6 +65,8 @@ namespace SportscardSystem.ConsoleClient.Core
                     {
                         writer.WriteLine(exMessage);
                     }
+
+                    writer.WriteLine(processor.CommandsHelp());
                 }
             }
         }

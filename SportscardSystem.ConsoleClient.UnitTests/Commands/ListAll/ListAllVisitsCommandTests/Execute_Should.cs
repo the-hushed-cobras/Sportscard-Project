@@ -36,10 +36,10 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.ListAll.ListAllVisit
             var listAllVisitsCommand = new ListAllVisitsCommand(visitServiceMock.Object);
             var parameters = new List<string>();
 
-            var visits = new List<VisitDto>()
+            var visits = new List<VisitViewDto>()
             {
-                new VisitDto() {Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324")},
-                new VisitDto() {Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323")}
+                new VisitViewDto() {Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324")},
+                new VisitViewDto() {Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323")}
             };
 
             visitServiceMock
@@ -64,7 +64,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.ListAll.ListAllVisit
             var listAllVisitsCommand = new ListAllVisitsCommand(visitServiceMock.Object);
             var parameters = new List<string>();
 
-            var visits = new List<VisitDto>();
+            var visits = new List<VisitViewDto>();
 
             visitServiceMock
                 .Setup(x => x.GetAllVisits())
@@ -92,7 +92,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.ListAll.ListAllVisit
 
             visitServiceMock
                 .Setup(x => x.GetAllVisits())
-                .Returns((IEnumerable<VisitDto>)null);
+                .Returns((IEnumerable<VisitViewDto>)null);
 
             //Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => listAllVisitsCommand.Execute(parameters));

@@ -24,14 +24,14 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             Guard.WhenArgument(parameters.Count, "There are no this count of params for this cmd.").IsNotEqual(2).Throw();
 
             string sport = parameters[0];
-            string sportsHall = parameters[1];
+            string sportshall = parameters[1];
 
             Guard.WhenArgument(sport, "Sport can not be null.").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(sportsHall, "Sportshall can not be null.").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(sportshall, "Sportshall can not be null.").IsNullOrEmpty().Throw();
 
-            this.sportService.AddSportToSportshall(sport, sportsHall);
+            this.sportService.AddSportToSportshall(sport, sportshall);
 
-            return $"{sport} were added to {sportsHall} and added to database.";
+            return $"{sport} was added to {sportshall} and added to database.";
         }
     }
 }
