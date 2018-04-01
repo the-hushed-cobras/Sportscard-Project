@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporter", "SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj", "{6ED87A38-7BF4-4513-8613-90FE2A278B45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter", "FileImporters\SportscardSystem.JsonImporter.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter", "SportscardSystem.JsonImporter\SportscardSystem.JsonImporter.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter.UnitTests", "FileImporters.UnitTests\SportscardSystem.JsonImporter.UnitTests.csproj", "{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter.UnitTests", "SportscardSystem.JsonImporter.UnitTests\SportscardSystem.JsonImporter.UnitTests.csproj", "{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.ConsoleClient.UnitTests", "SportscardSystem.ConsoleClient.UnitTests\SportscardSystem.ConsoleClient.UnitTests.csproj", "{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}"
 EndProject
