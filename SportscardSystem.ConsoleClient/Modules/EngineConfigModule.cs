@@ -45,7 +45,12 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddSportscardCommand>().Named<ICommand>("addsportscard");
 
             //Registering list commands
+            builder.RegisterType<ListAllClientsCommand>().Named<ICommand>("listallclients");
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
+            builder.RegisterType<ListAllSportscardsCommand>().Named<ICommand>("listallsportscards");
+            builder.RegisterType<ListAllSportsCommand>().Named<ICommand>("listallsports");
+            builder.RegisterType<ListAllSportshallsCommand>().Named<ICommand>("listallsportshalls");
+            builder.RegisterType<ListAllVisitsCommand>().Named<ICommand>("listallvisits");
 
             //Registering get most commands
             builder.RegisterType<GetMostActiveClientCommand>().Named<ICommand>("getmostactiveclient");
@@ -73,11 +78,15 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<GetVisitsByClientCommand>().Named<ICommand>("getvisitsbyclient");
             builder.RegisterType<GetVisitsByDateCommand>().Named<ICommand>("getvisitsbydate");
             builder.RegisterType<GetVisitsBySportCommand>().Named<ICommand>("getvisitsbysport");
+            builder.RegisterType<GetVisitsBySporthallCommand>().Named<ICommand>("getvisitsbysportshall");
 
             //Registering from and to commands
             builder.RegisterType<GetSportshallVisitsFromCommand>().Named<ICommand>("getsportshallvisitsfrom");
             builder.RegisterType<GetSportshallVisitsToCommand>().Named<ICommand>("getsportshallvisitsto");
             builder.RegisterType<GetSportVisitsFromCommand>().Named<ICommand>("getsportvisitsfrom");
+            builder.RegisterType<GetSportshallVisitsFromToCommand>().Named<ICommand>("getsportshallvisitsfromto");
+            builder.RegisterType<GetSportVisitsFromToCommand>().Named<ICommand>("getsportvisitsfromto");
+
             builder.RegisterType<GetSportVisitsToCommand>().Named<ICommand>("getsportvisitsto");
 
             base.Load(builder);

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF00ABBF-A00A-4FCF-A95C-F1DE45F36C05}</ProjectGuid>
+    <ProjectGuid>{B11F9F16-2E4E-4753-94F7-5542CDA5FD0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SportscardSystem.Architecture.Autofac</RootNamespace>
@@ -50,22 +50,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Modules\AutofacConfigModule.cs" />
+    <Compile Include="Modules\DbContextConfigModule.cs" />
+    <Compile Include="Modules\EngineConfigModule.cs" />
+    <Compile Include="Modules\ImportExportConfigModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Sportscard.Logic\SportscardSystem.Logic.csproj">
-      <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
-      <Name>SportscardSystem.Logic</Name>
+    <ProjectReference Include="..\SportscardSystem.ConsoleClient\SportscardSystem.ConsoleClient.csproj">
+      <Project>{CF05C7DA-5E37-460D-85E3-12289FCEC234}</Project>
+      <Name>SportscardSystem.ConsoleClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportscardSystem.Data\SportscardSystem.Data.csproj">
       <Project>{A6B15612-E89E-4D5F-A2C2-E4FDF9A0B887}</Project>
       <Name>SportscardSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.Logic\SportscardSystem.Logic.csproj">
+      <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
+      <Name>SportscardSystem.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj">
+      <Project>{6ED87A38-7BF4-4513-8613-90FE2A278B45}</Project>
+      <Name>SportscardSystem.PdfExporter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

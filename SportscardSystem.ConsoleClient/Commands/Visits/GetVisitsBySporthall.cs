@@ -1,7 +1,7 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Commands.Abstract;
@@ -15,7 +15,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Visits
     {
         private readonly IVisitService visitService;
 
-        public GetVisitsBySporthall(ISportscardFactory sportscardFactory, IVisitService visitService) : base(sportscardFactory)
+        public GetVisitsBySporthallCommand(ISportscardFactory sportscardFactory, IVisitService visitService) : base(sportscardFactory)
         {
             Guard.WhenArgument(visitService, "Visit Service can not be null.").IsNull().Throw();
             this.visitService = visitService;

@@ -24,6 +24,7 @@ namespace SportscardSystem.ConsoleClient.Commands.FromAndTo
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count(), "Parameters for this comman should be 2.").IsNotEqual(2).Throw();
             var sportName = parameters[0];
             var fromDate = parameters[1];
 

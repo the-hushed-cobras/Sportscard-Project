@@ -47,8 +47,9 @@ namespace SportscardSystem.Logic.Services
         //To be implemented
         public void DeleteSportshall(string sportshallName)
         {
+            Guard.WhenArgument(sportshallName, "Sportshall's name cannot be null or empty.").IsNullOrEmpty().Throw();
             var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted)
-                .FirstOrDefault(v => v.Name == sportshallName);
+                .FirstOrDefault(v => v.Name.ToLower() == sportshallName.ToLower());
 
             Guard.WhenArgument(sportshall, "The are no sportshall with this name.").IsNull().Throw();
 
@@ -89,19 +90,27 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(sportshall, "Most visited sportshall can not be null.").IsNull().Throw();
             Guard.WhenArgument(sportshall.Visits.Where(v => !v.IsDeleted).Count(), "There no sportshall with visits.").IsLessThan(1).Throw();
             ISportshallDto sportshallDto = this.mapper.Map<SportshallDto>(sportshall);
-
+            Guard.WhenArgument(sportshallDto, "SportshallDto can not be null.").IsNull().Throw();
             return sportshallDto;
         }
 
         public IEnumerable<ISportshallViewDto> GetReport()
         {
-            var allSportshalls = dbContext.Sportshalls?.ProjectTo<SportshallDto>().ToList();
+            var allSportshalls = dbContext.Sportshalls?.Where(s => !s.IsDeleted);
+            Guard.WhenArgument(allSportshalls, "All sportshalls can not be null!").IsNullOrEmpty().Throw();
+
+            var allSportshallsDto = allSportshalls.ProjectTo<SportshallDto>().ToList();
+            Guard.WhenArgument(allSportshallsDto, "All sportshallsDto can not be null!").IsNullOrEmpty().Throw();
+
             var sportscardsDecoded = new List<ISportshallViewDto>();
 
-            foreach (var sportshall in allSportshalls)
+            foreach (var sportshall in allSportshallsDto)
             {
-                var sports = dbContext.Sportshalls?.Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
+                var sports = dbContext.Sportshalls?.Where(c => !c.IsDeleted).Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
+                Guard.WhenArgument(sports, "Sports can not be null!").IsNullOrEmpty().Throw();
+
                 var allSports = sports.ProjectTo<SportDto>().ToList();
+                Guard.WhenArgument(allSports, "All sports can not be null!").IsNullOrEmpty().Throw();
 
                 sportscardsDecoded.Add(new SportshallViewDto(sportshall.Name, allSports));
             }
@@ -116,11 +125,37 @@ namespace SportscardSystem.Logic.Services
 
             var fromDate = DateTime.Parse(date);
 
+            //var sportshallVisits = this.dbContext.Visits?
+            //    .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower() && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
             var sportshallVisits = this.dbContext.Visits?
-                .Where(v => !v.IsDeleted && v.Sportshall.Name == sportshallName && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
-            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNull().Throw();
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower());
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNullOrEmpty().Throw();
 
-            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
+            //var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList();
+            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList().Where(v => v.CreatedOn.Date >= fromDate.Date);
+
+            return sportshallVisitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportshallVisitFromTo (string sportshallName, string fromDate, string toDate)
+        {
+            Guard.WhenArgument(sportshallName, "Sportshall name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(fromDate, "Date from can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(toDate, "Date to from can not be null!").IsNullOrEmpty().Throw();
+
+            //var sportshall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted && s.Name.ToLower() == sportshallName.ToLower()).FirstOrDefault();
+            //Guard.WhenArgument(sportshall, "There are no sportshall with this name.").IsNull().Throw();
+
+            var fromDateParse = DateTime.Parse(fromDate);
+            var toDateParse = DateTime.Parse(toDate);
+
+            var sportshallVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sportshallName.ToLower());
+            Guard.WhenArgument(sportshallVisits, "Sportshall visits can not be null!").IsNullOrEmpty().Throw();
+
+            var sportshallVisitsDto = sportshallVisits?.ProjectTo<VisitViewDto>().ToList()
+                .Where(v => v.CreatedOn.Date >= fromDateParse.Date && v.CreatedOn.Date <= toDateParse.Date); 
+                
 
             return sportshallVisitsDto;
         }

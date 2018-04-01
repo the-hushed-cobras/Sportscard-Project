@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SportscardSystem.ConsoleClient.UnitTests</RootNamespace>
+    <AssemblyName>SportscardSystem.ConsoleClient.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.8.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.8.2\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Add\AddClientCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddClientCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddCompanyCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Add\AddSportToSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Add\AddSportToSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteClientCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteClientCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteCompanyCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteCompanyCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportscardCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportscardCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportshallCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteSportshallCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteVisitCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\Delete\DeleteVisitCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllClientsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllCompaniesCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportscardsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllSportshallsCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\ListAll\ListAllVisitsCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\EngineTests\Constructor_Should.cs" />
+    <Compile Include="Core\EngineTests\Start_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseCommand_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
+      <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>
+      <Name>SportscardSystem.Architecture.Automapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.ConsoleClient\SportscardSystem.ConsoleClient.csproj">
+      <Project>{CF05C7DA-5E37-460D-85E3-12289FCEC234}</Project>
+      <Name>SportscardSystem.ConsoleClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.DTO\SportscardSystem.DTO.csproj">
+      <Project>{24F14C4B-3F31-416D-B4FD-A037D435EA37}</Project>
+      <Name>SportscardSystem.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportscardSystem.Logic\SportscardSystem.Logic.csproj">
+      <Project>{22DF1230-537B-4F7C-9B03-575F9E198D5C}</Project>
+      <Name>SportscardSystem.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" />
+</Project>

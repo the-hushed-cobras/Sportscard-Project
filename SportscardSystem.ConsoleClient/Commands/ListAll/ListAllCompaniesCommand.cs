@@ -20,6 +20,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ListAll
         public string Execute(IList<string> parameters)
         {
             var companies = this.companyService.GetAllCompanies();
+            Guard.WhenArgument(companies, "Companies can not be null!").IsNull().Throw();
 
             if (companies.Count() == 0)
             {

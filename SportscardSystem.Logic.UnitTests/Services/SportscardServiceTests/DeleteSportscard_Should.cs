@@ -72,6 +72,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportscardServiceTests
             Assert.AreEqual(expectedSportscard.IsDeleted, true);
         }
 
+
         [TestMethod]
         public void ThrowArgumentNullException_WhenInvokedWithInvalidNullFirstNameParameter()
         {

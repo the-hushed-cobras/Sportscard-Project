@@ -43,6 +43,8 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// <returns></returns>
         IEnumerable<IVisitViewDto> GetSportVisitsFrom(string sportName, string fromDate);
 
+        IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate);
+
         IEnumerable<IVisitViewDto> GetSportVisitsTo(string sportName, string fromDate);
     }
 }

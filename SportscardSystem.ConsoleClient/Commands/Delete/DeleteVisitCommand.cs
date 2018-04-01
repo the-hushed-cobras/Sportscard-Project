@@ -21,6 +21,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "parameters").IsNotEqual(1).Throw();
+
             var visitId = parameters[0];
             Guard.WhenArgument(visitId, "Visit id can not be null!").IsNullOrEmpty().Throw();
 
