@@ -71,6 +71,10 @@ namespace SportscardSystem.ConsoleClient.Core.Providers
             helpSb.AppendLine("ListAllClients");
             helpSb.AppendLine("ListAllVisits");
             helpSb.AppendLine("ListAllSportscards");
+            helpSb.AppendLine();
+            helpSb.AppendLine("ImportSportscardsFromFile");
+            helpSb.AppendLine("ExportSportscardsTable");
+            helpSb.AppendLine("ExportSportshallsTable");
 
             return helpSb.ToString();
         }
