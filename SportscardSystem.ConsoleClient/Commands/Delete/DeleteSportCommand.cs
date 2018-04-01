@@ -23,10 +23,10 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public string Execute(IList<string> parameters)
         {
-            var sportId = parameters[0];
-            Guard.WhenArgument(sportId, "SportId can not be null!").IsNullOrEmpty().Throw();
+            var sportName = parameters[0];
+            Guard.WhenArgument(sportName, "Sport name can not be null!").IsNullOrEmpty().Throw();
 
-            this.sportService.DeleteSport(new Guid(sportId));
+            this.sportService.DeleteSport(sportName);
 
             return $"The following sport was deleted from database.";
         }
