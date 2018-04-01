@@ -26,6 +26,7 @@ namespace SportscardSystem.Logic.Services
             this.dbContext = dbContext;
             this.mapper = mapper;
         }
+
         public void AddSportToSportshall(string sport, string hallName)
         {
             Sportshall sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
@@ -40,7 +41,25 @@ namespace SportscardSystem.Logic.Services
             }
             else
             {
-                throw new ArgumentException($"There is already {sport} at this {hallName}");
+                throw new ArgumentException($"There is already {sport} available at {hallName}");
+            }
+
+        }
+
+        public void DeleteSportFromSportshall(string sport, string hallName)
+        {
+            Sportshall sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
+            Guard.WhenArgument(sportshall, "No such sportshall.").IsNull().Throw();
+            Sport sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
+            Guard.WhenArgument(sportAtDb, "No such sport at database, please add it :-)").IsNull().Throw();
+            if (sportshall.Sports.Any(s => s.Name == sportAtDb.Name && s.IsDeleted == true))
+            {
+                throw new ArgumentException($"We have already removed {sport} from {hallName}");
+            }
+            else
+            {
+                sportshall.Sports.Remove(sportAtDb);
+                this.dbContext.SaveChanges();
             }
 
         }
@@ -61,11 +80,18 @@ namespace SportscardSystem.Logic.Services
                 throw new ArgumentException("A sport with the same name already exists!");
             }
         }
-
-        //To be implemented
-        public void DeleteSport(ISportDto sportDto)
+        
+        public void DeleteSport (Guid? sportId)
         {
-            throw new NotImplementedException();
+            Guard.WhenArgument(sportId, "Visit id can not be null!").IsNull().Throw();
+
+            var sport = this.dbContext.Sports.FirstOrDefault(s => !s.IsDeleted && s.Id == sportId);
+            Guard.WhenArgument(sport, "There is no such visit!").IsNull().Throw();
+
+            sport.IsDeleted = true;
+            sport.DeletedOn = DateTime.Now;
+
+            this.dbContext.SaveChanges();
         }
 
         public IEnumerable<ISportDto> GetAllSports()
@@ -129,6 +155,22 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(sportVisits, "Sport visits can not be null.").IsNullOrEmpty().Throw();
             var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList()
                 .Where(v => v.CreatedOn.Date >= fromDateArg.Date && v.CreatedOn.Date <= toDateArg.Date);
+
+            return sportVisitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportVisitsTo(string sportName, string date)
+        {
+            Guard.WhenArgument(sportName, "Sport name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
+
+            var toDate = DateTime.Parse(date);
+
+            var sportVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName && DbFunctions.TruncateTime(v.CreatedOn) <= toDate.Date);
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
+
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
 
             return sportVisitsDto;
         }

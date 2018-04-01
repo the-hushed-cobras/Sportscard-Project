@@ -53,6 +53,6 @@ namespace SportscardSystem.ConsoleClient.Core.Factories.Contracts
         /// <param name="sportId"></param>
         /// <param name="date"></param>
         /// <returns>Instance of <see cref="IVisitDto"/> interface.</returns>
-        IVisitDto CreateVisitDto(Guid clientId, Guid sportshallId, Guid sportId, DateTime date);
+        IVisitDto CreateVisitDto(Guid clientId, Guid sportshallId, Guid sportId);
     }
 }
