@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace SportscardSystem.ConsoleClient.Commands.ImportJSON
 {
-    public class ImportSportscardsFromFileCommand : Command, ICommand           // WILL BE COMPLETELY REVISED
+    public class ImportSportscardsFromFileCommand : Command, ICommand
     {
         private readonly ISportscardService sportscardService;
         private readonly IJsonReader jsonReader;
@@ -60,12 +60,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ImportJSON
                     throw new ArgumentNullException("Sportscard's client in JSON file");
                 }
 
-                this.sportscardService.AddSportscard(
-                    new SportscardDto(){
-                    
-                    
-                    
-                    });
+                this.sportscardService.AddSportscard(sportscard);
 
             }
 

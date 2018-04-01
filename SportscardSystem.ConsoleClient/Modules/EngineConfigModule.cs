@@ -44,16 +44,6 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<AddVisitCommand>().Named<ICommand>("addvisit");
             builder.RegisterType<AddSportscardCommand>().Named<ICommand>("addsportscard");
 
-            //Registering file import commands   ---------TRYOUTS
-            //builder.RegisterType<AddSportscardCommand>().As<ICommand>();
-            builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile");
-            //builder.RegisterType<ImportSportscardsFromFileCommand>().WithParameter(new TypedParameter(typeof(AddSportscardCommand), "addsportscard"));    // well fuck, old synthaxs
-
-            //builder.RegisterType<ImportSportscardsFromFileCommand>().As<ICommand>().Keyed<ICommand>("importsportscardsfromfile");
-
-            //builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile").WithParameter(new TypedParameter(typeof(ICommand), "addsportscard"));
-
-
             //Registering list commands
             builder.RegisterType<ListAllCompaniesCommand>().Named<ICommand>("listallcompanies");
 
@@ -66,6 +56,9 @@ namespace SportscardSystem.ConsoleClient.Modules
             //Registering export commands
             builder.RegisterType<ExportSportscardsTableCommand>().Named<ICommand>("exportsportscardstable");
             builder.RegisterType<ExportSportshallsTableCommand>().Named<ICommand>("exportsportshallstable");
+
+            //Registering file import command
+            builder.RegisterType<ImportSportscardsFromFileCommand>().Named<ICommand>("importsportscardsfromfile");
 
             //Registering delete commands
             builder.RegisterType<DeleteClientCommand>().Named<ICommand>("deleteclient");
