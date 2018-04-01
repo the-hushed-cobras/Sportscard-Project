@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.ConsoleClient", "SportscardSystem.ConsoleClient\SportscardSystem.ConsoleClient.csproj", "{CF05C7DA-5E37-460D-85E3-12289FCEC234}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.Logic.UnitTests", "SportscardSystem.Logic.UnitTests\SportscardSystem.Logic.UnitTests.csproj", "{33581DB9-1087-4C41-9C25-BF73DFE4BD87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporter", "SportscardSystem.PdfExporter\SportscardSystem.PdfExporter.csproj", "{6ED87A38-7BF4-4513-8613-90FE2A278B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileImporters", "FileImporters\FileImporters.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ED87A38-7BF4-4513-8613-90FE2A278B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,10 @@ using SportscardSystem.DTO;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
 using SportscardSystem.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace SportscardSystem.Logic.Services
 {
@@ -107,6 +111,69 @@ namespace SportscardSystem.Logic.Services
             var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
 
             return visitsDto;
+        }
+
+        public Guid GetClientGuidByNamesAndCompanyId(string clientFirstName, string clientLastName, Guid companyId)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Clients.FirstOrDefault(x => x.FirstName == clientFirstName && x.LastName == clientLastName
+                                                                 && x.CompanyId == companyId).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such client exists!");
+            }
+
+            return result;
+        }
+
+        public Guid GetSportshallGuidByName(string sportshallName)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Sportshalls.FirstOrDefault(x => x.Name == sportshallName).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such sportshall exists!");
+            }
+
+            return result;
+        }
+
+        public Guid GetSportGuidByName(string sportName)
+        {
+            Guid result;
+
+            try
+            {
+                result = this.dbContext.Sports.FirstOrDefault(x => x.Name == sportName).Id;
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("No such sport exists!");
+            }
+
+            return result;
+        }
+
+        public IEnumerable<IVisitViewDto> GetVisitsBySport(string sportName)
+        {
+            var sportVisits = dbContext.Visits
+                .Where(v => !v.IsDeleted && v.Sport.Name == sportName);
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
+
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
+
+            return sportVisitsDto;
         }
     }
 }
