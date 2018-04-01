@@ -33,7 +33,6 @@ namespace SportscardSystem.ConsoleClient.Core
         {
             while (true)
             {
-
                 try
                 {
                     string commandAsString = reader.ReadLine();

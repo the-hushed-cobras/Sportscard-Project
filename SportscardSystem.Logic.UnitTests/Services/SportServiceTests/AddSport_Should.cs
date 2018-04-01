@@ -26,7 +26,13 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
             {
                 new Sport { Name = "Gym" },
                 new Sport { Name = "Yoga" },
-                new Sport { Name = "Pilates" }
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
+                new Sport { Name = "Pilates" },
             };
 
             var mockSet = new Mock<DbSet<Sport>>();
@@ -35,7 +41,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
             mockSet.Setup(m => m.Add(It.IsAny<Sport>()));
 
             dbContextMock
-                .Setup(x => x.Sports)
+                .Setup((x) => x.Sports)
                 .Returns(mockSet.Object);
 
             var sportDto = new SportDto() { Name = "Boxing" };
@@ -102,6 +108,44 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
 
             //Act && Assert
             Assert.ThrowsException<ArgumentException>(() => sportService.AddSport(sportDto));
+        }
+
+        [TestMethod]
+        public void InvokeSaveChangesMethod_WhenSportWithTheSameNameDoesNotExistAtDb()
+        {
+            //Arrange
+            var dbContextMock = new Mock<ISportscardSystemDbContext>();
+            var mapperMock = new Mock<IMapper>();
+            var expectedSport = new Sport() { Name = "Gym" };
+
+            var data = new List<Sport>
+            {
+                new Sport { Name = "GymGymy" },
+                new Sport { Name = "Yoga" },
+                new Sport { Name = "Pilates" }
+            };
+
+            var mockSet = new Mock<DbSet<Sport>>();
+
+            mockSet.SetupData(data);
+            mockSet.Setup(m => m.Add(It.IsAny<Sport>()));
+
+            dbContextMock
+                .Setup(x => x.Sports)
+                .Returns(mockSet.Object);
+
+            var sportDto = new SportDto() { Name = "Gym" };
+
+            mapperMock
+                .Setup(x => x.Map<Sport>(sportDto))
+                .Returns(expectedSport);
+
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
+
+            //Act
+            sportService.AddSport(sportDto);
+            //Assert
+            dbContextMock.Verify(x => x.SaveChanges(), Times.Once);
         }
     }
 }

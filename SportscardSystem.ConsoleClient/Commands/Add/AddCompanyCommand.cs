@@ -12,7 +12,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
     {
         private readonly ICompanyService companyService;
 
-        public AddCompanyCommand(ISportscardFactory sportscardFactory, ICompanyService companyService) 
+        public AddCompanyCommand(ISportscardFactory sportscardFactory, ICompanyService companyService)
             : base(sportscardFactory)
         {
             Guard.WhenArgument(companyService, "Company service can not be null!").IsNull().Throw();
@@ -31,6 +31,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             {
                 throw new ArgumentException("Failed to parse AddCompany command parameters.");
             }
+
+            Guard.WhenArgument(name, "Company name can not be null!").IsNullOrEmpty().Throw();
 
             var company = this.SportscardFactory.CreateCompanyDto(name);
             companyService.AddCompany(company);

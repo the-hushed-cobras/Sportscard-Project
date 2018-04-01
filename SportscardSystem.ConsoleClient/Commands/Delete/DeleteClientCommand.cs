@@ -25,6 +25,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "Count of the parameters.").IsLessThan(2).IsGreaterThan(3).Throw();
+
             string clientFirstName = parameters[0];
             string clientLastName = parameters[1];
             int? clientAge;
@@ -41,7 +43,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
             {
                 clientAge = null;
             }
-            
+
             this.clientService.DeleteClient(clientFirstName, clientLastName, clientAge);
 
             return $"{clientFirstName} was deleted from database.";

@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
 using SportscardSystem.Data.Contracts;
@@ -69,9 +73,12 @@ namespace SportscardSystem.Logic.Services
 
         public IEnumerable<IVisitViewDto> GetVisitsByClient(string firstName, string lastName)
         {
-            var clientVisits = dbContext.Visits
-                .Where(v => !v.IsDeleted && v.Client.FirstName.ToLower() == firstName && v.Client.LastName.ToLower() == lastName);
-            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNull().Throw();
+            Guard.WhenArgument(firstName, "First name can not be null!").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(lastName, "Last name can not be null!").IsNullOrEmpty().Throw();
+
+            var clientVisits = dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Client.FirstName.ToLower() == firstName.ToLower() && v.Client.LastName.ToLower() == lastName.ToLower());
+            Guard.WhenArgument(clientVisits, "Client visits can not be null!").IsNullOrEmpty().Throw();
 
             var clientVisitsDto = clientVisits.ProjectTo<VisitViewDto>().ToList();
 
@@ -83,8 +90,23 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(date, "Date can not be null!").IsNullOrEmpty().Throw();
             var visitDate = DateTime.Parse(date);
 
-            var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
-            Guard.WhenArgument(visits, "Visits can not be null!").IsNull().Throw();
+            //var visits = dbContext.Visits.Where(v => !v.IsDeleted && DbFunctions.TruncateTime(v.CreatedOn) == visitDate.Date);
+            var visits = dbContext.Visits.Where(v => !v.IsDeleted);
+            Guard.WhenArgument(visits, "Visits can not be null!").IsNullOrEmpty().Throw();
+
+            //var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
+            var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList().Where(v => v.CreatedOn.Date == visitDate.Date);
+
+            return visitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetVisitsBySportshall(string sportshall)
+        {
+            var sporthall = this.dbContext.Sportshalls.Where(s => !s.IsDeleted && s.Name.ToLower() == sportshall.ToLower()).FirstOrDefault();
+            Guard.WhenArgument(sporthall, "There are no sportshall with this name").IsNull().Throw();
+
+            var visits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sportshall.Name.ToLower() == sporthall.Name.ToLower());
 
             var visitsDto = visits.ProjectTo<VisitViewDto>(visits).ToList();
 

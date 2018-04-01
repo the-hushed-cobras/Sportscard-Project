@@ -20,6 +20,8 @@ namespace SportscardSystem.ConsoleClient.Commands.Delete
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters.Count, "Count of the parameters.").IsNotEqual(1).Throw();
+
             string companyName = parameters[0];
             Guard.WhenArgument(companyName, "Company name can not be null!").IsNullOrEmpty().Throw();
 

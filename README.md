@@ -1,5 +1,8 @@
 # Project name: SportscardSystem
 
+[![Build Status](https://travis-ci.org/the-hushed-cobras/SportscardSystem-Project.svg?branch=master)](https://travis-ci.org/the-hushed-cobras/SportscardSystem-Project)
+![license](https://img.shields.io/github/license/the-hushed-cobras/SportscardSystem-Project.svg)
+
 ## Team name: The Hushed Cobras
 
 ## Team leader: Alek Hristov

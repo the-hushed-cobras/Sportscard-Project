@@ -26,16 +26,16 @@ namespace SportscardSystem.Logic.Services
             this.dbContext = dbContext;
             this.mapper = mapper;
         }
-
         public void AddSportToSportshall(string sport, string hallName)
         {
             Sportshall sportshall = this.dbContext.Sportshalls.FirstOrDefault(s => s.Name == hallName && s.IsDeleted != true);
             Guard.WhenArgument(sportshall, "No such sportshall.").IsNull().Throw();
             Sport sportAtDb = this.dbContext.Sports.FirstOrDefault(s => s.Name == sport && !s.IsDeleted);
             Guard.WhenArgument(sportAtDb, "No such sport at database, please add it :-)").IsNull().Throw();
-            if (!(sportshall.Sports.Any(s => s.Name == sportAtDb.Name && s.IsDeleted == true)))
+            if (!(sportshall.Sports.Any(s => s.Name.ToLower() == sportAtDb.Name.ToLower() && !s.IsDeleted)))
             {
-                sportshall.Sports.Add(new Sport(){Id = sportAtDb.Id, Name = sportAtDb.Name });
+                //sportshall.Sports.Add(new Sport() { Id = sportAtDb.Id, Name = sportAtDb.Name });
+                sportshall.Sports.Add(sportAtDb);
                 this.dbContext.SaveChanges();
             }
             else
@@ -110,6 +110,7 @@ namespace SportscardSystem.Logic.Services
             Guard.WhenArgument(mostPlayedSport, "Most played sport can not be null!").IsNull().Throw();
 
             var mostPlayedSportDto = this.mapper.Map<SportDto>(mostPlayedSport);
+            Guard.WhenArgument(mostPlayedSportDto, "Most played sport can not be null!").IsNull().Throw();
 
             return mostPlayedSportDto;
         }
@@ -121,11 +122,38 @@ namespace SportscardSystem.Logic.Services
 
             var fromDate = DateTime.Parse(date);
 
+            // var sportVisits = this.dbContext.Visits?
+            //    .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName.ToLower() && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
             var sportVisits = this.dbContext.Visits?
-                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName && DbFunctions.TruncateTime(v.CreatedOn) >= fromDate.Date);
-            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNull().Throw();
+                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName.ToLower());
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null!").IsNullOrEmpty().Throw();
 
-            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
+            //var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList();
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList().Where(v => v.CreatedOn.Date >= fromDate.Date);
+
+            return sportVisitsDto;
+        }
+
+        public IEnumerable<IVisitViewDto> GetSportVisitsFromTo(string sportName, string fromDate, string toDate)
+        {
+            DateTime fromDateArg;
+            DateTime toDateArg;
+            try
+            {
+                fromDateArg = DateTime.Parse(fromDate);
+                toDateArg = DateTime.Parse(toDate);
+            }
+            catch
+            {
+                throw new ArgumentException("Cant parse date from string");
+            }
+            Sport sport = this.dbContext.Sports.Where(s => !s.IsDeleted).FirstOrDefault(s => s.Name.ToLower() == sportName.ToLower());
+            Guard.WhenArgument(sport, "There are no this sport at Db.").IsNull().Throw();
+            var sportVisits = this.dbContext.Visits?
+                .Where(v => !v.IsDeleted && v.Sport.Name.ToLower() == sportName.ToLower());
+            Guard.WhenArgument(sportVisits, "Sport visits can not be null.").IsNullOrEmpty().Throw();
+            var sportVisitsDto = sportVisits.ProjectTo<VisitViewDto>().ToList()
+                .Where(v => v.CreatedOn.Date >= fromDateArg.Date && v.CreatedOn.Date <= toDateArg.Date);
 
             return sportVisitsDto;
         }
