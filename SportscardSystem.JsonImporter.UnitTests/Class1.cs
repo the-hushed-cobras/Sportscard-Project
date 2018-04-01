@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileImporters.UnitTests
+namespace SportscardSystem.JsonImporter.UnitTests
 {
     public class Class1
     {

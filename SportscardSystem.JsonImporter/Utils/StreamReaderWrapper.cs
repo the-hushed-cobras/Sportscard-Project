@@ -1,8 +1,8 @@
 ﻿using Bytes2you.Validation;
-using SportscardSystem.FileImporters.Utils.Contracts;
+using SportscardSystem.JsonImporter.Utils.Contracts;
 using System.IO;
 
-namespace SportscardSystem.FileImporters.Utils
+namespace SportscardSystem.JsonImporter.Utils
 {
     public class StreamReaderWrapper : IStreamReader
     {
