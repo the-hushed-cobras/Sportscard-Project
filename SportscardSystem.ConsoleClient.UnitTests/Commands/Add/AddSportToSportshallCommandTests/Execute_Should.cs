@@ -44,7 +44,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportToSports
 
             var sportName = "Gym";
             var sportshallName = "Topfit";
-            var expectedMessage = $"{sportName} were added to {sportshallName} and added to database.";
+            var expectedMessage = $"{sportName} was added to {sportshallName} and added to database.";
 
             var addSportToSportshallCommand = new AddSportToSportshallCommand(sportscardFactoryMock.Object, sportServiceMock.Object);
             var parameters = new List<string>()
