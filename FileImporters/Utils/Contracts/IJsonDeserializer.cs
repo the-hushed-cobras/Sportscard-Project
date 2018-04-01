@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using SportscardSystem.DTO.JSON;
+﻿using SportscardSystem.DTO;
+using System.Collections.Generic;
 
 namespace SportscardSystem.FileImporters.Utils.Contracts
 {
     public interface IJsonDeserializer
     {
-        IEnumerable<SportscardJsonDto> Deserialize(string jsonText);
+        IEnumerable<SportscardDto> Deserialize(string jsonText);
     }
 }

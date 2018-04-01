@@ -2,6 +2,7 @@
 using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
+using SportscardSystem.DTO;
 using SportscardSystem.FileImporters;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
@@ -12,14 +13,16 @@ namespace SportscardSystem.ConsoleClient.Commands.ImportJSON
 {
     public class ImportSportscardsFromFileCommand : Command, ICommand           // WILL BE COMPLETELY REVISED
     {
-        private readonly ICommand addSportscardCommand;
-        private readonly JsonReader jsonReader;
+        private readonly ISportscardService sportscardService;
+        private readonly IJsonReader jsonReader;
 
-        public ImportSportscardsFromFileCommand(ISportscardFactory sportscardFactory, JsonReader jsonReader, ISportscardService sportscardService, 
-                                                IClientService clientService, IVisitService visitService) : base(sportscardFactory)
+        public ImportSportscardsFromFileCommand(ISportscardFactory sportscardFactory, 
+                                                IJsonReader jsonReader, 
+                                                ISportscardService sportscardService) 
+            : base(sportscardFactory)
         {
             this.jsonReader = jsonReader;
-            this.addSportscardCommand = new AddSportscardCommand(sportscardFactory, sportscardService, clientService, visitService);
+            this.sportscardService = sportscardService;
         }
 
         public string Execute(IList<string> parameters)
@@ -28,7 +31,7 @@ namespace SportscardSystem.ConsoleClient.Commands.ImportJSON
 
             if (sportscards.Count() == 0)
             {
-                return $"Sorry, there are no companies in the file.";
+                return $"Sorry, there are no sportscards in the file.";
             }
 
             foreach (var sportscard in sportscards)
@@ -49,20 +52,20 @@ namespace SportscardSystem.ConsoleClient.Commands.ImportJSON
                     }
                     else
                     {
-                        throw new ArgumentNullException("Company in JSON file");
+                        throw new ArgumentNullException("Sportscard's company in JSON file");
                     }
                 }
                 else
                 {
-                    throw new ArgumentNullException("Company in JSON file");
+                    throw new ArgumentNullException("Sportscard's client in JSON file");
                 }
 
-                this.addSportscardCommand.Execute(new List<string>()
-                {
-                    clientFirstName,
-                    clientLastName,
-                    companyName
-                });
+                this.sportscardService.AddSportscard(
+                    new SportscardDto(){
+                    
+                    
+                    
+                    });
 
             }
 

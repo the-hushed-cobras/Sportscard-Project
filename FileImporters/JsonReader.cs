@@ -1,11 +1,11 @@
 ﻿using Bytes2you.Validation;
-using SportscardSystem.DTO.JSON;
+using SportscardSystem.DTO;
 using SportscardSystem.FileImporters.Utils.Contracts;
 using System.Collections.Generic;
 
 namespace SportscardSystem.FileImporters
 {
-    public class JsonReader
+    public class JsonReader : IJsonReader
     {
         private IStreamReader streamReaderWrapper;
 
@@ -21,7 +21,7 @@ namespace SportscardSystem.FileImporters
             this.jsonDeserializerWrapper = jsonDeserializerWrapper;
         }
         
-        public IEnumerable<SportscardJsonDto> ImportSportscards()
+        public IEnumerable<SportscardDto> ImportSportscards()
         {
             using (this.streamReaderWrapper.GetStreamReader())
             {

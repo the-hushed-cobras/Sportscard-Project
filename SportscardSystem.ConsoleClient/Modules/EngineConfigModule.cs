@@ -15,9 +15,6 @@ using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.ConsoleClient.Core.Providers;
 using SportscardSystem.ConsoleClient.Core.Providers.Contracts;
 using SportscardSystem.ConsoleClient.Validator;
-using SportscardSystem.FileImporters;
-using SportscardSystem.FileImporters.Utils;
-using SportscardSystem.FileImporters.Utils.Contracts;
 
 namespace SportscardSystem.ConsoleClient.Modules
 {
@@ -37,11 +34,7 @@ namespace SportscardSystem.ConsoleClient.Modules
             builder.RegisterType<SportscardFactory>().As<ISportscardFactory>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
 
-            //Registering FileImporters
-            builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
-            builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
-            builder.RegisterType<JsonReader>().AsSelf();
-            
+                  
             //Registering add commands
             builder.RegisterType<AddCompanyCommand>().Named<ICommand>("addcompany");
             builder.RegisterType<AddClientCommand>().Named<ICommand>("addclient");

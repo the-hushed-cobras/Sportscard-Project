@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
-using Autofac.Core;
-using SportscardSystem.PdfExporter;
-using SportscardSystem.PdfExporter.Contracts;
-using SportscardSystem.PdfExporter.Utils;
-using SportscardSystem.PdfExporter.Utils.Contracts;
-using System;
+﻿using Autofac;
+using SportscardSystem.FileImporters;
 using SportscardSystem.FileImporters.Utils;
 using SportscardSystem.FileImporters.Utils.Contracts;
 
@@ -18,8 +11,14 @@ namespace SportscardSystem.ConsoleClient.Modules
 
         protected override void Load(ContainerBuilder builder)
         {
+
+            //Registering FileImporters
+            builder.RegisterType<StreamReaderWrapper>().As<IStreamReader>().SingleInstance();
+            builder.RegisterType<JsonDeserializerWrapper>().As<IJsonDeserializer>().SingleInstance();
+            builder.RegisterType<JsonReader>().As<IJsonReader>().SingleInstance();
+
             builder
-                .RegisterType<StreamReaderWrapper>()
+                .RegisterType<JsonReader>()
                 .WithParameter("filePath", FilePath)
                 .Named<IStreamReader>("jsonreader");
             

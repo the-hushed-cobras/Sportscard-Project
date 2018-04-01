@@ -1,4 +1,5 @@
-﻿using SportscardSystem.Architecture.Automapper.Contracts;
+﻿using Newtonsoft.Json;
+using SportscardSystem.Architecture.Automapper.Contracts;
 using SportscardSystem.DTO.Contracts;
 using SportscardSystem.Models;
 using System;
@@ -12,5 +13,8 @@ namespace SportscardSystem.DTO
         public Guid ClientId { get; set; }
 
         public Guid CompanyId { get; set; }
+
+        [JsonProperty("client")]
+        public ClientDto Client { get; set; }
     }
 }

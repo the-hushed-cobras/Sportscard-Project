@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Bytes2you.Validation;
-using SportscardSystem.FileImporters.Utils.Contracts;
+﻿using Bytes2you.Validation;
 using Newtonsoft.Json;
-using SportscardSystem.DTO.JSON;
+using SportscardSystem.DTO;
+using SportscardSystem.FileImporters.Utils.Contracts;
+using System.Collections.Generic;
 
 namespace SportscardSystem.FileImporters.Utils
 {
@@ -16,11 +16,11 @@ namespace SportscardSystem.FileImporters.Utils
         /// </summary>
         /// <param name="jsonText">The JSON to be deserialized.</param>
         /// <returns>Deserialized collection of Journal DTOs.</returns>
-        public IEnumerable<SportscardJsonDto> Deserialize(string jsonText)
+        public IEnumerable<SportscardDto> Deserialize(string jsonText)
         {
             Guard.WhenArgument(jsonText, "Deserialize").IsNullOrEmpty().Throw();
 
-            return JsonConvert.DeserializeObject<IEnumerable<SportscardJsonDto>>(jsonText);
+            return JsonConvert.DeserializeObject<IEnumerable<SportscardDto>>(jsonText);
         }
     }
 }
