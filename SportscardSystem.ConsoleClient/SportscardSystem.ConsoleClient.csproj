@@ -128,9 +128,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileImporters\FileImporters.csproj">
+    <ProjectReference Include="..\FileImporters\SportscardSystem.FileImporters.csproj">
       <Project>{BE336FB9-DB77-4029-A76D-318D787E7DC5}</Project>
-      <Name>FileImporters</Name>
+      <Name>SportscardSystem.FileImporters</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportscardSystem.Architecture.Automapper\SportscardSystem.Architecture.Automapper.csproj">
       <Project>{4F332200-6022-4724-8160-7DE70716216F}</Project>

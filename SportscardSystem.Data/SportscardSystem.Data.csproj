@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201803281659269_Init.Designer.cs">
       <DependentUpon>201803281659269_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804011254243_json import.cs" />
+    <Compile Include="Migrations\201804011254243_json import.Designer.cs">
+      <DependentUpon>201804011254243_json import.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SportscardSystemDbContext.cs" />
@@ -77,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803281659269_Init.resx">
       <DependentUpon>201803281659269_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804011254243_json import.resx">
+      <DependentUpon>201804011254243_json import.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
