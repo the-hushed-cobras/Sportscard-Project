@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using SportscardSystem.ConsoleClient.Commands.Abstract;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace SportscardSystem.ConsoleClient.Commands.Visits
 {
-    public class GetVisitsBySporthallCommand : Command, ICommand
+    public class GetVisitsBySportshallCommand : Command, ICommand
     {
         private readonly IVisitService visitService;
 
-        public GetVisitsBySporthallCommand(ISportscardFactory sportscardFactory, IVisitService visitService) : base(sportscardFactory)
+        public GetVisitsBySportshallCommand(ISportscardFactory sportscardFactory, IVisitService visitService) : base(sportscardFactory)
         {
             Guard.WhenArgument(visitService, "Visit Service can not be null.").IsNull().Throw();
             this.visitService = visitService;

@@ -20,33 +20,33 @@ namespace SportscardSystem.Logic.UnitTests.Services.SportServiceTests
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
-            var expectedCompany = new Company()
+            var expectedCompany = new Sport()
             {
-                Name = "Meka M",
+                Name = "Gym",
                 IsDeleted = true
             };
 
-            var data = new List<Company>
+            var data = new List<Sport>
             {
-                new Company
+                new Sport
                 {
-                    Name = "Meka M",
+                    Name = "Gym",
                     IsDeleted = false,
                 }
             };
 
-            var mockSet = new Mock<DbSet<Company>>();
+            var mockSet = new Mock<DbSet<Sport>>();
 
             mockSet.SetupData(data);
 
             dbContextMock
-                .Setup(x => x.Companies)
+                .Setup(x => x.Sports)
                 .Returns(mockSet.Object);
 
-            var companyService = new CompanyService(dbContextMock.Object, mapperMock.Object);
+            var sportService = new SportService(dbContextMock.Object, mapperMock.Object);
 
             //Act
-            companyService.DeleteCompany(expectedCompany.Name);
+            sportService.DeleteSport(expectedCompany.Name);
 
             //Assert
             dbContextMock.Verify(x => x.SaveChanges(), Times.Once);

@@ -1,7 +1,5 @@
 ﻿using SportscardSystem.DTO.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SportscardSystem.Logic.Services.Contracts
 {
@@ -27,7 +25,7 @@ namespace SportscardSystem.Logic.Services.Contracts
         /// Deletes a specified sport from the database 
         /// </summary>
         /// <param name="sport"></param>
-        void DeleteSport(Guid? sport);
+        void DeleteSport(string sportName);
 
         /// <summary>
         /// Gets the most played sport

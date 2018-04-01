@@ -114,7 +114,7 @@
     <Compile Include="Commands\Visits\GetVisitsByClientCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsByDateCommand.cs" />
     <Compile Include="Commands\Visits\GetVisitsBySportCommand.cs" />
-    <Compile Include="Commands\Visits\GetVisitsBySportshall.cs" />
+    <Compile Include="Commands\Visits\GetVisitsBySportshallCommand.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />

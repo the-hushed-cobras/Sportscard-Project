@@ -31,6 +31,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             Guid clientId;
             string companyName;
             Guid companyId;
+
             try
             {
                 clientFirstName = parameters[0];
