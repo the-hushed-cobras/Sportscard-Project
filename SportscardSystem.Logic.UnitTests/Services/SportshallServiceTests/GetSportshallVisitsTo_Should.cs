@@ -13,7 +13,7 @@ using System.Linq;
 namespace SportscardSystem.Logic.UnitTests.Services.SportshallServiceTests
 {
     [TestClass]
-    public class GetSportshallVisitsFrom_Should
+    public class GetSportshallVisitsTo_Should
     {
         [TestMethod]
         public void ReturnCollectionOfIVisitViewDto_WhenThereIsAnyVisitsUntilTheGivenDate()

@@ -3,11 +3,9 @@ using SportscardSystem.ConsoleClient.Commands.Abstract;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.Logic.Services.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SportscardSystem.ConsoleClient.Commands.FromAndTo
 {
