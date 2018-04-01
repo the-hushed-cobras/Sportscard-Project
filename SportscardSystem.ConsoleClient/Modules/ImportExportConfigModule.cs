@@ -14,7 +14,7 @@ namespace SportscardSystem.ConsoleClient.Modules
     public class ImportExportConfigModule : Module
     {
         private const string FileDirectory = "./../../../ ";
-        private const string FilePath = "./../../../Sportscards-Two.json";
+        private const string FilePath = "./../../../Sportscards.json";
 
         protected override void Load(ContainerBuilder builder)
         {
