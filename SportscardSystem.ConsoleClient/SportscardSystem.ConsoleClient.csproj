@@ -113,7 +113,6 @@
     <Compile Include="Core\Providers\Contracts\IWriter.cs" />
     <Compile Include="Modules\DbContextConfigModule.cs" />
     <Compile Include="Modules\EngineConfigModule.cs" />
-    <Compile Include="Modules\FileImportersConfigModule.cs" />
     <Compile Include="Modules\ImportExportConfigModule.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

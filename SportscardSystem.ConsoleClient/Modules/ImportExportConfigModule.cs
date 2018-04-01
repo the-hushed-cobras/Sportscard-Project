@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Autofac.Core;
+using SportscardSystem.FileImporters;
+using SportscardSystem.FileImporters.Utils;
+using SportscardSystem.FileImporters.Utils.Contracts;
 using SportscardSystem.PdfExporter;
 using SportscardSystem.PdfExporter.Contracts;
 using SportscardSystem.PdfExporter.Utils;
@@ -11,6 +14,7 @@ namespace SportscardSystem.ConsoleClient.Modules
     public class ImportExportConfigModule : Module
     {
         private const string FileDirectory = "./../../../ ";
+        private const string FilePath = "./../../../Sportscards.json";
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -33,6 +37,20 @@ namespace SportscardSystem.ConsoleClient.Modules
                 .RegisterType<PdfSportshallsTableExporter>()
                 .WithParameter(ResolvedParameter.ForNamed<IPdfStream>("pdfstream"))
                 .As<IPdfSportshallsTableExporter>();
+
+            builder
+               .RegisterType<StreamReaderWrapper>()
+               .WithParameter("filePath", FilePath)
+               .Named<IStreamReader>("jsonreader");
+
+            builder
+                .RegisterType<JsonDeserializerWrapper>()
+                .As<IJsonDeserializer>();
+
+
+            builder
+                .RegisterType<JsonReader>()
+                .WithParameter(ResolvedParameter.ForNamed<IStreamReader>("jsonreader")).As<IJsonReader>();
 
             base.Load(builder);
         }
