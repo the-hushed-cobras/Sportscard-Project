@@ -1,9 +1,9 @@
 ﻿using Bytes2you.Validation;
 using SportscardSystem.DTO;
-using SportscardSystem.FileImporters.Utils.Contracts;
+using SportscardSystem.JsonImporter.Utils.Contracts;
 using System.Collections.Generic;
 
-namespace SportscardSystem.FileImporters
+namespace SportscardSystem.JsonImporter
 {
     public class JsonReader : IJsonReader
     {

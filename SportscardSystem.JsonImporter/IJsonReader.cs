@@ -1,7 +1,7 @@
 ﻿using SportscardSystem.DTO;
 using System.Collections.Generic;
 
-namespace SportscardSystem.FileImporters
+namespace SportscardSystem.JsonImporter
 {
     public interface IJsonReader
     {

@@ -3,7 +3,7 @@ using SportscardSystem.ConsoleClient.Commands.Add;
 using SportscardSystem.ConsoleClient.Commands.Contracts;
 using SportscardSystem.ConsoleClient.Core.Factories.Contracts;
 using SportscardSystem.DTO;
-using SportscardSystem.FileImporters;
+using SportscardSystem.JsonImporter;
 using SportscardSystem.Logic.Services.Contracts;
 using System;
 using System.Collections.Generic;

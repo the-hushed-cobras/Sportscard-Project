@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JSON")]
+[assembly: AssemblyTitle("SportscardSystem.JsonImporter.UnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JSON")]
+[assembly: AssemblyProduct("SportscardSystem.JsonImporter.UnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3bd702bb-969b-4327-a00d-473bfd4c7376")]
+[assembly: Guid("ed27a19d-4418-4b97-93a8-9cfe69ffd2fc")]
 
 // Version information for an assembly consists of the following four values:
 //
