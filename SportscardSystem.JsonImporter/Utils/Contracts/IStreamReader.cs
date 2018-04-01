@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SportscardSystem.FileImporters.Utils.Contracts
+namespace SportscardSystem.JsonImporter.Utils.Contracts
 {
     public interface IStreamReader
     {

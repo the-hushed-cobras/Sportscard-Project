@@ -1,8 +1,8 @@
 ﻿using Autofac;
 using Autofac.Core;
-using SportscardSystem.FileImporters;
-using SportscardSystem.FileImporters.Utils;
-using SportscardSystem.FileImporters.Utils.Contracts;
+using SportscardSystem.JsonImporter;
+using SportscardSystem.JsonImporter.Utils;
+using SportscardSystem.JsonImporter.Utils.Contracts;
 using SportscardSystem.PdfExporter;
 using SportscardSystem.PdfExporter.Contracts;
 using SportscardSystem.PdfExporter.Utils;
