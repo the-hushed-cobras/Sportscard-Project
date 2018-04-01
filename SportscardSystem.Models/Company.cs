@@ -22,6 +22,8 @@ namespace SportscardSystem.Models
         public Guid Id { get; set; }
 
         [Required]
+        [Index(IsUnique = true)]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Invalid company name format!")]
         public string Name { get; set; }
 
         /// <summary>
