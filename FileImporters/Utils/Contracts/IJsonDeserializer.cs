@@ -1,7 +1,7 @@
 ﻿using SportscardSystem.DTO;
 using System.Collections.Generic;
 
-namespace SportscardSystem.FileImporters.Utils.Contracts
+namespace SportscardSystem.JsonImporter.Utils.Contracts
 {
     public interface IJsonDeserializer
     {

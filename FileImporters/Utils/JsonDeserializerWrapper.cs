@@ -1,10 +1,10 @@
 ﻿using Bytes2you.Validation;
 using Newtonsoft.Json;
 using SportscardSystem.DTO;
-using SportscardSystem.FileImporters.Utils.Contracts;
+using SportscardSystem.JsonImporter.Utils.Contracts;
 using System.Collections.Generic;
 
-namespace SportscardSystem.FileImporters.Utils
+namespace SportscardSystem.JsonImporter.Utils
 {
     /// <summary>
     /// Represent a <see cref="JsonJournalsDeserializer"/> class.
