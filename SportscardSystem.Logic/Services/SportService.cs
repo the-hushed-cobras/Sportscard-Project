@@ -81,11 +81,11 @@ namespace SportscardSystem.Logic.Services
             }
         }
         
-        public void DeleteSport (Guid? sportId)
+        public void DeleteSport (string sportName)
         {
-            Guard.WhenArgument(sportId, "Visit id can not be null!").IsNull().Throw();
+            Guard.WhenArgument(sportName, "Visit id can not be null!").IsNullOrEmpty().Throw();
 
-            var sport = this.dbContext.Sports.FirstOrDefault(s => !s.IsDeleted && s.Id == sportId);
+            var sport = this.dbContext.Sports.FirstOrDefault(s => !s.IsDeleted && s.Name == sportName);
             Guard.WhenArgument(sport, "There is no such visit!").IsNull().Throw();
 
             sport.IsDeleted = true;

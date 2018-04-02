@@ -20,6 +20,7 @@ namespace SportscardSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
+        [Index(IsUnique = true)]
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Invalid company name format!")]
         public string Name { get; set; }

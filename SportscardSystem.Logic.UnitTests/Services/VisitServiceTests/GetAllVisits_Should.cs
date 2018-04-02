@@ -23,9 +23,42 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
             var dbContextMock = new Mock<ISportscardSystemDbContext>();
             var mapperMock = new Mock<IMapper>();
 
+            var client = new Client()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271324"),
+                FirstName = "Georgi",
+                LastName = "Georgiev",
+                IsDeleted = false,
+                Visits = new List<Visit>()
+            };
+
+            var sport = new Sport()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271323"),
+                Name = "Gym",
+                IsDeleted = false,
+            };
+
+
+            var sportshall = new Sportshall()
+            {
+                Id = new Guid("db97a0eb-9411-4f1d-9ead-3997e6271322"),
+                Name = "Topfit",
+                IsDeleted = false,
+            };
+
             var data = new List<Visit>
             {
-                new Visit { CreatedOn = DateTime.Today.AddDays(-1)  }
+                new Visit
+                {
+                    ClientId = client.Id,
+                    Client= client,
+                    SportId = sport.Id,
+                    Sport = sport,
+                    SportshallId = sportshall.Id,
+                    Sportshall = sportshall,
+                    CreatedOn = DateTime.Today.AddDays(-1)
+                }
             };
 
             var mockSet = new Mock<DbSet<Visit>>();
@@ -47,7 +80,7 @@ namespace SportscardSystem.Logic.UnitTests.Services.VisitServiceTests
             //Assert
             Assert.AreEqual(data.Count, visits.Count());
             Assert.IsNotNull(visits);
-            Assert.IsInstanceOfType(visits, typeof(IEnumerable<IVisitDto>));
+            Assert.IsInstanceOfType(visits, typeof(IEnumerable<IVisitViewDto>));
         }
 
         [TestMethod]

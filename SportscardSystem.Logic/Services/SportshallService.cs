@@ -87,10 +87,13 @@ namespace SportscardSystem.Logic.Services
             Sportshall sportshall = this.dbContext.Sportshalls?.Where(s => !s.IsDeleted)
                 .OrderByDescending(c => c.Visits.Where(v => !v.IsDeleted).Count())
                 .FirstOrDefault();
+
             Guard.WhenArgument(sportshall, "Most visited sportshall can not be null.").IsNull().Throw();
             Guard.WhenArgument(sportshall.Visits.Where(v => !v.IsDeleted).Count(), "There no sportshall with visits.").IsLessThan(1).Throw();
+
             ISportshallDto sportshallDto = this.mapper.Map<SportshallDto>(sportshall);
             Guard.WhenArgument(sportshallDto, "SportshallDto can not be null.").IsNull().Throw();
+
             return sportshallDto;
         }
 
@@ -109,13 +112,13 @@ namespace SportscardSystem.Logic.Services
                 var sports = dbContext.Sportshalls?.Where(c => !c.IsDeleted).Where(s => s.Id == sportshall.Id).SelectMany(s => s.Sports);
                 Guard.WhenArgument(sports, "Sports can not be null!").IsNullOrEmpty().Throw();
 
-                var allSports = sports.ProjectTo<SportDto>().ToList();
+                var allSports = sports.ProjectTo<SportDto>().ToList().OrderBy(s => s.Name);
                 Guard.WhenArgument(allSports, "All sports can not be null!").IsNullOrEmpty().Throw();
 
                 sportscardsDecoded.Add(new SportshallViewDto(sportshall.Name, allSports));
             }
 
-            return sportscardsDecoded;
+            return sportscardsDecoded.OrderBy(s => s.Name);
         }
 
         public IEnumerable<IVisitViewDto> GetSportshallVisitsFrom(string sportshallName, string date)

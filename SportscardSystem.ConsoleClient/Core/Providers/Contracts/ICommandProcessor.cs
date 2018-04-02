@@ -3,5 +3,7 @@
     public interface ICommandProcessor
     {
         string ProcessCommand(string commandAsString);
+
+        string CommandsHelp();
     }
 }
