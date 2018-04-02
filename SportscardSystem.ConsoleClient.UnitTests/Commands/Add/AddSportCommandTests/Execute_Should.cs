@@ -50,7 +50,7 @@ namespace SportscardSystem.ConsoleClient.UnitTests.Commands.Add.AddSportCommand_
             var sportServiceMock = new Mock<ISportService>();
 
             var sportName = "Gym";
-            var expectedMessage = $"{sportName} sport was added to database.";
+            var expectedMessage = $"Sport {sportName} was added to database.";
             var expectedSport = new SportDto()
             {
                 Name = sportName

@@ -41,7 +41,7 @@ namespace SportscardSystem.ConsoleClient.Commands.Add
             ISportDto sport = this.SportscardFactory.CreateSportDto(name);
             sportService.AddSport(sport);
 
-            return $"{name} sport was added to database.";
+            return $"Sport {name} was added to database.";
         }
     }
 }

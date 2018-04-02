@@ -21,11 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter", "SportscardSystem.JsonImporter\SportscardSystem.JsonImporter.csproj", "{BE336FB9-DB77-4029-A76D-318D787E7DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter.UnitTests", "SportscardSystem.JsonImporter.UnitTests\SportscardSystem.JsonImporter.UnitTests.csproj", "{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.ConsoleClient.UnitTests", "SportscardSystem.ConsoleClient.UnitTests\SportscardSystem.ConsoleClient.UnitTests.csproj", "{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.PdfExporter.UnitTests", "SportscardSystem.PdfExporter.UnitTests\SportscardSystem.PdfExporter.UnitTests.csproj", "{181E853C-D534-48BE-8CA9-3AC104970047}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportscardSystem.JsonImporter.UnitTests", "SportscardSystem.JsonImporter.UnitTests\SportscardSystem.JsonImporter.UnitTests.csproj", "{3C79E658-D4BB-48CD-BF51-6FA29D082549}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,6 @@ Global
 		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE336FB9-DB77-4029-A76D-318D787E7DC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED27A19D-4418-4B97-93A8-9CFE69FFD2FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E5F92D2-FD76-4D3B-8417-C16D08CE9178}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{181E853C-D534-48BE-8CA9-3AC104970047}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181E853C-D534-48BE-8CA9-3AC104970047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181E853C-D534-48BE-8CA9-3AC104970047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C79E658-D4BB-48CD-BF51-6FA29D082549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C79E658-D4BB-48CD-BF51-6FA29D082549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C79E658-D4BB-48CD-BF51-6FA29D082549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C79E658-D4BB-48CD-BF51-6FA29D082549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
